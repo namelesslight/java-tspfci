@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.javatspfci.code.mapper.FactoryMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.example.javatspfci.code.entity.po.Factory">
+        <id column="fac_id" property="facId" />
+        <result column="fac_user_name" property="facUserName" />
+        <result column="fac_store_name" property="facStoreName" />
+        <result column="fac_store_introduct" property="facStoreIntroduct" />
+        <result column="fac_phone" property="facPhone" />
+        <result column="fac_picture" property="facPicture" />
+        <result column="fac_location" property="facLocation" />
+        <result column="fac_lences_id" property="facLencesId" />
+        <result column="fac_delete" property="facDelete" />
+        <result column="create_time" property="createTime" />
+    </resultMap>
+
+    <insert id="addFactory">
+        INSERT INTO `tb_factory` VALUES(#{id}, #{username}, #{phone}, '', '', '', '', '', 0, NOW());
+    </insert>
+
+    <select id="queryCountByPhone" resultType="java.lang.Integer">
+        SELECT COUNT(*)
+        FROM `tb_factory`
+        WHERE `fac_phone` = #{phone}
+    </select>
+
+    <select id="selectFacUserName" resultType="com.example.javatspfci.code.entity.vo.FactoryMsg">
+        SELECT `tb_factory`.`fac_id`,
+               `tb_factory`.`fac_user_name`,
+               `tb_factory`.`fac_store_name`,
+               `tb_factory`.`fac_store_introduct`,
+               `tb_factory`.`fac_phone`,
+               `tb_factory`.`fac_picture`,
+               `tb_factory`.`fac_location`,
+               `tb_factory`.`fac_lences_id`,
+               `tb_all_password`.`all_password`,
+               `tb_user_role`.`u_role`
+        FROM `tb_factory`,`tb_all_password`,`tb_user_role`
+        WHERE `tb_factory`.`fac_id` = `tb_all_password`.`all_id`
+          AND `tb_all_password`.`all_id` = `tb_user_role`.`u_id`
+          AND `fac_user_name`=#{facUserName}
+          AND `all_password`=#{password}
+    </select>
+</mapper>

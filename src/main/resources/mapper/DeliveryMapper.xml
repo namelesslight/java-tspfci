@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.javatspfci.code.mapper.DeliveryMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.example.javatspfci.code.entity.po.Delivery">
+        <id column="de_id" property="deId" />
+        <result column="de_user_name" property="deUserName" />
+        <result column="de_phone" property="dePhone" />
+        <result column="de_picture" property="dePicture" />
+        <result column="de_car" property="deCar" />
+        <result column="de_delete" property="deDelete" />
+        <result column="create_time" property="createTime" />
+    </resultMap>
+
+    <insert id="addDelivery">
+        INSERT INTO `tb_delivery` VALUES (#{id}, #{username}, #{phone}, '', '', 0, NOW());
+    </insert>
+
+    <select id="queryCountByPhone" resultType="java.lang.Integer">
+        SELECT COUNT(*)
+        FROM `tb_delivery`
+        WHERE `de_phone` = #{phone}
+    </select>
+
+    <select id="selectDeByUsername" resultType="com.example.javatspfci.code.entity.vo.DeliveryMsg">
+        SELECT `tb_delivery`.`de_id`,
+               `tb_delivery`.`de_user_name`,
+               `tb_delivery`.`de_phone`,
+               `tb_delivery`.`de_picture`,
+               `tb_delivery`.`de_car`,
+               `tb_all_password`.`all_password`,
+               `tb_user_role`.`u_role`
+        FROM `tb_delivery`,`tb_all_password`,`tb_user_role`
+        WHERE `tb_delivery`.`de_id` = `tb_all_password`.`all_id`
+          AND `tb_all_password`.`all_id` = `tb_user_role`.`u_id`
+          AND `de_user_name`=#{deUserName}
+          AND `all_password`=#{password}
+    </select>
+
+</mapper>

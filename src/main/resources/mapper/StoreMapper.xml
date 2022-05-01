@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.javatspfci.code.mapper.StoreMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.example.javatspfci.code.entity.po.Store">
+        <id column="st_id" property="stId" />
+        <result column="st_user_name" property="stUserName" />
+        <result column="st_store_name" property="stStoreName" />
+        <result column="st_store_introduct" property="stStoreIntroduct" />
+        <result column="st_phone" property="stPhone" />
+        <result column="st_picture" property="stPicture" />
+        <result column="st_location" property="stLocation" />
+        <result column="st_lences_id" property="stLencesId" />
+        <result column="is_delete" property="isDelete" />
+        <result column="create_time" property="createTime" />
+    </resultMap>
+    
+    <insert id="addStore">
+        INSERT INTO `tb_store` VALUES(#{id}, #{username}, #{phone}, '', '', '', '', '', 0, NOW());
+    </insert>
+
+    <select id="queryCountByPhone" resultType="java.lang.Integer">
+        SELECT COUNT(*)
+        FROM `tb_store`
+        WHERE `st_phone` = #{phone}
+          AND `is_delete` = 0
+    </select>
+
+</mapper>
