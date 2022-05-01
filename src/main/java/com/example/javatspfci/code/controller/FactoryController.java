@@ -31,7 +31,7 @@ public class FactoryController {
 
     @PostMapping("/login")
     @Transactional
-    public Result factoryLogin(@RequestBody FacLoginDto facLoginDto, @RequestParam("token") String token) {
+    public Result factoryLogin(@RequestBody FacLoginDto facLoginDto, @RequestHeader("token") String token) {
         //md5加密
         String md5Password = SecretUtil.secretString(facLoginDto.getAllPassword());
         //查询用户是否存在

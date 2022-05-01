@@ -30,7 +30,7 @@ public class DeliveryController {
 
     @PostMapping("/login")
     @Transactional
-    public Result deliveryLogin(@RequestBody DeLoginDto deLoginDto, @RequestParam("token") String token) {
+    public Result deliveryLogin(@RequestBody DeLoginDto deLoginDto, @RequestHeader("token") String token) {
         //md5加密
         String md5Password = SecretUtil.secretString(deLoginDto.getAllPassword());
         //查询用户是否存在
