@@ -1,6 +1,7 @@
 package com.example.javatspfci.code.controller;
 
 
+import com.example.javatspfci.code.entity.dto.DeLoginDto;
 import com.example.javatspfci.code.entity.vo.DeliveryMsg;
 import com.example.javatspfci.code.result.Result;
 import com.example.javatspfci.code.service.impl.DeliveryServiceImpl;
@@ -8,11 +9,7 @@ import com.example.javatspfci.code.stencil.impl.BaseStencilImpl;
 import com.example.javatspfci.code.util.SecretUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * <p>
@@ -33,15 +30,13 @@ public class DeliveryController {
 
     @PostMapping("/login")
     @Transactional
-    public Result deliveryLogin(@RequestParam("facUserName") String username,
-                                @RequestParam("passsword") String password,
-                                @RequestParam("token") String token) {
+    public Result deliveryLogin(@RequestBody DeLoginDto deLoginDto, @RequestParam("token") String token) {
         //md5加密
-        String md5Password = SecretUtil.secretString(password);
+        String md5Password = SecretUtil.secretString(deLoginDto.getAllPassword());
         //查询用户是否存在
         DeliveryMsg deliveryMsg = null;
         try {
-            deliveryMsg = deliveryService.deliveryLogin(username, md5Password);
+            deliveryMsg = deliveryService.deliveryLogin(deLoginDto.getDeUserName(), md5Password);
         } catch (Exception e) {
             e.printStackTrace();
         }
