@@ -288,15 +288,10 @@ public class BaseStencilImpl implements BaseStencil {
      */
     public Result loginJudge(Object msg, Map<String, Object> resultMap, Map<String, String> tokenMap,
                              String logStatus, String path, String token) {
-        if (msg == null) {
-            //账号或密码错误
-            resultMap.put("login_code", 0);
-            resultMap.put("data", "账号或密码错误");
-            return new Result().result200(msg, path);
-        } else {
-            //判断是否是新登录
-            if (token == null) {
-                //生成token
+        if (token == null) {
+            //新登录
+            if (msg != null) {
+                //登陆成功,生成token
                 token = JWTUtil.createToken(tokenMap);
                 //返回
                 resultMap.put("login_code", 1);
@@ -306,23 +301,32 @@ public class BaseStencilImpl implements BaseStencil {
                 logService.addLog(tokenMap.get("ID"), logStatus);
                 return new Result().result200(resultMap, path);
             } else {
-                int statusCode = JWTUtil.verify(token);
-                if (statusCode == 1) {
-                    //登录成功
-                    //返回
-                    resultMap.put("login_code", 1);
-                    resultMap.put("token", token);
-                    resultMap.put("data", msg);
-                    //在记录表中插入数据
-                    logService.addLog(tokenMap.get("ID"), logStatus);
-                    return new Result().result200(resultMap, path);
-
-                } else {
-                    //token失效或错误
-                    resultMap.put("login_code", 0);
-                    resultMap.put("token", token);
-                    return new Result().result401(resultMap, path);
-                }
+                //账号或密码错误
+                resultMap.put("login_code", 0);
+                resultMap.put("data", "账号或密码错误");
+                return new Result().result200(msg, path);
+            }
+        } else {
+            //不是新登录,验证token
+            int statusCode = JWTUtil.verify(token);
+            if (statusCode == 1) {
+                //token未过期,登录成功
+                //刷新token
+                token = JWTUtil.createToken(tokenMap);
+                //返回
+                resultMap.put("login_code", 1);
+                resultMap.put("token", token);
+                resultMap.put("data", msg);
+                //在记录表中插入数据
+                logService.addLog(tokenMap.get("ID"), logStatus);
+                return new Result().result200(resultMap, path);
+            } else {
+                //token失效或错误
+                resultMap.put("login_code", 0);
+                //清空token
+                token = null;
+                resultMap.put("token", token);
+                return new Result().result401(resultMap, path);
             }
         }
     }
