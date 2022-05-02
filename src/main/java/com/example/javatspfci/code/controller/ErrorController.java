@@ -1,13 +1,14 @@
 package com.example.javatspfci.code.controller;
 
 import com.example.javatspfci.code.result.Result;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
 import java.util.Map;
 
 @RequestMapping("/base")
+@RestController
 public class ErrorController {
 
     /**
