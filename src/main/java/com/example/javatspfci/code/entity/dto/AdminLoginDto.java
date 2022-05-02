@@ -8,11 +8,11 @@ import lombok.Data;
  * @CreateTime: 2022/5/2 01:22
  */
 @Data
-public class AdminDto {
+public class AdminLoginDto {
     /**
      * 管理员用户名
      */
-    private String adminUsername;
+    private String adminUserName;
 
     /**
      * 密码

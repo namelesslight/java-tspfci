@@ -3,6 +3,7 @@ package com.example.javatspfci.code.stencil.impl;
 import com.example.javatspfci.code.entity.vo.AdminMsg;
 import com.example.javatspfci.code.entity.vo.DeliveryMsg;
 import com.example.javatspfci.code.entity.vo.FactoryMsg;
+import com.example.javatspfci.code.entity.vo.StoreMsg;
 import com.example.javatspfci.code.result.Result;
 import com.example.javatspfci.code.service.LogService;
 import com.example.javatspfci.code.stencil.LoginStencil;
@@ -25,17 +26,34 @@ public class LoginStencilImpl implements LoginStencil {
     private LogService logService;
 
     /**
-     * 用户登录
-     *
-     * @param phone     电话号码
-     * @param password  密码
+     * 用户(店家)登录
+     * @param storeMsg  店家信息
      * @param logStatus 操作状态
      * @param path      url路径
+     * @param token     token
      * @return
      */
     @Override
-    public Result userLogin(String phone, String password, String logStatus, String path) {
-        return null;
+    @Transactional(rollbackFor = Exception.class)
+    public Result storeLogin(StoreMsg storeMsg, String logStatus, String path, String token) {
+        Map<String, Object> resultMap = new Hashtable<>();
+        Map<String, String> tokenMap = new Hashtable<>();
+
+        if (storeMsg != null) {
+            tokenMap.put("ID", storeMsg.getStId());
+            tokenMap.put("role", storeMsg.getURole());
+            Result result = new LoginStencilImpl().loginJudge(storeMsg, resultMap, tokenMap, path, token);
+            if ((int)resultMap.get("login_code") == 1) {
+                //在记录表中插入数据
+                logService.addLog(tokenMap.get("ID"), logStatus);
+            }
+            return result;
+        } else {
+            //账号或密码错误
+            resultMap.put("login_code", 0);
+            resultMap.put("data", "账号或密码错误");
+            return new Result().result200(resultMap, path);
+        }
     }
 
     /**
