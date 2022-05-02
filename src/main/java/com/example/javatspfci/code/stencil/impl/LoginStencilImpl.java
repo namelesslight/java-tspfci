@@ -117,7 +117,7 @@ public class LoginStencilImpl implements LoginStencil {
         if (deliveryMsg != null) {
             tokenMap.put("ID", deliveryMsg.getDeId());
             tokenMap.put("role", deliveryMsg.getURole());
-            Result result = new LoginStencilImpl().loginJudge(deliveryMsg, resultMap, tokenMap, path, token);
+            Result result = this.loginJudge(deliveryMsg, resultMap, tokenMap, path, token);
             if ((int)resultMap.get("login_code") == 1) {
                 //在记录表中插入数据
                 logService.addLog(tokenMap.get("ID"), logStatus);
@@ -139,7 +139,7 @@ public class LoginStencilImpl implements LoginStencil {
      * @param token     token
      * @return
      */
-    public Result loginJudge(Object msg, Map<String, Object> resultMap, Map<String, String> tokenMap,
+    public static Result loginJudge(Object msg, Map<String, Object> resultMap, Map<String, String> tokenMap,
                              String path, String token) {
         if ("".equals(token)) {
             //登陆成功,生成token
