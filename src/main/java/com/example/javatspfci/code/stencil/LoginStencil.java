@@ -3,6 +3,7 @@ package com.example.javatspfci.code.stencil;
 import com.example.javatspfci.code.entity.vo.AdminMsg;
 import com.example.javatspfci.code.entity.vo.DeliveryMsg;
 import com.example.javatspfci.code.entity.vo.FactoryMsg;
+import com.example.javatspfci.code.entity.vo.StoreMsg;
 import com.example.javatspfci.code.result.Result;
 
 /**
@@ -12,14 +13,14 @@ import com.example.javatspfci.code.result.Result;
  */
 public interface LoginStencil {
     /**
-     * 用户登录
-     * @param phone 电话号码
-     * @param password 密码
-     * @param  logStatus 操作状态
-     * @param  path url路径
+     * 用户(店家)登录
+     * @param storeMsg  店家信息
+     * @param logStatus 操作状态
+     * @param path      url路径
+     * @param token     token
      * @return
      */
-    public Result userLogin(String phone, String password, String logStatus, String path);
+    public Result storeLogin(StoreMsg storeMsg, String logStatus, String path, String token);
 
     /**
      * 管理员登录

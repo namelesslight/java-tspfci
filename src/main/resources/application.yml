@@ -7,3 +7,5 @@ spring:
 mybatis-plus:
   mapper-locations: classpath*:/mapper/*.xml
   type-aliases-package: com.example.javatspfci.code.mapper
+server:
+  port: 8080

@@ -42,7 +42,7 @@ public class DeliveryController {
         }
 
         //获取Result
-        Result result = loginStencil.deliveryLogin(deliveryMsg, "login", "/code/factory/login", token);
+        Result result = loginStencil.deliveryLogin(deliveryMsg, "login", "/code/delivery/login", token);
         return result;
     }
 }

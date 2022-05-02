@@ -34,7 +34,7 @@ public class DeliveryMsg {
     private String deCar;
 
     @ApiModelProperty("配送员密码")
-    private String allPassword;
+    private String password;
 
     @ApiModelProperty("角色等级")
     private String uRole;

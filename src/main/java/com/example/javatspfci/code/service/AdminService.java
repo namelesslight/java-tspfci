@@ -36,6 +36,6 @@ public interface AdminService extends IService<Admin> {
      * @param password 密码
      * @return
      */
-    public AdminMsg selectAdminUserByUsername(String username, String password);
+    public AdminMsg AdminLogin(String username, String password);
 
 }

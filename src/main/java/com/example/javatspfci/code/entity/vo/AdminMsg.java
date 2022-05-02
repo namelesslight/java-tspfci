@@ -2,8 +2,11 @@ package com.example.javatspfci.code.entity.vo;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * @Description
@@ -12,6 +15,9 @@ import lombok.Data;
  */
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
+@ApiModel("厂家实体")
 public class AdminMsg {
 
     @ApiModelProperty("管理员编号")
@@ -24,7 +30,7 @@ public class AdminMsg {
     private String adUserPicture;
 
     @ApiModelProperty("配送员密码")
-    private String allPassword;
+    private String password;
 
     @ApiModelProperty("角色等级")
     private String uRole;
