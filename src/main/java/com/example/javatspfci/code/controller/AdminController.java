@@ -1,13 +1,10 @@
 package com.example.javatspfci.code.controller;
 
 
-import com.example.javatspfci.code.entity.dto.AdminDto;
-import com.example.javatspfci.code.entity.dto.DeLoginDto;
+import com.example.javatspfci.code.entity.dto.AdminLoginDto;
 import com.example.javatspfci.code.entity.vo.AdminMsg;
-import com.example.javatspfci.code.entity.vo.DeliveryMsg;
 import com.example.javatspfci.code.result.Result;
 import com.example.javatspfci.code.service.AdminService;
-import com.example.javatspfci.code.service.DeliveryService;
 import com.example.javatspfci.code.stencil.LoginStencil;
 import com.example.javatspfci.code.util.SecretUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,19 +27,19 @@ public class AdminController {
     private AdminService adminService;
 
     @PostMapping("/login")
-    public Result deliveryLogin(@RequestBody AdminDto adminDto, @RequestHeader(value = "token",required = false) String token) {
+    public Result adminLogin(@RequestBody AdminLoginDto adminLoginDto, @RequestHeader(value = "token",required = false) String token) {
         //md5加密
-        String md5Password = SecretUtil.secretString(adminDto.getPassword());
+        String md5Password = SecretUtil.secretString(adminLoginDto.getPassword());
         //查询用户是否存在
         AdminMsg adminMsg = null;
         try {
-             adminMsg = adminService.selectAdminUserByUsername(adminDto.getAdminUsername(), md5Password);
+             adminMsg = adminService.AdminLogin(adminLoginDto.getAdminUserName(), md5Password);
         } catch (Exception e) {
             e.printStackTrace();
         }
 
         //获取Result
-        Result result = loginStencil.adminLogin(adminMsg, "login", "/code/factory/login", token);
+        Result result = loginStencil.adminLogin(adminMsg, "login", "/code/admin/login", token);
         return result;
     }
 }

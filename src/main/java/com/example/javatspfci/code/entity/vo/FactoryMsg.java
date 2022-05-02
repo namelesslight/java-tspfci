@@ -43,7 +43,7 @@ public class FactoryMsg {
     private String facLencesId;
 
     @ApiModelProperty("厂家密码")
-    private String allPassword;
+    private String password;
 
     @ApiModelProperty("角色等级")
     private String uRole;

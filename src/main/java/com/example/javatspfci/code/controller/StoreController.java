@@ -1,9 +1,17 @@
 package com.example.javatspfci.code.controller;
 
 
-import org.springframework.web.bind.annotation.RequestMapping;
-
-import org.springframework.web.bind.annotation.RestController;
+import com.example.javatspfci.code.entity.dto.FacLoginDto;
+import com.example.javatspfci.code.entity.dto.StoreLoginDto;
+import com.example.javatspfci.code.entity.vo.FactoryMsg;
+import com.example.javatspfci.code.entity.vo.StoreMsg;
+import com.example.javatspfci.code.result.Result;
+import com.example.javatspfci.code.service.FactoryService;
+import com.example.javatspfci.code.service.StoreService;
+import com.example.javatspfci.code.stencil.LoginStencil;
+import com.example.javatspfci.code.util.SecretUtil;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * <p>
@@ -16,5 +24,28 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/code/store")
 public class StoreController {
+    @Autowired
+    private LoginStencil loginStencil;
+
+    @Autowired
+    private StoreService storeService;
+
+    @PostMapping("/login")
+    public Result storeLogin(@RequestBody StoreLoginDto storeLoginDto, @RequestHeader(value = "token", required = false) String token) {
+        //md5加密
+        String md5Password = SecretUtil.secretString(storeLoginDto.getPassword());
+        //查询用户是否存在
+        StoreMsg storeMsg = null;
+        try {
+            storeMsg = storeService.storeLogin(storeLoginDto.getStUserName(), md5Password);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        //获取Result
+        Result result = loginStencil.storeLogin(storeMsg, "login", "/code/store/login", token);
+
+        return result;
+    }
 
 }

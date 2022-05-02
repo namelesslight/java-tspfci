@@ -52,7 +52,7 @@ public class AdminServiceImpl extends ServiceImpl<AdminMapper, Admin> implements
      * @return
      */
     @Override
-    public AdminMsg selectAdminUserByUsername(String username, String password) {
+    public AdminMsg AdminLogin(String username, String password) {
         return adminMapper.selectAdminUserByUsername(username, password);
     }
 
