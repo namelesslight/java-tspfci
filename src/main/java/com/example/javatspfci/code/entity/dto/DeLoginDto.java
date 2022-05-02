@@ -18,5 +18,5 @@ public class DeLoginDto {
     /**
      * 密码
      */
-    private String allPassword;
+    private String password;
 }

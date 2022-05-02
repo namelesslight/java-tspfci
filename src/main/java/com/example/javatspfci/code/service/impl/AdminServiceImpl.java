@@ -1,6 +1,8 @@
 package com.example.javatspfci.code.service.impl;
 
 import com.example.javatspfci.code.entity.po.Admin;
+import com.example.javatspfci.code.entity.vo.AdminMsg;
+import com.example.javatspfci.code.entity.vo.FactoryMsg;
 import com.example.javatspfci.code.mapper.AdminMapper;
 import com.example.javatspfci.code.service.AdminService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -41,6 +43,17 @@ public class AdminServiceImpl extends ServiceImpl<AdminMapper, Admin> implements
     @Override
     public Boolean queryAdminCountByUsername(String username) {
         return adminMapper.queryAdminCountByUsername(username) == 1;
+    }
+
+    /**
+     * 管理员登录
+     * @param username 管理员用户名
+     * @param password 密码
+     * @return
+     */
+    @Override
+    public AdminMsg selectAdminUserByUsername(String username, String password) {
+        return adminMapper.selectAdminUserByUsername(username, password);
     }
 
 

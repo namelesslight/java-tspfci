@@ -2,6 +2,8 @@ package com.example.javatspfci.code.service;
 
 import com.example.javatspfci.code.entity.po.Admin;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.example.javatspfci.code.entity.vo.AdminMsg;
+import com.example.javatspfci.code.entity.vo.FactoryMsg;
 
 /**
  * <p>
@@ -27,5 +29,13 @@ public interface AdminService extends IService<Admin> {
      * @return
      */
     public Boolean queryAdminCountByUsername(String username);
+
+    /**
+     *
+     * @param username 管理员用户名
+     * @param password 密码
+     * @return
+     */
+    public AdminMsg selectAdminUserByUsername(String username, String password);
 
 }

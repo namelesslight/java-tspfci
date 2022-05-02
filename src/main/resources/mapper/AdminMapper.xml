@@ -21,5 +21,17 @@
         FROM `tb_admin`
         WHERE `ad_user_name` = #{username}
     </select>
+    <select id="selectAdminUserByUsername" resultType="com.example.javatspfci.code.entity.vo.AdminMsg">
+        SELECT `tb_admin`.`ad_id`,
+               `tb_admin`.`ad_user_name`,
+               `tb_admin`.`ad_user_picture`,
+               `tb_all_password`.`all_password`,
+               `tb_user_role`.`u_role`
+        FROM `tb_admin`,`tb_all_password`,`tb_user_role`
+        WHERE `tb_admin`.`de_id` = `tb_all_password`.`all_id`
+          AND `tb_all_password`.`all_id` = `tb_user_role`.`u_id`
+          AND `ad_user_name`=#{deUserName}
+          AND `all_password`=#{password}
+    </select>
 
 </mapper>
