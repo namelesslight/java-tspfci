@@ -24,8 +24,10 @@ import javax.annotation.Resource;
 @RestController
 @RequestMapping("/code/delivery")
 public class DeliveryController {
+
     @Autowired
     private LoginStencil loginStencil;
+
     @Autowired
     private DeliveryService deliveryService;
 

@@ -42,7 +42,7 @@ public class AdminController {
         }
 
         //获取Result
-        Result result = loginStencil.adminLogin(adminMsg, "login", "/code/factory/login", token);
+        Result result = loginStencil.adminLogin(adminMsg, "login", "/code/admin/login", token);
         return result;
     }
 }
