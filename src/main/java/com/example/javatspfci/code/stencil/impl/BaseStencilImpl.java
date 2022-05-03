@@ -51,7 +51,7 @@ public class BaseStencilImpl implements BaseStencil {
     @Resource
     private AdminService adminService;
 
-    private final String PHONE_PATTERN = "^[1][3,5,7,8]\\d{9}$";
+    private final String PHONE_PATTERN = "^[1][3,4,5,7,8,9]\\d{9}$";
 
     /**
      * 用户注册
