@@ -2,7 +2,7 @@ package com.example.javatspfci.code.mapper;
 
 import com.example.javatspfci.code.entity.po.Factory;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.example.javatspfci.code.entity.vo.FactoryMsg;
+import com.example.javatspfci.code.entity.vo.FactoryLoginMsg;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
@@ -40,6 +40,6 @@ public interface FactoryMapper extends BaseMapper<Factory> {
      * @param password 密码
      * @return
      */
-    public FactoryMsg selectFacUserName(String facUserName, String password);
+    public FactoryLoginMsg selectFacUserName(String facUserName, String password);
 
 }

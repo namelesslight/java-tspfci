@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
  * 记录表查询结果
  */
 @Data
-public class LogMsg {
+public class LogQueryMsg {
 
     /**
      * 记录编号

@@ -2,11 +2,12 @@ package com.example.javatspfci.code.stencil.impl;
 
 
 import com.example.javatspfci.code.entity.bean.PageBean;
-import com.example.javatspfci.code.entity.vo.LogMsg;
+import com.example.javatspfci.code.entity.vo.LogQueryMsg;
 import com.example.javatspfci.code.result.Result;
 import com.example.javatspfci.code.service.LogService;
 import com.example.javatspfci.code.stencil.UserLogStencil;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.HashMap;
@@ -27,13 +28,14 @@ public class UserLogStencilImpl implements UserLogStencil {
      * @param path url路径
      * @return
      */
+    @Transactional(rollbackFor = Exception.class)
     @Override
     public Result queryUserLogByPage(String role,Integer page, Integer count,String path) {
         Integer totalCount = logService.queryTotalCountByRole(role);
         Integer totalPage = PageBean.getTotalPage(count,totalCount);
         Integer start =(page - 1) * count;
-        List<LogMsg> data = logService.queryLogMsgByPage(role, start, count);
-        PageBean<LogMsg> logMsgPages = new PageBean<>(totalCount, page, totalPage, start, data);
+        List<LogQueryMsg> data = logService.queryLogMsgByPage(role, start, count);
+        PageBean<LogQueryMsg> logMsgPages = new PageBean<>(totalCount, page, totalPage, start, data);
         Map<String,Object> message = new HashMap<>();
         message.put("pages",logMsgPages);
         return new Result().result200(message,path);

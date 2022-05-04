@@ -26,7 +26,7 @@
         WHERE `st_phone` = #{phone}
           AND `is_delete` = 0
     </select>
-    <select id="selectStoreByUsername" resultType="com.example.javatspfci.code.entity.vo.StoreMsg">
+    <select id="selectStoreByUsername" resultType="com.example.javatspfci.code.entity.vo.StoreLoginMsg">
         SELECT `tb_store`.`st_id`,
                `tb_store`.`st_user_name`,
                `tb_store`.`st_phone`,

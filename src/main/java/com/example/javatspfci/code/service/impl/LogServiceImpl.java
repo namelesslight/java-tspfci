@@ -1,7 +1,7 @@
 package com.example.javatspfci.code.service.impl;
 
 import com.example.javatspfci.code.entity.po.Log;
-import com.example.javatspfci.code.entity.vo.LogMsg;
+import com.example.javatspfci.code.entity.vo.LogQueryMsg;
 import com.example.javatspfci.code.mapper.LogMapper;
 import com.example.javatspfci.code.service.LogService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -42,8 +42,8 @@ public class LogServiceImpl extends ServiceImpl<LogMapper, Log> implements LogSe
      * @return
      */
     @Override
-    public List<LogMsg> queryLogMsgByPage(String role, Integer start, Integer count) {
-        List<LogMsg> data = null;
+    public List<LogQueryMsg> queryLogMsgByPage(String role, Integer start, Integer count) {
+        List<LogQueryMsg> data = null;
         if (role.equals("user")){
             data = logMapper.queryUserMsgByPage(start, count);
         } else if (role.equals("userAdmin")){

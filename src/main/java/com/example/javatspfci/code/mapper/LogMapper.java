@@ -2,7 +2,7 @@ package com.example.javatspfci.code.mapper;
 
 import com.example.javatspfci.code.entity.po.Log;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.example.javatspfci.code.entity.vo.LogMsg;
+import com.example.javatspfci.code.entity.vo.LogQueryMsg;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
@@ -34,7 +34,7 @@ public interface LogMapper extends BaseMapper<Log> {
      * @param count 查询个数
      * @return
      */
-    public List<LogMsg> queryUserMsgByPage(Integer start, Integer count);
+    public List<LogQueryMsg> queryUserMsgByPage(Integer start, Integer count);
 
     /**
      * 查询店家记录个数
@@ -48,7 +48,7 @@ public interface LogMapper extends BaseMapper<Log> {
      * @param count 查询个数
      * @return
      */
-    public List<LogMsg> queryUserAdminMsgByPage(Integer start, Integer count);
+    public List<LogQueryMsg> queryUserAdminMsgByPage(Integer start, Integer count);
 
     /**
      * 查询厂家记录个数
@@ -62,7 +62,7 @@ public interface LogMapper extends BaseMapper<Log> {
      * @param count 查询个数
      * @return
      */
-    public List<LogMsg> queryDeliverMsgByPage(Integer start, Integer count);
+    public List<LogQueryMsg> queryDeliverMsgByPage(Integer start, Integer count);
 
     /**
      * 查询配送员记录个数
@@ -76,7 +76,7 @@ public interface LogMapper extends BaseMapper<Log> {
      * @param count 查询个数
      * @return
      */
-    public List<LogMsg> querySuperAdminMsgByPage(Integer start, Integer count);
+    public List<LogQueryMsg> querySuperAdminMsgByPage(Integer start, Integer count);
 
     /**
      * 查询管理员记录个数

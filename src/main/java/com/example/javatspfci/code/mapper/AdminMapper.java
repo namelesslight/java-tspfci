@@ -2,7 +2,7 @@ package com.example.javatspfci.code.mapper;
 
 import com.example.javatspfci.code.entity.po.Admin;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.example.javatspfci.code.entity.vo.AdminMsg;
+import com.example.javatspfci.code.entity.vo.AdminLoginMsg;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
@@ -39,6 +39,6 @@ public interface AdminMapper extends BaseMapper<Admin> {
      * @param password 密码
      * @return
      */
-    public AdminMsg selectAdminUserByUsername(String username, String password);
+    public AdminLoginMsg selectAdminUserByUsername(String username, String password);
 
 }

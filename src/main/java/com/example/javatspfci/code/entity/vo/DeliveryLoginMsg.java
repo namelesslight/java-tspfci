@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @ApiModel("配送员实体")
-public class DeliveryMsg {
+public class DeliveryLoginMsg {
 
     @ApiModelProperty("配送员编号")
     private String deId;

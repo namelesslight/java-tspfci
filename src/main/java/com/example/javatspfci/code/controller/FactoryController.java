@@ -2,11 +2,10 @@ package com.example.javatspfci.code.controller;
 
 
 import com.example.javatspfci.code.entity.dto.FacLoginDto;
-import com.example.javatspfci.code.entity.vo.FactoryMsg;
+import com.example.javatspfci.code.entity.vo.FactoryLoginMsg;
 import com.example.javatspfci.code.result.Result;
 import com.example.javatspfci.code.service.impl.FactoryServiceImpl;
 import com.example.javatspfci.code.stencil.LoginStencil;
-import com.example.javatspfci.code.stencil.impl.BaseStencilImpl;
 import com.example.javatspfci.code.util.SecretUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
@@ -36,7 +35,7 @@ public class FactoryController {
         //md5加密
         String md5Password = SecretUtil.secretString(facLoginDto.getPassword());
         //查询用户是否存在
-        FactoryMsg factoryMsg = null;
+        FactoryLoginMsg factoryMsg = null;
         try {
             factoryMsg = factoryService.factoryLogin(facLoginDto.getFacUserName(), md5Password);
         } catch (Exception e) {

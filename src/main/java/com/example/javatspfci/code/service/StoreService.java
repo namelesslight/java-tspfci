@@ -2,7 +2,7 @@ package com.example.javatspfci.code.service;
 
 import com.example.javatspfci.code.entity.po.Store;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.example.javatspfci.code.entity.vo.StoreMsg;
+import com.example.javatspfci.code.entity.vo.StoreLoginMsg;
 
 /**
  * <p>
@@ -35,5 +35,5 @@ public interface StoreService extends IService<Store> {
      * @param password 密码
      * @return
      */
-    public StoreMsg storeLogin(String stUsername, String password);
+    public StoreLoginMsg storeLogin(String stUsername, String password);
 }

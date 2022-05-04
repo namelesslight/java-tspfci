@@ -1,7 +1,7 @@
 package com.example.javatspfci.code.service.impl;
 
 import com.example.javatspfci.code.entity.po.Store;
-import com.example.javatspfci.code.entity.vo.StoreMsg;
+import com.example.javatspfci.code.entity.vo.StoreLoginMsg;
 import com.example.javatspfci.code.mapper.StoreMapper;
 import com.example.javatspfci.code.service.StoreService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -52,7 +52,7 @@ public class StoreServiceImpl extends ServiceImpl<StoreMapper, Store> implements
      * @return
      */
     @Override
-    public StoreMsg storeLogin(String stUsername, String password) {
+    public StoreLoginMsg storeLogin(String stUsername, String password) {
         return storeMapper.selectStoreByUsername(stUsername, password);
     }
 

@@ -21,7 +21,7 @@
         FROM `tb_admin`
         WHERE `ad_user_name` = #{username}
     </select>
-    <select id="selectAdminUserByUsername" resultType="com.example.javatspfci.code.entity.vo.AdminMsg">
+    <select id="selectAdminUserByUsername" resultType="com.example.javatspfci.code.entity.vo.AdminLoginMsg">
         SELECT `tb_admin`.`ad_id`,
                `tb_admin`.`ad_user_name`,
                `tb_admin`.`ad_user_picture`,

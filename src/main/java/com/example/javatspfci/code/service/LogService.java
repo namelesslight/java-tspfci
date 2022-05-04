@@ -2,7 +2,7 @@ package com.example.javatspfci.code.service;
 
 import com.example.javatspfci.code.entity.po.Log;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.example.javatspfci.code.entity.vo.LogMsg;
+import com.example.javatspfci.code.entity.vo.LogQueryMsg;
 
 import java.util.List;
 
@@ -31,7 +31,7 @@ public interface LogService extends IService<Log> {
      * @param count 查询个数
      * @return
      */
-    public List<LogMsg> queryLogMsgByPage(String role, Integer start, Integer count);
+    public List<LogQueryMsg> queryLogMsgByPage(String role, Integer start, Integer count);
 
     /**
      * 根据查询记录个数

@@ -17,7 +17,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @ApiModel("厂家实体")
-public class AdminMsg {
+public class AdminLoginMsg {
 
     @ApiModelProperty("管理员编号")
     private String adId;

@@ -14,7 +14,7 @@
         INSERT INTO `tb_log` VALUES (null, #{logUser}, #{logStatus}, NOW())
     </insert>
     
-    <select id="queryUserMsgByPage" resultType="com.example.javatspfci.code.entity.vo.LogMsg">
+    <select id="queryUserMsgByPage" resultType="com.example.javatspfci.code.entity.vo.LogQueryMsg">
         SELECT
                `b`.`log_id` AS `id`,
                `a`.`st_user_name` AS `username`,
@@ -33,7 +33,7 @@
         AND `a`.`is_delete` = 0
     </select>
 
-    <select id="queryUserAdminMsgByPage" resultType="com.example.javatspfci.code.entity.vo.LogMsg">
+    <select id="queryUserAdminMsgByPage" resultType="com.example.javatspfci.code.entity.vo.LogQueryMsg">
         SELECT
             `b`.`log_id` AS `id`,
             `a`.`fac_user_name` AS `username`,
@@ -52,7 +52,7 @@
           AND `a`.`is_delete` = 0
     </select>
 
-    <select id="queryDeliverMsgByPage" resultType="com.example.javatspfci.code.entity.vo.LogMsg">
+    <select id="queryDeliverMsgByPage" resultType="com.example.javatspfci.code.entity.vo.LogQueryMsg">
         SELECT
             `b`.`log_id` AS `id`,
             `a`.`de_user_name` AS `username`,
@@ -71,7 +71,7 @@
           AND `a`.`is_delete` = 0
     </select>
 
-    <select id="querySuperAdminMsgByPage" resultType="com.example.javatspfci.code.entity.vo.LogMsg">
+    <select id="querySuperAdminMsgByPage" resultType="com.example.javatspfci.code.entity.vo.LogQueryMsg">
         SELECT
             `b`.`log_id` AS `id`,
             `a`.`ad_user_name` AS `username`,

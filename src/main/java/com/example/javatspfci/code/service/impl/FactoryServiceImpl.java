@@ -1,7 +1,7 @@
 package com.example.javatspfci.code.service.impl;
 
 import com.example.javatspfci.code.entity.po.Factory;
-import com.example.javatspfci.code.entity.vo.FactoryMsg;
+import com.example.javatspfci.code.entity.vo.FactoryLoginMsg;
 import com.example.javatspfci.code.mapper.FactoryMapper;
 import com.example.javatspfci.code.service.FactoryService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -47,7 +47,7 @@ public class FactoryServiceImpl extends ServiceImpl<FactoryMapper, Factory> impl
      * @return
      */
     @Override
-    public FactoryMsg factoryLogin(String facUserName, String password) {
+    public FactoryLoginMsg factoryLogin(String facUserName, String password) {
         return factoryMapper.selectFacUserName(facUserName, password);
     }
 

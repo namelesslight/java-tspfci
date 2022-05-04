@@ -4,7 +4,7 @@ package com.example.javatspfci.code.controller;
 import com.example.javatspfci.code.entity.dto.AdminRegisterDto;
 import com.example.javatspfci.code.entity.dto.UserRegisterDto;
 import com.example.javatspfci.code.result.Result;
-import com.example.javatspfci.code.stencil.BaseStencil;
+import com.example.javatspfci.code.stencil.RegisterStencil;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -23,7 +23,7 @@ import java.io.IOException;
 public class AllPasswordController {
 
     @Resource
-    private BaseStencil baseStencil;
+    private RegisterStencil baseStencil;
 
     @PutMapping("/userRegister")
     public Result userRegister(@RequestBody UserRegisterDto userRegisterDto){

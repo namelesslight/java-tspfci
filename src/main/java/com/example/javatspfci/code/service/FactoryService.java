@@ -2,7 +2,7 @@ package com.example.javatspfci.code.service;
 
 import com.example.javatspfci.code.entity.po.Factory;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.example.javatspfci.code.entity.vo.FactoryMsg;
+import com.example.javatspfci.code.entity.vo.FactoryLoginMsg;
 
 
 /**
@@ -37,5 +37,5 @@ public interface FactoryService extends IService<Factory> {
      * @param password 密码
      * @return
      */
-    public FactoryMsg factoryLogin(String facUserName, String password);
+    public FactoryLoginMsg factoryLogin(String facUserName, String password);
 }

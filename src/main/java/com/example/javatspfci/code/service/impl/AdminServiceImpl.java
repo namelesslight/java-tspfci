@@ -1,8 +1,7 @@
 package com.example.javatspfci.code.service.impl;
 
 import com.example.javatspfci.code.entity.po.Admin;
-import com.example.javatspfci.code.entity.vo.AdminMsg;
-import com.example.javatspfci.code.entity.vo.FactoryMsg;
+import com.example.javatspfci.code.entity.vo.AdminLoginMsg;
 import com.example.javatspfci.code.mapper.AdminMapper;
 import com.example.javatspfci.code.service.AdminService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -52,7 +51,7 @@ public class AdminServiceImpl extends ServiceImpl<AdminMapper, Admin> implements
      * @return
      */
     @Override
-    public AdminMsg AdminLogin(String username, String password) {
+    public AdminLoginMsg AdminLogin(String username, String password) {
         return adminMapper.selectAdminUserByUsername(username, password);
     }
 
