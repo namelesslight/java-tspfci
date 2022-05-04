@@ -1,12 +1,9 @@
 package com.example.javatspfci.code.controller;
 
 
-import com.example.javatspfci.code.entity.dto.FacLoginDto;
 import com.example.javatspfci.code.entity.dto.StoreLoginDto;
-import com.example.javatspfci.code.entity.vo.FactoryMsg;
-import com.example.javatspfci.code.entity.vo.StoreMsg;
+import com.example.javatspfci.code.entity.vo.StoreLoginMsg;
 import com.example.javatspfci.code.result.Result;
-import com.example.javatspfci.code.service.FactoryService;
 import com.example.javatspfci.code.service.StoreService;
 import com.example.javatspfci.code.stencil.LoginStencil;
 import com.example.javatspfci.code.util.SecretUtil;
@@ -35,7 +32,7 @@ public class StoreController {
         //md5加密
         String md5Password = SecretUtil.secretString(storeLoginDto.getPassword());
         //查询用户是否存在
-        StoreMsg storeMsg = null;
+        StoreLoginMsg storeMsg = null;
         try {
             storeMsg = storeService.storeLogin(storeLoginDto.getStUserName(), md5Password);
         } catch (Exception e) {

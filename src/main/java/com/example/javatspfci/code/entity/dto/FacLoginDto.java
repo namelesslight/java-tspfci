@@ -13,6 +13,7 @@ public class FacLoginDto {
     /**
      * 厂家用户名
      */
+
     private String facUserName;
 
     /**

@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @ApiModel("厂家实体")
-public class FactoryMsg {
+public class FactoryLoginMsg {
 
     @ApiModelProperty("厂家编号")
     private String facId;

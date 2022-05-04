@@ -1,11 +1,11 @@
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/db_tspfci
+    url: jdbc:mysql://1.117.140.254:3306/db_tspfci
     username: root
-    password: 123456
+    password: Root_594666
 mybatis-plus:
   mapper-locations: classpath*:/mapper/*.xml
   type-aliases-package: com.example.javatspfci.code.mapper
 server:
-  port: 8080
+  port: 8089

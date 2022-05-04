@@ -23,7 +23,7 @@
         WHERE `de_phone` = #{phone}
     </select>
 
-    <select id="selectDeByUsername" resultType="com.example.javatspfci.code.entity.vo.DeliveryMsg">
+    <select id="selectDeByUsername" resultType="com.example.javatspfci.code.entity.vo.DeliveryLoginMsg">
         SELECT `tb_delivery`.`de_id`,
                `tb_delivery`.`de_user_name`,
                `tb_delivery`.`de_phone`,
@@ -38,4 +38,35 @@
           AND `all_password`=#{password}
     </select>
 
+    <select id="listAllDeliverByPage" resultType="com.example.javatspfci.code.entity.po.Delivery">
+        SELECT
+               `de_id`,
+               `de_user_name`,
+               `de_phone`,
+               `de_picture`,
+               `de_car`,
+               `de_delete`,
+               `create_time`
+        FROM `tb_delivery`
+        WHERE `de_delete` = 0
+        LIMIT #{start},#{count}
+    </select>
+
+    <select id="queryAllDeliverCount" resultType="java.lang.Integer">
+        SELECT COUNT(*)
+        FROM `tb_delivery`
+        WHERE `de_delete` = 0
+    </select>
+
+    <select id="getOneDeliveryByID" resultType="com.example.javatspfci.code.entity.vo.DeliverQueryMsg">
+        SELECT
+            `de_id` AS `id`,
+            `de_user_name` AS `username`,
+            `de_phone` AS `phone`,
+            `de_picture` As `picture`,
+            `de_car` AS `car`
+        FROM `tb_delivery`
+        WHERE `de_delete` = 0
+        AND `de_id` = #{id}
+    </select>
 </mapper>

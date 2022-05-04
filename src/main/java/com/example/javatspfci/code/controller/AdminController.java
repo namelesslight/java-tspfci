@@ -2,7 +2,7 @@ package com.example.javatspfci.code.controller;
 
 
 import com.example.javatspfci.code.entity.dto.AdminLoginDto;
-import com.example.javatspfci.code.entity.vo.AdminMsg;
+import com.example.javatspfci.code.entity.vo.AdminLoginMsg;
 import com.example.javatspfci.code.result.Result;
 import com.example.javatspfci.code.service.AdminService;
 import com.example.javatspfci.code.stencil.LoginStencil;
@@ -31,7 +31,7 @@ public class AdminController {
         //md5加密
         String md5Password = SecretUtil.secretString(adminLoginDto.getPassword());
         //查询用户是否存在
-        AdminMsg adminMsg = null;
+        AdminLoginMsg adminMsg = null;
         try {
              adminMsg = adminService.AdminLogin(adminLoginDto.getAdminUserName(), md5Password);
         } catch (Exception e) {

@@ -2,8 +2,7 @@ package com.example.javatspfci.code.service;
 
 import com.example.javatspfci.code.entity.po.Admin;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.example.javatspfci.code.entity.vo.AdminMsg;
-import com.example.javatspfci.code.entity.vo.FactoryMsg;
+import com.example.javatspfci.code.entity.vo.AdminLoginMsg;
 
 /**
  * <p>
@@ -36,6 +35,6 @@ public interface AdminService extends IService<Admin> {
      * @param password 密码
      * @return
      */
-    public AdminMsg AdminLogin(String username, String password);
+    public AdminLoginMsg AdminLogin(String username, String password);
 
 }

@@ -1,13 +1,15 @@
 package com.example.javatspfci.code.service.impl;
 
 import com.example.javatspfci.code.entity.po.Delivery;
-import com.example.javatspfci.code.entity.vo.DeliveryMsg;
+import com.example.javatspfci.code.entity.vo.DeliverQueryMsg;
+import com.example.javatspfci.code.entity.vo.DeliveryLoginMsg;
 import com.example.javatspfci.code.mapper.DeliveryMapper;
 import com.example.javatspfci.code.service.DeliveryService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * <p>
@@ -35,6 +37,11 @@ public class DeliveryServiceImpl extends ServiceImpl<DeliveryMapper, Delivery> i
         return deliveryMapper.addDelivery(id, username, phone) == 1;
     }
 
+    /**
+     * 通过手机查询人数
+     * @param phone 手机号码
+     * @return
+     */
     @Override
     public Boolean queryCountByPhone(String phone) {
         return deliveryMapper.queryCountByPhone(phone) == 1;
@@ -47,7 +54,37 @@ public class DeliveryServiceImpl extends ServiceImpl<DeliveryMapper, Delivery> i
      * @return
      */
     @Override
-    public DeliveryMsg deliveryLogin(String deUserName, String password) {
+    public DeliveryLoginMsg deliveryLogin(String deUserName, String password) {
         return deliveryMapper.selectDeByUsername(deUserName, password);
+    }
+
+    /**
+     * 分页查询配送员
+     * @param start 开始位置
+     * @param count 查询人数
+     * @return
+     */
+    @Override
+    public List<Delivery> listAllDeliverByPage(Integer start, Integer count) {
+        return deliveryMapper.listAllDeliverByPage(start, count);
+    }
+
+    /**
+     * 查询所有配送员人数
+     * @return
+     */
+    @Override
+    public Integer queryAllDeliverCount() {
+        return deliveryMapper.queryAllDeliverCount();
+    }
+
+    /**
+     * 通过ID查询配送员
+     * @param delID 配送员ID
+     * @return
+     */
+    @Override
+    public DeliverQueryMsg getOneDeliveryByID(String delID) {
+        return deliveryMapper.getOneDeliveryByID(delID);
     }
 }

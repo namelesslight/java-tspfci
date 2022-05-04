@@ -1,26 +1,17 @@
 package com.example.javatspfci.code.stencil.impl;
 
-import com.example.javatspfci.code.entity.vo.DeliveryMsg;
-import com.example.javatspfci.code.entity.vo.FactoryMsg;
 import com.example.javatspfci.code.result.Result;
 import com.example.javatspfci.code.service.*;
-import com.example.javatspfci.code.stencil.BaseStencil;
-import com.example.javatspfci.code.util.FileUtil;
-import com.example.javatspfci.code.util.JWTUtil;
+import com.example.javatspfci.code.stencil.RegisterStencil;
 import com.example.javatspfci.code.util.SecretUtil;
 import com.example.javatspfci.code.util.UUIDUtil;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.Hashtable;
 import java.util.Map;
 import java.util.regex.Pattern;
 
@@ -28,7 +19,7 @@ import java.util.regex.Pattern;
  * 通用Service接口实现类
  */
 @Service
-public class BaseStencilImpl implements BaseStencil {
+public class RegisterStencilImpl implements RegisterStencil {
 
     @Resource
     private AllPasswordService allPasswordService;
@@ -51,7 +42,7 @@ public class BaseStencilImpl implements BaseStencil {
     @Resource
     private AdminService adminService;
 
-    private final String PHONE_PATTERN = "^[1][3,5,7,8]\\d{9}$";
+    private final String PHONE_PATTERN = "^[1][3,4,5,7,8,9]\\d{9}$";
 
     /**
      * 用户注册
@@ -96,7 +87,7 @@ public class BaseStencilImpl implements BaseStencil {
             registerCode = 0;
         }
         //判断权限是否是对应的前端权限输入
-        Boolean roleJudge = role.equals("user") || role.equals("userAdmin") || role.equals("deliver");
+        Boolean roleJudge = role.equals("user") || role.equals("userAdmin") || role.equals("delivery");
         if (roleJudge) {
             data.put("role", "权限正确");
         } else {
@@ -125,7 +116,7 @@ public class BaseStencilImpl implements BaseStencil {
                         registerCode = 0;
                     }
                     break;
-                case "deliver":
+                case "delivery":
                     if (!deliveryService.queryCountByPhone(phone)) {
                         allPasswordService.addUser(userId, secretPassword);
                         deliveryService.addDelivery(userId, name, phone);

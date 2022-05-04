@@ -1,9 +1,9 @@
 package com.example.javatspfci.code.stencil;
 
-import com.example.javatspfci.code.entity.vo.AdminMsg;
-import com.example.javatspfci.code.entity.vo.DeliveryMsg;
-import com.example.javatspfci.code.entity.vo.FactoryMsg;
-import com.example.javatspfci.code.entity.vo.StoreMsg;
+import com.example.javatspfci.code.entity.vo.AdminLoginMsg;
+import com.example.javatspfci.code.entity.vo.DeliveryLoginMsg;
+import com.example.javatspfci.code.entity.vo.FactoryLoginMsg;
+import com.example.javatspfci.code.entity.vo.StoreLoginMsg;
 import com.example.javatspfci.code.result.Result;
 
 /**
@@ -12,6 +12,7 @@ import com.example.javatspfci.code.result.Result;
  * @CreateTime: 2022/5/2 00:14
  */
 public interface LoginStencil {
+
     /**
      * 用户(店家)登录
      * @param storeMsg  店家信息
@@ -20,7 +21,7 @@ public interface LoginStencil {
      * @param token     token
      * @return
      */
-    public Result storeLogin(StoreMsg storeMsg, String logStatus, String path, String token);
+    public Result storeLogin(StoreLoginMsg storeMsg, String logStatus, String path, String token);
 
     /**
      * 管理员登录
@@ -30,7 +31,7 @@ public interface LoginStencil {
      * @param token token
      * @return
      */
-    public Result adminLogin(AdminMsg adminMsg, String logStatus, String path, String token);
+    public Result adminLogin(AdminLoginMsg adminMsg, String logStatus, String path, String token);
 
     /**
      * 厂家登录
@@ -40,7 +41,7 @@ public interface LoginStencil {
      * @param token token
      * @return
      */
-    public Result factoryLogin(FactoryMsg factoryMsg, String logStatus, String path, String token);
+    public Result factoryLogin(FactoryLoginMsg factoryMsg, String logStatus, String path, String token);
 
     /**
      * 配送员登录
@@ -50,5 +51,5 @@ public interface LoginStencil {
      * @param token token
      * @return
      */
-    public Result deliveryLogin(DeliveryMsg deliveryMsg, String logStatus, String path, String token);
+    public Result deliveryLogin(DeliveryLoginMsg deliveryMsg, String logStatus, String path, String token);
 }

@@ -2,7 +2,7 @@ package com.example.javatspfci.code.mapper;
 
 import com.example.javatspfci.code.entity.po.Store;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.example.javatspfci.code.entity.vo.StoreMsg;
+import com.example.javatspfci.code.entity.vo.StoreLoginMsg;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
@@ -40,6 +40,6 @@ public interface StoreMapper extends BaseMapper<Store> {
      * @param password 密码
      * @return
      */
-    public StoreMsg selectStoreByUsername(String stUsername, String password);
+    public StoreLoginMsg selectStoreByUsername(String stUsername, String password);
 
 }

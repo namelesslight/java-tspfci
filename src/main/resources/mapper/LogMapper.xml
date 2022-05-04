@@ -13,4 +13,80 @@
     <insert id="addLog">
         INSERT INTO `tb_log` VALUES (null, #{logUser}, #{logStatus}, NOW())
     </insert>
+    
+    <select id="queryUserMsgByPage" resultType="com.example.javatspfci.code.entity.vo.LogQueryMsg">
+        SELECT
+               `b`.`log_id` AS `id`,
+               `a`.`st_user_name` AS `username`,
+               `b`.`log_status` AS `logStatus`,
+               `b`.`log_time` AS `logTime`
+        FROM `tb_store` AS `a`,`tb_log` AS `b`
+        WHERE `a`.`st_id` = `b`.`log_user`
+        AND `a`.`is_delete` = 0
+        LIMIT #{start},#{count}
+    </select>
+
+    <select id="queryUserCount" resultType="java.lang.Integer">
+        SELECT COUNT(*)
+        FROM `tb_store` AS `a`,`tb_log` AS `b`
+        WHERE `a`.`st_id` = `b`.`log_user`
+        AND `a`.`is_delete` = 0
+    </select>
+
+    <select id="queryUserAdminMsgByPage" resultType="com.example.javatspfci.code.entity.vo.LogQueryMsg">
+        SELECT
+            `b`.`log_id` AS `id`,
+            `a`.`fac_user_name` AS `username`,
+            `b`.`log_status` AS `logStatus`,
+            `b`.`log_time` AS `logTime`
+        FROM `tb_factory` AS `a`,`tb_log` AS `b`
+        WHERE `a`.`fac_id` = `b`.`log_user`
+          AND `a`.`fac_delete` = 0
+            LIMIT #{start},#{count}
+    </select>
+
+    <select id="queryUserAdminCount" resultType="java.lang.Integer">
+        SELECT COUNT(*)
+        FROM `tb_factory` AS `a`,`tb_log` AS `b`
+        WHERE `a`.`fac_id` = `b`.`log_user`
+          AND `a`.`fac_delete` = 0
+    </select>
+
+    <select id="queryDeliverMsgByPage" resultType="com.example.javatspfci.code.entity.vo.LogQueryMsg">
+        SELECT
+            `b`.`log_id` AS `id`,
+            `a`.`de_user_name` AS `username`,
+            `b`.`log_status` AS `logStatus`,
+            `b`.`log_time` AS `logTime`
+        FROM `tb_delivery` AS `a`,`tb_log` AS `b`
+        WHERE `a`.`de_id` = `b`.`log_user`
+          AND `a`.`de_delete` = 0
+            LIMIT #{start},#{count}
+    </select>
+
+    <select id="queryDeliverCount" resultType="java.lang.Integer">
+        SELECT COUNT(*)
+        FROM `tb_delivery` AS `a`,`tb_log` AS `b`
+        WHERE `a`.`de_id` = `b`.`log_user`
+          AND `a`.`de_delete` = 0
+    </select>
+
+    <select id="querySuperAdminMsgByPage" resultType="com.example.javatspfci.code.entity.vo.LogQueryMsg">
+        SELECT
+            `b`.`log_id` AS `id`,
+            `a`.`ad_user_name` AS `username`,
+            `b`.`log_status` AS `logStatus`,
+            `b`.`log_time` AS `logTime`
+        FROM `tb_admin` AS `a`,`tb_log` AS `b`
+        WHERE `a`.`ad_id` = `b`.`log_user`
+          AND `a`.`is_delete` = 0
+            LIMIT #{start},#{count}
+    </select>
+
+    <select id="querySuperAdminCount" resultType="java.lang.Integer">
+        SELECT COUNT(*)
+        FROM `tb_admin` AS `a`,`tb_log` AS `b`
+        WHERE `a`.`ad_id` = `b`.`log_user`
+          AND `a`.`is_delete` = 0
+    </select>
 </mapper>

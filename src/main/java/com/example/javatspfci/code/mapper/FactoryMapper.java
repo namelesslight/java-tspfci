@@ -2,9 +2,13 @@ package com.example.javatspfci.code.mapper;
 
 import com.example.javatspfci.code.entity.po.Factory;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.example.javatspfci.code.entity.vo.FactoryMsg;
+import com.example.javatspfci.code.entity.vo.DeliverQueryMsg;
+import com.example.javatspfci.code.entity.vo.FactoryLoginMsg;
+import com.example.javatspfci.code.entity.vo.FactoryQueryMsg;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 /**
  * <p>
@@ -40,6 +44,27 @@ public interface FactoryMapper extends BaseMapper<Factory> {
      * @param password 密码
      * @return
      */
-    public FactoryMsg selectFacUserName(String facUserName, String password);
+    public FactoryLoginMsg selectFacUserName(String facUserName, String password);
+
+    /**
+     * 分页查询厂家
+     * @param start 开始位置
+     * @param count 查询人数
+     * @return
+     */
+    public List<Factory> listAllFactoryByPage(Integer start, Integer count);
+
+    /**
+     * 查询厂家人数
+     * @return
+     */
+    public Integer queryAllFactoryCount();
+
+    /**
+     * 通过ID查询厂家
+     * @param delID 配送员ID
+     * @return
+     */
+    public FactoryQueryMsg getOneFactoryByID(String delID);
 
 }

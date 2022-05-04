@@ -1,9 +1,9 @@
 package com.example.javatspfci.code.stencil.impl;
 
-import com.example.javatspfci.code.entity.vo.AdminMsg;
-import com.example.javatspfci.code.entity.vo.DeliveryMsg;
-import com.example.javatspfci.code.entity.vo.FactoryMsg;
-import com.example.javatspfci.code.entity.vo.StoreMsg;
+import com.example.javatspfci.code.entity.vo.AdminLoginMsg;
+import com.example.javatspfci.code.entity.vo.DeliveryLoginMsg;
+import com.example.javatspfci.code.entity.vo.FactoryLoginMsg;
+import com.example.javatspfci.code.entity.vo.StoreLoginMsg;
 import com.example.javatspfci.code.result.Result;
 import com.example.javatspfci.code.service.LogService;
 import com.example.javatspfci.code.stencil.LoginStencil;
@@ -35,7 +35,7 @@ public class LoginStencilImpl implements LoginStencil {
      */
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public Result storeLogin(StoreMsg storeMsg, String logStatus, String path, String token) {
+    public Result storeLogin(StoreLoginMsg storeMsg, String logStatus, String path, String token) {
         Map<String, Object> resultMap = new Hashtable<>();
         Map<String, String> tokenMap = new Hashtable<>();
 
@@ -66,7 +66,7 @@ public class LoginStencilImpl implements LoginStencil {
      */
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public Result adminLogin(AdminMsg adminMsg, String logStatus, String path, String token) {
+    public Result adminLogin(AdminLoginMsg adminMsg, String logStatus, String path, String token) {
         Map<String, Object> resultMap = new Hashtable<>();
         Map<String, String> tokenMap = new Hashtable<>();
 
@@ -98,7 +98,7 @@ public class LoginStencilImpl implements LoginStencil {
      */
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public Result factoryLogin(FactoryMsg factoryMsg, String logStatus, String path, String token) {
+    public Result factoryLogin(FactoryLoginMsg factoryMsg, String logStatus, String path, String token) {
         Map<String, Object> resultMap = new Hashtable<>();
         Map<String, String> tokenMap = new Hashtable<>();
 
@@ -128,7 +128,7 @@ public class LoginStencilImpl implements LoginStencil {
      */
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public Result deliveryLogin(DeliveryMsg deliveryMsg, String logStatus, String path, String token) {
+    public Result deliveryLogin(DeliveryLoginMsg deliveryMsg, String logStatus, String path, String token) {
         Map<String, Object> resultMap = new Hashtable<>();
         Map<String, String> tokenMap = new Hashtable<>();
 

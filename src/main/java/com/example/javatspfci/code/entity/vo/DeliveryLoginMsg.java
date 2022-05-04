@@ -1,7 +1,5 @@
 package com.example.javatspfci.code.entity.vo;
 
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableId;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
@@ -11,23 +9,29 @@ import lombok.NoArgsConstructor;
 /**
  * @Description
  * @Author: HZY
- * @CreateTime: 2022/5/2 01:21
+ * @CreateTime: 2022/5/1 16:42
  */
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@ApiModel("厂家实体")
-public class AdminMsg {
+@ApiModel("配送员实体")
+public class DeliveryLoginMsg {
 
-    @ApiModelProperty("管理员编号")
-    private String adId;
+    @ApiModelProperty("配送员编号")
+    private String deId;
 
-    @ApiModelProperty("用户名")
-    private String adUserName;
+    @ApiModelProperty("账户名")
+    private String deUserName;
 
-    @ApiModelProperty("用户头像")
-    private String adUserPicture;
+    @ApiModelProperty("电话号码")
+    private String dePhone;
+
+    @ApiModelProperty("配送员图片")
+    private String dePicture;
+
+    @ApiModelProperty("车牌照")
+    private String deCar;
 
     @ApiModelProperty("配送员密码")
     private String password;

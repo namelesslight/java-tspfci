@@ -18,7 +18,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @ApiModel("厂家实体")
-public class StoreMsg {
+public class StoreLoginMsg {
     @ApiModelProperty("店家编号")
     private String stId;
 
