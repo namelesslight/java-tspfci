@@ -64,5 +64,5 @@ public interface DeliveryMapper extends BaseMapper<Delivery> {
      * @param delID 配送员ID
      * @return
      */
-    public List<DeliverQueryMsg> getOneDeliveryByID(String delID);
+    public DeliverQueryMsg getOneDeliveryByID(String delID);
 }

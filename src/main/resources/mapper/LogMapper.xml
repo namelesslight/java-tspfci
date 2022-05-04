@@ -41,7 +41,7 @@
             `b`.`log_time` AS `logTime`
         FROM `tb_factory` AS `a`,`tb_log` AS `b`
         WHERE `a`.`fac_id` = `b`.`log_user`
-          AND `a`.`is_delete` = 0
+          AND `a`.`fac_delete` = 0
             LIMIT #{start},#{count}
     </select>
 
@@ -49,7 +49,7 @@
         SELECT COUNT(*)
         FROM `tb_factory` AS `a`,`tb_log` AS `b`
         WHERE `a`.`fac_id` = `b`.`log_user`
-          AND `a`.`is_delete` = 0
+          AND `a`.`fac_delete` = 0
     </select>
 
     <select id="queryDeliverMsgByPage" resultType="com.example.javatspfci.code.entity.vo.LogQueryMsg">
@@ -60,7 +60,7 @@
             `b`.`log_time` AS `logTime`
         FROM `tb_delivery` AS `a`,`tb_log` AS `b`
         WHERE `a`.`de_id` = `b`.`log_user`
-          AND `a`.`is_delete` = 0
+          AND `a`.`de_delete` = 0
             LIMIT #{start},#{count}
     </select>
 
@@ -68,7 +68,7 @@
         SELECT COUNT(*)
         FROM `tb_delivery` AS `a`,`tb_log` AS `b`
         WHERE `a`.`de_id` = `b`.`log_user`
-          AND `a`.`is_delete` = 0
+          AND `a`.`de_delete` = 0
     </select>
 
     <select id="querySuperAdminMsgByPage" resultType="com.example.javatspfci.code.entity.vo.LogQueryMsg">

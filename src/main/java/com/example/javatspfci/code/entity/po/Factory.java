@@ -9,6 +9,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 /**
  * <p>
@@ -22,6 +23,7 @@ import lombok.Setter;
 @Setter
 @TableName("tb_factory")
 @ApiModel(value = "Factory对象", description = "")
+@ToString
 public class Factory implements Serializable {
 
     private static final long serialVersionUID = 1L;

@@ -60,5 +60,5 @@ public interface DeliveryService extends IService<Delivery> {
      * @param delID 配送员ID
      * @return
      */
-    public List<DeliverQueryMsg> getOneDeliveryByID(String delID);
+    public DeliverQueryMsg getOneDeliveryByID(String delID);
 }

@@ -67,5 +67,6 @@
             `de_car` AS `car`
         FROM `tb_delivery`
         WHERE `de_delete` = 0
+        AND `de_id` = #{id}
     </select>
 </mapper>

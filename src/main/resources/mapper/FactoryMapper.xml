@@ -43,4 +43,40 @@
           AND `fac_user_name`=#{facUserName}
           AND `all_password`=#{password}
     </select>
+
+    <select id="listAllFactoryByPage" resultType="com.example.javatspfci.code.entity.po.Factory">
+        SELECT
+            `fac_id`,
+            `fac_user_name`,
+            `fac_phone`,
+            `fac_store_name`,
+            `fac_store_introduct`,
+            `fac_picture`,
+            `fac_location`,
+            `fac_lences_id`,
+            `fac_delete`,
+            `create_time`
+        FROM `tb_factory`
+        WHERE `fac_delete` = 0
+            LIMIT #{start},#{count}
+    </select>
+
+    <select id="queryAllFactoryCount" resultType="java.lang.Integer">
+        SELECT COUNT(*)
+        FROM `tb_factory`
+        WHERE `fac_delete` = 0
+    </select>
+
+    <select id="getOneFactoryByID" resultType="com.example.javatspfci.code.entity.vo.FactoryQueryMsg">
+        SELECT
+            `fac_id` AS `id`,
+            `fac_store_name` AS `factoryName`,
+            `fac_phone` AS `phone`,
+            `fac_picture` As `picture`,
+            `fac_store_introduct` AS `introduce`,
+            `fac_location` AS `location`
+        FROM `tb_factory`
+        WHERE `fac_delete` = 0
+        AND `fac_id` = #{id}
+    </select>
 </mapper>

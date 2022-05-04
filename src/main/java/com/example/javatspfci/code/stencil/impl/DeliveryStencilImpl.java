@@ -35,7 +35,7 @@ public class DeliveryStencilImpl implements DeliveryStencil {
         Integer totalPage = PageBean.getTotalPage(count,totalCount);
         Integer start =(page - 1) * count;
         List<Delivery> data = deliveryService.listAllDeliverByPage(start, count);
-        PageBean<Delivery> deliveryPages = new PageBean<>(totalCount, page, totalPage, start, data);
+        PageBean<Delivery> deliveryPages = new PageBean<>(totalCount, page, totalPage, count, data);
         Map<String,Object> message = new HashMap<>();
         message.put("data",deliveryPages);
         return new Result().result200(message,path);
@@ -43,7 +43,7 @@ public class DeliveryStencilImpl implements DeliveryStencil {
 
     @Override
     public Result getOneDeliveryByID(String delID, String path) {
-        List<DeliverQueryMsg> deliverQueryMsg = deliveryService.getOneDeliveryByID(delID);
+        DeliverQueryMsg deliverQueryMsg = deliveryService.getOneDeliveryByID(delID);
         Map<String,Object> message = new HashMap<>();
         message.put("data",deliverQueryMsg);
         return new Result().result200(message, path);

@@ -2,7 +2,11 @@ package com.example.javatspfci.code.service;
 
 import com.example.javatspfci.code.entity.po.Factory;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.example.javatspfci.code.entity.vo.DeliverQueryMsg;
 import com.example.javatspfci.code.entity.vo.FactoryLoginMsg;
+import com.example.javatspfci.code.entity.vo.FactoryQueryMsg;
+
+import java.util.List;
 
 
 /**
@@ -38,4 +42,25 @@ public interface FactoryService extends IService<Factory> {
      * @return
      */
     public FactoryLoginMsg factoryLogin(String facUserName, String password);
+
+    /**
+     * 分页查询厂家
+     * @param start 开始位置
+     * @param count 查询人数
+     * @return
+     */
+    public List<Factory> listAllFactoryByPage(Integer start, Integer count);
+
+    /**
+     * 查询厂家人数
+     * @return
+     */
+    public Integer queryAllFactoryCount();
+
+    /**
+     * 通过ID查询厂家
+     * @param delID 配送员ID
+     * @return
+     */
+    public FactoryQueryMsg getOneFactoryByID(String delID);
 }

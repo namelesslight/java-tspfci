@@ -84,7 +84,7 @@ public class DeliveryServiceImpl extends ServiceImpl<DeliveryMapper, Delivery> i
      * @return
      */
     @Override
-    public List<DeliverQueryMsg> getOneDeliveryByID(String delID) {
+    public DeliverQueryMsg getOneDeliveryByID(String delID) {
         return deliveryMapper.getOneDeliveryByID(delID);
     }
 }
