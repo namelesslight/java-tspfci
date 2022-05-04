@@ -12,8 +12,9 @@ public class InterceptorConfig implements WebMvcConfigurer {
     public void addInterceptors(InterceptorRegistry registry) {
         //addPathPatterns拦截的路径
         String[] addPathPatterns = {
-            "/superAdmin/queryLogPageByRole/**"
+            "/superAdmin/queryLogPageByRole"
         };
+
         //excludePathPatterns排除的路径
         String[] excludePathPatterns = {
 
