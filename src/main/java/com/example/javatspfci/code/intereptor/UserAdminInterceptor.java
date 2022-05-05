@@ -8,12 +8,8 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * 厂家权限拦截器
- */
 @Component
-public class AdminInterceptor implements HandlerInterceptor {
-
+public class UserAdminInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         String token = request.getHeader("token");
@@ -24,7 +20,7 @@ public class AdminInterceptor implements HandlerInterceptor {
             Integer code = JWTUtil.verify(token);
             if (code == 1){
                 String role = JWTUtil.getString(token,"role");
-                if (!role.equals("superAdmin")){
+                if (!role.equals("userAdmin")){
                     response.sendRedirect(request.getContextPath() + "/base/noPerm");
                     return false;
                 }

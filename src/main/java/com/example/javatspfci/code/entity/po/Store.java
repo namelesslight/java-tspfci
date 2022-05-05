@@ -38,9 +38,13 @@ public class Store implements Serializable {
     @TableField("st_store_name")
     private String stStoreName;
 
+    @ApiModelProperty("店主姓名")
+    @TableField("st_owner_name")
+    private String stOwnerName;
+
     @ApiModelProperty("店面介绍")
-    @TableField("st_store_introduct")
-    private String stStoreIntroduct;
+    @TableField("st_store_introduce")
+    private String stStoreIntroduce;
 
     @ApiModelProperty("电话号码")
     @TableField("st_phone")

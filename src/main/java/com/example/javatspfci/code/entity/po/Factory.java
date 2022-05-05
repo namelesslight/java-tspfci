@@ -41,8 +41,8 @@ public class Factory implements Serializable {
     private String facStoreName;
 
     @ApiModelProperty("厂家介绍")
-    @TableField("fac_store_introduct")
-    private String facStoreIntroduct;
+    @TableField("fac_store_introduce")
+    private String facStoreIntroduce;
 
     @ApiModelProperty("电话号码")
     @TableField("fac_phone")
