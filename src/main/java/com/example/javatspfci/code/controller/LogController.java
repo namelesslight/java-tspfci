@@ -20,7 +20,7 @@ import javax.annotation.Resource;
  * @since 2022-04-29
  */
 @RestController
-@RequestMapping("/superAdmin")
+@RequestMapping("/code/log")
 public class LogController {
 
     @Resource

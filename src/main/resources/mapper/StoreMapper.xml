@@ -7,7 +7,7 @@
         <id column="st_id" property="stId" />
         <result column="st_user_name" property="stUserName" />
         <result column="st_store_name" property="stStoreName" />
-        <result column="st_store_introduct" property="stStoreIntroduct" />
+        <result column="st_store_introduce" property="stStoreIntroduce" />
         <result column="st_phone" property="stPhone" />
         <result column="st_picture" property="stPicture" />
         <result column="st_location" property="stLocation" />
@@ -17,7 +17,7 @@
     </resultMap>
     
     <insert id="addStore">
-        INSERT INTO `tb_store` VALUES(#{id}, #{username}, #{phone}, '', '', '', '', '', 0, NOW());
+        INSERT INTO `tb_store` VALUES(#{id}, #{username}, #{phone}, '', '', '', '', '', '', 0, NOW());
     </insert>
 
     <select id="queryCountByPhone" resultType="java.lang.Integer">
@@ -31,7 +31,7 @@
                `tb_store`.`st_user_name`,
                `tb_store`.`st_phone`,
                `tb_store`.`st_store_name`,
-               `tb_store`.`st_store_introduct`,
+               `tb_store`.`st_store_introduce`,
                `tb_store`.`st_picture`,
                `tb_store`.`st_location`,
                `tb_store`.`st_lences_id`,

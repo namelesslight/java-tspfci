@@ -42,6 +42,18 @@ public class Delivery implements Serializable {
     @TableField("de_picture")
     private String dePicture;
 
+    @ApiModelProperty("配送员厂家所属")
+    @TableField("de_factory_id")
+    private String deFactoryId;
+
+    @ApiModelProperty("配送员驾驶证图片路径")
+    @TableField("de_driving_license")
+    private String deDrivingLicense;
+
+    @ApiModelProperty("车辆行驶证图片路径")
+    @TableField("de_car_license")
+    private String deCarLicense;
+
     @ApiModelProperty("车牌照")
     @TableField("de_car")
     private String deCar;
