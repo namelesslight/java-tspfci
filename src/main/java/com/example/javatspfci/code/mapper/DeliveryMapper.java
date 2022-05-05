@@ -28,7 +28,7 @@ public interface DeliveryMapper extends BaseMapper<Delivery> {
      * @param phone 电话号码
      * @return
      */
-    public Integer addDelivery(String id, String username, String phone);
+    public Integer addDelivery(String id, String username, String phone,String factoryId);
 
     /**
      * 查询手机是否重复
@@ -64,5 +64,5 @@ public interface DeliveryMapper extends BaseMapper<Delivery> {
      * @param delID 配送员ID
      * @return
      */
-    public DeliverQueryMsg getOneDeliveryByID(String delID);
+    public Delivery getOneDeliveryByID(String delID);
 }

@@ -2,6 +2,7 @@ package com.example.javatspfci.code.controller;
 
 
 import com.example.javatspfci.code.entity.dto.AdminRegisterDto;
+import com.example.javatspfci.code.entity.dto.DeliveryRegisterDto;
 import com.example.javatspfci.code.entity.dto.UserRegisterDto;
 import com.example.javatspfci.code.result.Result;
 import com.example.javatspfci.code.stencil.RegisterStencil;
@@ -46,5 +47,13 @@ public class AllPasswordController {
                 adminRegisterDto.getLogStatus(), "/base/adminRegister");
     }
 
+    @PutMapping("/deliveryRegister")
+    public Result deliveryRegister(@RequestBody DeliveryRegisterDto deliveryRegisterDto) throws IOException {
+        return baseStencil.deliveryRegister(
+                deliveryRegisterDto.getUsername(),
+                deliveryRegisterDto.getPhone(),
+                deliveryRegisterDto.getFactoryId(),
+                deliveryRegisterDto.getLogStatus(), "/base/adminRegister");
+    }
 
 }

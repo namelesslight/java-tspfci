@@ -33,8 +33,8 @@ public class DeliveryServiceImpl extends ServiceImpl<DeliveryMapper, Delivery> i
      * @return
      */
     @Override
-    public Boolean addDelivery(String id, String username, String phone) {
-        return deliveryMapper.addDelivery(id, username, phone) == 1;
+    public Boolean addDelivery(String id, String username, String phone, String factoryId) {
+        return deliveryMapper.addDelivery(id, username, phone, factoryId) == 1;
     }
 
     /**
@@ -84,7 +84,7 @@ public class DeliveryServiceImpl extends ServiceImpl<DeliveryMapper, Delivery> i
      * @return
      */
     @Override
-    public DeliverQueryMsg getOneDeliveryByID(String delID) {
+    public Delivery getOneDeliveryByID(String delID) {
         return deliveryMapper.getOneDeliveryByID(delID);
     }
 }

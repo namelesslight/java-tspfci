@@ -22,6 +22,18 @@ public interface RegisterStencil {
      */
     public Result userRegister(String name, String phone,String role, String password, String rwPassword,String logStatus, String path);
 
+
+    /**
+     * 配送员注册
+     * @param name 姓名
+     * @param phone 电话号码
+     * @param factoryId 配送员厂家ID
+     * @param logStatus 操作状态
+     * @param path url路径
+     * @return
+     */
+    public Result deliveryRegister(String name, String phone,String factoryId, String logStatus, String path);
+
     /**
      * 管理员注册
      * @param adminName 管理员用户名

@@ -24,7 +24,7 @@ public interface DeliveryService extends IService<Delivery> {
      * @param phone 电话号码
      * @return
      */
-    public Boolean addDelivery(String id, String username, String phone);
+    public Boolean addDelivery(String id, String username, String phone, String factoryId);
 
     /**
      * 查询手机是否重复
@@ -60,5 +60,5 @@ public interface DeliveryService extends IService<Delivery> {
      * @param delID 配送员ID
      * @return
      */
-    public DeliverQueryMsg getOneDeliveryByID(String delID);
+    public Delivery getOneDeliveryByID(String delID);
 }

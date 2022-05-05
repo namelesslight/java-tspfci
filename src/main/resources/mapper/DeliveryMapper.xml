@@ -14,7 +14,7 @@
     </resultMap>
 
     <insert id="addDelivery">
-        INSERT INTO `tb_delivery` VALUES (#{id}, #{username}, #{phone}, '','', '', '', '', 0, NOW());
+        INSERT INTO `tb_delivery` VALUES (#{id}, #{username}, #{phone}, #{factoryId}, '', '', '', '', 0, NOW());
     </insert>
 
     <select id="queryCountByPhone" resultType="java.lang.Integer">
@@ -44,6 +44,9 @@
                `de_user_name`,
                `de_phone`,
                `de_picture`,
+               `de_factory_id`,
+               `de_driving_license`,
+               `de_car_license`,
                `de_car`,
                `de_delete`,
                `create_time`
@@ -58,7 +61,7 @@
         WHERE `de_delete` = 0
     </select>
 
-    <select id="getOneDeliveryByID" resultType="com.example.javatspfci.code.entity.vo.DeliverQueryMsg">
+    <select id="getOneDeliveryByID" resultType="com.example.javatspfci.code.entity.po.Delivery">
         SELECT
             `de_id` AS `id`,
             `de_user_name` AS `username`,

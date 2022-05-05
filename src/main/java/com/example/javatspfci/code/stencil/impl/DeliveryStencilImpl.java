@@ -2,7 +2,6 @@ package com.example.javatspfci.code.stencil.impl;
 
 import com.example.javatspfci.code.entity.bean.PageBean;
 import com.example.javatspfci.code.entity.po.Delivery;
-import com.example.javatspfci.code.entity.vo.DeliverQueryMsg;
 import com.example.javatspfci.code.result.Result;
 import com.example.javatspfci.code.service.DeliveryService;
 import com.example.javatspfci.code.stencil.DeliveryStencil;
@@ -43,7 +42,7 @@ public class DeliveryStencilImpl implements DeliveryStencil {
 
     @Override
     public Result getOneDeliveryByID(String delID, String path) {
-        DeliverQueryMsg deliverQueryMsg = deliveryService.getOneDeliveryByID(delID);
+        Delivery deliverQueryMsg = deliveryService.getOneDeliveryByID(delID);
         Map<String,Object> message = new HashMap<>();
         message.put("data",deliverQueryMsg);
         return new Result().result200(message, path);
