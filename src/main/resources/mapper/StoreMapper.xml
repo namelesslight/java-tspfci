@@ -30,8 +30,9 @@
         SELECT `tb_store`.`st_id`,
                `tb_store`.`st_user_name`,
                `tb_store`.`st_phone`,
+               `tb_store`.`st_owner_name`,
                `tb_store`.`st_store_name`,
-               `tb_store`.`st_store_introduce`,
+               `tb_store`.`st_introduce`,
                `tb_store`.`st_picture`,
                `tb_store`.`st_location`,
                `tb_store`.`st_lences_id`,
@@ -42,6 +43,43 @@
           AND `tb_all_password`.`all_id` = `tb_user_role`.`u_id`
           AND `st_user_name`=#{stUsername}
           AND `all_password`=#{password}
+    </select>
+    <select id="selectStoreUserById" resultType="com.example.javatspfci.code.entity.vo.StoreLoginMsg">
+        SELECT `tb_store`.`st_id`,
+               `tb_store`.`st_user_name`,
+               `tb_store`.`st_phone`,
+               `tb_store`.`st_owner_name`,
+               `tb_store`.`st_store_name`,
+               `tb_store`.`st_introduce`,
+               `tb_store`.`st_picture`,
+               `tb_store`.`st_location`,
+               `tb_store`.`st_lences_id`,
+               `tb_all_password`.`all_password`,
+               `tb_user_role`.`u_role`
+        FROM `tb_store`,`tb_all_password`,`tb_user_role`
+        WHERE `tb_store`.`st_id` = `tb_all_password`.`all_id`
+          AND `tb_all_password`.`all_id` = `tb_user_role`.`u_id`
+          AND `st_id`= #{id}
+          AND `tb_store`.`is_delete`= 0
+    </select>
+    <select id="listAllStoreByPage" resultType="com.example.javatspfci.code.entity.po.Store">
+        SELECT `tb_store`.`st_id`,
+               `tb_store`.`st_user_name`,
+               `tb_store`.`st_phone`,
+               `tb_store`.`st_owner_name`,
+               `tb_store`.`st_store_name`,
+               `tb_store`.`st_introduce`,
+               `tb_store`.`st_picture`,
+               `tb_store`.`st_location`,
+               `tb_store`.`st_lences_id`
+        FROM `tb_store`
+        WHERE `tb_store`.`is_delete` = 0
+        LIMIT #{start},#{count}
+    </select>
+    <select id="queryAllStoreCount" resultType="java.lang.Integer">
+        SELECT COUNT(*)
+        FROM `tb_store`
+        WHERE `tb_store`.`is_delete` = 0
     </select>
 
 </mapper>

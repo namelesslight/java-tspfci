@@ -3,8 +3,11 @@ package com.example.javatspfci.code.mapper;
 import com.example.javatspfci.code.entity.po.Store;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.example.javatspfci.code.entity.vo.StoreLoginMsg;
+import io.swagger.models.auth.In;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 /**
  * <p>
@@ -41,5 +44,26 @@ public interface StoreMapper extends BaseMapper<Store> {
      * @return
      */
     public StoreLoginMsg selectStoreByUsername(String stUsername, String password);
+
+    /**
+     * 通过id查询店家
+     * @param id
+     * @return
+     */
+    public StoreLoginMsg selectStoreUserById(String id);
+
+    /**
+     * 分页查询店家信息
+     * @param start 开始位置
+     * @param count 查多少个
+     * @return
+     */
+    public List<Store> listAllStoreByPage(Integer start, Integer count);
+
+    /**
+     * 查询店家数
+     * @return
+     */
+    public Integer queryAllStoreCount();
 
 }

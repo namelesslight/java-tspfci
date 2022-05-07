@@ -55,5 +55,13 @@ public class AdminServiceImpl extends ServiceImpl<AdminMapper, Admin> implements
         return adminMapper.selectAdminUserByUsername(username, password);
     }
 
-
+    /**
+     * 通过id查询管理员
+     * @param id 管理员id
+     * @return
+     */
+    @Override
+    public AdminLoginMsg queryAdminById(String id) {
+        return adminMapper.selectAdminUserById(id);
+    }
 }
