@@ -71,5 +71,4 @@ public class StoreController {
                                     @RequestParam Integer count){
         return storeStencil.getAllStoreByPage(page,count,"/code/store/getAllStoreByPage");
     }
-
 }
