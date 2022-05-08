@@ -76,5 +76,5 @@ public interface DeliveryService extends IService<Delivery> {
      * @param count 查询数据数量
      * @return
      */
-    public List<Delivery> listDeliveryByFactoryId(String factoryId, Integer page, Integer count);
+    public List<Delivery> listDeliveryByFactoryId(String factoryId, Integer start, Integer count);
 }

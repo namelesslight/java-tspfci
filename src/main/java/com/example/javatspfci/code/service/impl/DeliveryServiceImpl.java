@@ -106,7 +106,7 @@ public class DeliveryServiceImpl extends ServiceImpl<DeliveryMapper, Delivery> i
      * @return
      */
     @Override
-    public List<Delivery> listDeliveryByFactoryId(String factoryId, Integer page, Integer count) {
-        return deliveryMapper.listDeliveryByFactoryId(factoryId, page, count);
+    public List<Delivery> listDeliveryByFactoryId(String factoryId, Integer start, Integer count) {
+        return deliveryMapper.listDeliveryByFactoryId(factoryId, start, count);
     }
 }

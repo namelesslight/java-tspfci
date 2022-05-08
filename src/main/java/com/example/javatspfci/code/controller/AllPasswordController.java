@@ -53,6 +53,7 @@ public class AllPasswordController {
                 deliveryRegisterDto.getUsername(),
                 deliveryRegisterDto.getPhone(),
                 deliveryRegisterDto.getFactoryId(),
+                deliveryRegisterDto.getRole(),
                 deliveryRegisterDto.getLogStatus(), "/base/adminRegister");
     }
 

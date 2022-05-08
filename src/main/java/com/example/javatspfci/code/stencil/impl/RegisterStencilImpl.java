@@ -131,16 +131,18 @@ public class RegisterStencilImpl implements RegisterStencil {
     }
 
     /**
+     /**
      * 配送员注册
      * @param name 姓名
      * @param phone 电话号码
      * @param factoryId 配送员厂家ID
+     * @param role 权限名
      * @param logStatus 操作状态
      * @param path url路径
      * @return
      */
     @Override
-    public Result deliveryRegister(String name, String phone, String factoryId, String logStatus, String path) {
+    public Result deliveryRegister(String name, String phone, String factoryId,String role, String logStatus, String path) {
         Map<String, Object> data = new HashMap<>();
         //初始默认返回码
         Integer registerCode = 1;
@@ -155,8 +157,10 @@ public class RegisterStencilImpl implements RegisterStencil {
         String delID = UUIDUtil.getUUID();
         String password = createRandomPassword();
         if (registerCode == 1){
-            allPasswordService.addUser(delID, password);
-            deliveryService.addDelivery(delID, password, phone, factoryId);
+            String secretPassword = SecretUtil.secretString(password);
+            allPasswordService.addUser(delID, secretPassword);
+            userRoleService.addRole(delID, role);
+            deliveryService.addDelivery(delID, name, phone, factoryId);
         }
         Map<String, Object> message = new HashMap<>();
         message.put("register_code",registerCode);

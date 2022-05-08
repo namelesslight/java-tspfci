@@ -16,6 +16,11 @@ public class DeliveryRegisterDto {
     private String factoryId;
 
     /**
+     * 权限名
+     */
+    private String role;
+
+    /**
      * 联系方式
      */
     private String phone;
@@ -24,7 +29,5 @@ public class DeliveryRegisterDto {
      * 操作状态
      */
     private String logStatus;
-
-
 
 }
