@@ -87,4 +87,26 @@ public class DeliveryServiceImpl extends ServiceImpl<DeliveryMapper, Delivery> i
     public Delivery getOneDeliveryByID(String delID) {
         return deliveryMapper.getOneDeliveryByID(delID);
     }
+
+    /**
+     * 通过厂家ID获取厂家数量
+     * @param factoryId 工厂ID
+     * @return
+     */
+    @Override
+    public Integer queryDeliveryCountByFactoryId(String factoryId) {
+        return deliveryMapper.queryDeliveryCountByFactoryId(factoryId);
+    }
+
+    /**
+     * 通过工厂ID获取配送员
+     * @param factoryId 工厂ID
+     * @param page 页数
+     * @param count 查询数据数量
+     * @return
+     */
+    @Override
+    public List<Delivery> listDeliveryByFactoryId(String factoryId, Integer page, Integer count) {
+        return deliveryMapper.listDeliveryByFactoryId(factoryId, page, count);
+    }
 }

@@ -63,13 +63,42 @@
 
     <select id="getOneDeliveryByID" resultType="com.example.javatspfci.code.entity.po.Delivery">
         SELECT
-            `de_id` AS `id`,
-            `de_user_name` AS `username`,
-            `de_phone` AS `phone`,
-            `de_picture` As `picture`,
-            `de_car` AS `car`
+            `de_id`,
+            `de_user_name`,
+            `de_phone`,
+            `de_picture`,
+            `de_factory_id`,
+            `de_driving_license`,
+            `de_car_license`,
+            `de_car`
         FROM `tb_delivery`
         WHERE `de_delete` = 0
         AND `de_id` = #{id}
     </select>
+
+    <select id="queryDeliveryCountByFactoryId" resultType="java.lang.Integer">
+        SELECT COUNT(*)
+        FROM `tb_delivery`
+        WHERE `de_delete` = 0
+        AND `de_factory_id` = #{factoryId}
+    </select>
+
+    <select id="listDeliveryByFactoryId" resultType="com.example.javatspfci.code.entity.po.Delivery">
+        SELECT
+            `de_id`,
+            `de_user_name`,
+            `de_phone`,
+            `de_picture`,
+            `de_factory_id`,
+            `de_driving_license`,
+            `de_car_license`,
+            `de_car`,
+            `de_delete`,
+            `create_time`
+        FROM `tb_delivery`
+        WHERE `de_delete` = 0
+        AND `de_factory_id` = #{factoryId}
+            LIMIT #{start},#{count}
+    </select>
+
 </mapper>

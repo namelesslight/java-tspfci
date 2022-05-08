@@ -61,4 +61,20 @@ public interface DeliveryService extends IService<Delivery> {
      * @return
      */
     public Delivery getOneDeliveryByID(String delID);
+
+    /**
+     * 通过厂家ID获取配送员数量
+     * @param factoryId 工厂ID
+     * @return
+     */
+    public Integer queryDeliveryCountByFactoryId(String factoryId);
+
+    /**
+     * 通过工厂ID获取配送员
+     * @param factoryId 工厂ID
+     * @param page 页数
+     * @param count 查询数据数量
+     * @return
+     */
+    public List<Delivery> listDeliveryByFactoryId(String factoryId, Integer page, Integer count);
 }
