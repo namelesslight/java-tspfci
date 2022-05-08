@@ -64,6 +64,20 @@ public class DeliveryController {
     }
 
     /**
+     * 通过厂家ID查询配送员
+     * @param factory 工厂id
+     * @param page 页数
+     * @param count 查询数据个数
+     * @return
+     */
+    @GetMapping("/listDeliveryByFactory")
+    public  Result listDeliveryByFactory(@RequestParam String factory,
+                                         @RequestParam Integer page,
+                                         @RequestParam Integer count){
+        return deliveryStencil.listDeliveryByFactory(factory, page, count, "/listDeliveryByFactory");
+    }
+
+    /**
      * 通过id查询配送员
      * @param id 配送员id
      * @return

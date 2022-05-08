@@ -33,8 +33,8 @@ public class DeliveryServiceImpl extends ServiceImpl<DeliveryMapper, Delivery> i
      * @return
      */
     @Override
-    public Boolean addDelivery(String id, String username, String phone) {
-        return deliveryMapper.addDelivery(id, username, phone) == 1;
+    public Boolean addDelivery(String id, String username, String phone, String factoryId) {
+        return deliveryMapper.addDelivery(id, username, phone, factoryId) == 1;
     }
 
     /**
@@ -84,7 +84,29 @@ public class DeliveryServiceImpl extends ServiceImpl<DeliveryMapper, Delivery> i
      * @return
      */
     @Override
-    public DeliverQueryMsg getOneDeliveryByID(String delID) {
+    public Delivery getOneDeliveryByID(String delID) {
         return deliveryMapper.getOneDeliveryByID(delID);
+    }
+
+    /**
+     * 通过厂家ID获取厂家数量
+     * @param factoryId 工厂ID
+     * @return
+     */
+    @Override
+    public Integer queryDeliveryCountByFactoryId(String factoryId) {
+        return deliveryMapper.queryDeliveryCountByFactoryId(factoryId);
+    }
+
+    /**
+     * 通过工厂ID获取配送员
+     * @param factoryId 工厂ID
+     * @param page 页数
+     * @param count 查询数据数量
+     * @return
+     */
+    @Override
+    public List<Delivery> listDeliveryByFactoryId(String factoryId, Integer start, Integer count) {
+        return deliveryMapper.listDeliveryByFactoryId(factoryId, start, count);
     }
 }

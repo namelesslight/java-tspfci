@@ -13,6 +13,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 import java.util.regex.Pattern;
 
 /**
@@ -87,7 +88,7 @@ public class RegisterStencilImpl implements RegisterStencil {
             registerCode = 0;
         }
         //判断权限是否是对应的前端权限输入
-        Boolean roleJudge = role.equals("user") || role.equals("userAdmin") || role.equals("delivery");
+        Boolean roleJudge = role.equals("user") || role.equals("userAdmin");
         if (roleJudge) {
             data.put("role", "权限正确");
         } else {
@@ -116,15 +117,6 @@ public class RegisterStencilImpl implements RegisterStencil {
                         registerCode = 0;
                     }
                     break;
-                case "delivery":
-                    if (!deliveryService.queryCountByPhone(phone)) {
-                        allPasswordService.addUser(userId, secretPassword);
-                        deliveryService.addDelivery(userId, name, phone);
-                    } else {
-                        data.put("phone", "手机号码已注册");
-                        registerCode = 0;
-                    }
-                    break;
             }
             if (registerCode == 1) {
                 userRoleService.addRole(userId, role);
@@ -135,6 +127,45 @@ public class RegisterStencilImpl implements RegisterStencil {
         Map<String, Object> message = new HashMap<>();
         message.put("register_code", registerCode);
         message.put("data", data);
+        return new Result().result200(message, path);
+    }
+
+    /**
+     /**
+     * 配送员注册
+     * @param name 姓名
+     * @param phone 电话号码
+     * @param factoryId 配送员厂家ID
+     * @param role 权限名
+     * @param logStatus 操作状态
+     * @param path url路径
+     * @return
+     */
+    @Override
+    public Result deliveryRegister(String name, String phone, String factoryId,String role, String logStatus, String path) {
+        Map<String, Object> data = new HashMap<>();
+        //初始默认返回码
+        Integer registerCode = 1;
+        //判断手机号码是否符合格式
+        Boolean phoneJudge = Pattern.matches(PHONE_PATTERN, phone);
+        if (phoneJudge) {
+            data.put("phone", "手机格式正确");
+        } else {
+            data.put("phone", "手机格式不正确");
+            registerCode = 0;
+        }
+        String delID = UUIDUtil.getUUID();
+        String password = createRandomPassword();
+        if (registerCode == 1){
+            String secretPassword = SecretUtil.secretString(password);
+            allPasswordService.addUser(delID, secretPassword);
+            userRoleService.addRole(delID, role);
+            deliveryService.addDelivery(delID, name, phone, factoryId);
+        }
+        Map<String, Object> message = new HashMap<>();
+        message.put("register_code",registerCode);
+        message.put("data",data);
+        message.put("password",password);
         return new Result().result200(message, path);
     }
 
@@ -187,8 +218,6 @@ public class RegisterStencilImpl implements RegisterStencil {
             registerCode = 0;
         }
         if (registerCode == 1) {
-            String imagePath = "D:\\adminHead\\" + adminName;
-            File fileDir = new File(imagePath);
             String adminId = UUIDUtil.getUUID();
             String secretPassword = SecretUtil.secretString(password);
             allPasswordService.addUser(adminId, secretPassword);
@@ -213,5 +242,17 @@ public class RegisterStencilImpl implements RegisterStencil {
         return (length >= 6) && (length <= 20);
     }
 
-
+    /**
+     * 随机生成一个六位数密码
+     * @return
+     */
+    private String createRandomPassword(){
+        Random random = new Random();
+        StringBuffer s = new StringBuffer();
+        for (int i = 0;i < 6;i++){
+            int n = random.nextInt(9);
+            s.append(n);
+        }
+        return s.toString();
+    }
 }

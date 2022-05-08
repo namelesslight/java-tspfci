@@ -28,7 +28,7 @@ public interface DeliveryMapper extends BaseMapper<Delivery> {
      * @param phone 电话号码
      * @return
      */
-    public Integer addDelivery(String id, String username, String phone);
+    public Integer addDelivery(String id, String username, String phone,String factoryId);
 
     /**
      * 查询手机是否重复
@@ -64,5 +64,21 @@ public interface DeliveryMapper extends BaseMapper<Delivery> {
      * @param delID 配送员ID
      * @return
      */
-    public DeliverQueryMsg getOneDeliveryByID(String delID);
+    public Delivery getOneDeliveryByID(String delID);
+
+    /**
+     * 通过厂家ID获取配送员数量
+     * @param factoryId 工厂ID
+     * @return
+     */
+    public Integer queryDeliveryCountByFactoryId(String factoryId);
+
+    /**
+     * 通过工厂ID获取配送员
+     * @param factoryId 工厂ID
+     * @param page 页数
+     * @param count 查询数据数量
+     * @return
+     */
+    public List<Delivery> listDeliveryByFactoryId(String factoryId, Integer start, Integer count);
 }
