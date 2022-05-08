@@ -7,6 +7,7 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -18,8 +19,7 @@ import lombok.Setter;
  * @author 
  * @since 2022-04-29
  */
-@Getter
-@Setter
+@Data
 @TableName("tb_store")
 @ApiModel(value = "Store对象", description = "")
 public class Store implements Serializable {

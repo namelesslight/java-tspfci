@@ -4,6 +4,8 @@ import com.example.javatspfci.code.entity.po.Store;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.example.javatspfci.code.entity.vo.StoreLoginMsg;
 
+import java.util.List;
+
 /**
  * <p>
  *  服务类
@@ -36,4 +38,25 @@ public interface StoreService extends IService<Store> {
      * @return
      */
     public StoreLoginMsg storeLogin(String stUsername, String password);
+
+    /**
+     * 根据id查询店家信息
+     * @param id
+     * @return
+     */
+    public StoreLoginMsg queryStoreById(String id);
+
+    /**
+     * 分页查询店家信息
+     * @param start 开始位置
+     * @param count 查询个数
+     * @return
+     */
+    public List<Store> listAllStoreByPage(Integer start,Integer count);
+
+    /**
+     * 查询店家数
+     * @return
+     */
+    public Integer queryAllStoreCount();
 }

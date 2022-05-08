@@ -28,8 +28,11 @@ public class StoreLoginMsg {
     @ApiModelProperty("店名")
     private String stStoreName;
 
+    @ApiModelProperty("店主姓名")
+    private String stOwnerName;
+
     @ApiModelProperty("店面介绍")
-    private String stStoreIntroduct;
+    private String stStoreIntroduce;
 
     @ApiModelProperty("电话号码")
     private String stPhone;
@@ -42,6 +45,9 @@ public class StoreLoginMsg {
 
     @ApiModelProperty("经营许可证编号")
     private String stLencesId;
+
+    @ApiModelProperty("逻辑删除")
+    private Boolean isDelete;
 
     @ApiModelProperty("店家密码")
     private String password;

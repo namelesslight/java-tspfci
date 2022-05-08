@@ -28,6 +28,9 @@
                `tb_delivery`.`de_user_name`,
                `tb_delivery`.`de_phone`,
                `tb_delivery`.`de_picture`,
+               `tb_delivery`.`de_factory_id`,
+               `tb_delivery`.`de_driving_license`,
+               `tb_delivery`.`de_car_license`,
                `tb_delivery`.`de_car`,
                `tb_all_password`.`all_password`,
                `tb_user_role`.`u_role`

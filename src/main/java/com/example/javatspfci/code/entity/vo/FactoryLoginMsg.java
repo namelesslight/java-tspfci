@@ -1,5 +1,7 @@
 package com.example.javatspfci.code.entity.vo;
 
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
@@ -28,7 +30,7 @@ public class FactoryLoginMsg {
     private String facStoreName;
 
     @ApiModelProperty("厂家介绍")
-    private String facStoreIntroduct;
+    private String facStoreIntroduce;
 
     @ApiModelProperty("电话号码")
     private String facPhone;
@@ -41,6 +43,9 @@ public class FactoryLoginMsg {
 
     @ApiModelProperty("经营许可证编号")
     private String facLencesId;
+
+    @ApiModelProperty("逻辑删除")
+    private Boolean facDelete;
 
     @ApiModelProperty("厂家密码")
     private String password;

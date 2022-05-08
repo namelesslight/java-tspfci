@@ -41,4 +41,11 @@ public interface AdminMapper extends BaseMapper<Admin> {
      */
     public AdminLoginMsg selectAdminUserByUsername(String username, String password);
 
+    /**
+     * 根据id查询管理员
+     * @param id 管理员id
+     * @return
+     */
+    public AdminLoginMsg selectAdminUserById(String id);
+
 }

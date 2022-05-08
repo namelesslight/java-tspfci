@@ -30,11 +30,17 @@ public interface AdminService extends IService<Admin> {
     public Boolean queryAdminCountByUsername(String username);
 
     /**
-     *
+     * 管理员登录
      * @param username 管理员用户名
      * @param password 密码
      * @return
      */
     public AdminLoginMsg AdminLogin(String username, String password);
 
+    /**
+     * 根据id查询管理员
+     * @param id
+     * @return
+     */
+    public AdminLoginMsg queryAdminById(String id);
 }

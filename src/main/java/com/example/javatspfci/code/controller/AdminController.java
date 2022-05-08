@@ -5,6 +5,7 @@ import com.example.javatspfci.code.entity.dto.AdminLoginDto;
 import com.example.javatspfci.code.entity.vo.AdminLoginMsg;
 import com.example.javatspfci.code.result.Result;
 import com.example.javatspfci.code.service.AdminService;
+import com.example.javatspfci.code.stencil.AdminStencil;
 import com.example.javatspfci.code.stencil.LoginStencil;
 import com.example.javatspfci.code.util.SecretUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,8 @@ public class AdminController {
     private LoginStencil loginStencil;
     @Autowired
     private AdminService adminService;
+    @Autowired
+    private AdminStencil adminStencil;
 
     @PostMapping("/login")
     public Result adminLogin(@RequestBody AdminLoginDto adminLoginDto, @RequestHeader(value = "token",required = false) String token) {
@@ -42,4 +45,20 @@ public class AdminController {
         Result result = loginStencil.adminLogin(adminMsg, "login", "/code/admin/login", token);
         return result;
     }
+
+
+
+    /**
+     * 根据id获取管理员信息
+     * @param id 管理员id
+     * @return
+     */
+    @GetMapping("/getAdminInformation")
+    public Result getAdminInformation(@RequestParam String id){
+        Result result = adminStencil.getOneAdminById(id, "/code/admin/getAdminInformation");
+        return result;
+    }
+
+
+
 }

@@ -20,7 +20,7 @@ public class ErrorController {
         Map<String,Object> message = new HashMap<>();
         message.put("code","-1");
         message.put("info","token错误，需要重新登录");
-        return new Result().result500(message,"/base/error");
+        return new Result().result200(message,"/base/error");
     }
 
     /**
@@ -32,7 +32,7 @@ public class ErrorController {
         Map<String,Object> message = new HashMap<>();
         message.put("code","-2");
         message.put("info","错误，token已过期");
-        return new Result().result403(message,"/base/timeout");
+        return new Result().result200(message,"/base/timeout");
     }
 
     /**
@@ -44,7 +44,7 @@ public class ErrorController {
         Map<String,Object> message = new HashMap<>();
         message.put("code","-3");
         message.put("info","错误，无权限");
-        return new Result().result403(message,"/base/noPerm");
+        return new Result().result200(message,"/base/noPerm");
     }
 
     /**
@@ -56,7 +56,7 @@ public class ErrorController {
         Map<String,Object> message = new HashMap<>();
         message.put("code","0");
         message.put("info","未登录");
-        return new Result().result500(message,"/base/noLogin");
+        return new Result().result200(message,"/base/noLogin");
     }
 
 }

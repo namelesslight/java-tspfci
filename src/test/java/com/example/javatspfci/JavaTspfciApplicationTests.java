@@ -1,22 +1,27 @@
 package com.example.javatspfci;
 
-import com.example.javatspfci.code.entity.vo.DeliveryLoginMsg;
-import com.example.javatspfci.code.service.impl.DeliveryServiceImpl;
+import com.example.javatspfci.code.entity.po.Store;
+import com.example.javatspfci.code.entity.vo.AdminLoginMsg;
+import com.example.javatspfci.code.service.AdminService;
+import com.example.javatspfci.code.service.StoreService;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @SpringBootTest
 class JavaTspfciApplicationTests {
 
     @Resource
-    private DeliveryServiceImpl deliveryService;
+    private StoreService storeService;
 
     @Test
     void contextLoads() {
-        DeliveryLoginMsg deliveryMsg = deliveryService.deliveryLogin("abc", "e10adc3949ba59abbe56e057f20f883e");
-        System.out.println(deliveryMsg.toString());
+//        List<Store> storeList = storeService.listAllStoreByPage(0, 1);
+//        for (Store store : storeList) {
+//            System.out.println(store.toString());
+//        }
+        System.out.println(storeService.queryAllStoreCount());
     }
-
 }

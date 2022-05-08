@@ -8,6 +8,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * <p>
@@ -54,6 +55,36 @@ public class StoreServiceImpl extends ServiceImpl<StoreMapper, Store> implements
     @Override
     public StoreLoginMsg storeLogin(String stUsername, String password) {
         return storeMapper.selectStoreByUsername(stUsername, password);
+    }
+
+    /**
+     * 根据id查询店家信息
+     * @param id
+     * @return
+     */
+    @Override
+    public StoreLoginMsg queryStoreById(String id) {
+        return storeMapper.selectStoreUserById(id);
+    }
+
+    /**
+     * 分页查询店家信息
+     * @param start 开始位置
+     * @param count 查询个数
+     * @return
+     */
+    @Override
+    public List<Store> listAllStoreByPage(Integer start, Integer count) {
+        return storeMapper.listAllStoreByPage(start, count);
+    }
+
+    /**
+     * 查询店家数
+     * @return
+     */
+    @Override
+    public Integer queryAllStoreCount() {
+        return storeMapper.queryAllStoreCount();
     }
 
 }

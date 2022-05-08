@@ -6,6 +6,7 @@ import com.example.javatspfci.code.entity.vo.StoreLoginMsg;
 import com.example.javatspfci.code.result.Result;
 import com.example.javatspfci.code.service.StoreService;
 import com.example.javatspfci.code.stencil.LoginStencil;
+import com.example.javatspfci.code.stencil.StoreStencil;
 import com.example.javatspfci.code.util.SecretUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -27,6 +28,9 @@ public class StoreController {
     @Autowired
     private StoreService storeService;
 
+    @Autowired
+    private StoreStencil storeStencil;
+
     @PostMapping("/login")
     public Result storeLogin(@RequestBody StoreLoginDto storeLoginDto, @RequestHeader(value = "token", required = false) String token) {
         //md5加密
@@ -45,4 +49,26 @@ public class StoreController {
         return result;
     }
 
+    /**
+     * 根据id获取店家信息
+     * @param id 店家id
+     * @return
+     */
+    @GetMapping("/getStoreInformation")
+    public Result getStoreInformation(@RequestParam String id){
+        Result result = storeStencil.getOneStoreById(id, "/code/store/getStoreInformation");
+        return result;
+    }
+
+    /**
+     * 分页查询店家
+     * @param page 页数
+     * @param count 查询数量
+     * @return
+     */
+    @GetMapping("/getAllStoreByPage")
+    public Result getAllStoreByPage(@RequestParam Integer page,
+                                    @RequestParam Integer count){
+        return storeStencil.getAllStoreByPage(page,count,"/code/store/getAllStoreByPage");
+    }
 }
