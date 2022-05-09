@@ -79,4 +79,16 @@
         WHERE `fac_delete` = 0
         AND `fac_id` = #{id}
     </select>
+
+    <update id="updateFactory">
+        UPDATE `tb_factory`
+        SET
+            `fac_user_name` = #{username},
+            `fac_store_name` = #{factoryName},
+            `fac_store_introduce` = #{introduce},
+            `fac_picture` = #{headPicture},
+            `fac_location` = #{location},
+            `fac_licence` = #{factoryLicence}
+        WHERE `fac_id` = #{id}
+    </update>
 </mapper>

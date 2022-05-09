@@ -84,4 +84,21 @@ public class FactoryServiceImpl extends ServiceImpl<FactoryMapper, Factory> impl
         return factoryMapper.getOneFactoryByID(delID);
     }
 
+    /**
+     * 修改厂家
+     * @param id 厂家id
+     * @param username 用户名
+     * @param factoryName 厂家名
+     * @param introduce 厂家介绍
+     * @param headPicture 厂家图片
+     * @param location 厂家地址
+     * @param factoryLicence 经营许可证
+     * @return
+     */
+    @Override
+    public Boolean updateFactory(String id, String username, String factoryName,
+                                 String introduce, String headPicture, String location, String factoryLicence) {
+        return factoryMapper.updateFactory(id, username, factoryName, introduce, headPicture, location, factoryLicence) == 1;
+    }
+
 }
