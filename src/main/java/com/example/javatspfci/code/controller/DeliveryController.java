@@ -10,8 +10,10 @@ import com.example.javatspfci.code.stencil.LoginStencil;
 import com.example.javatspfci.code.util.SecretUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
+import java.io.IOException;
 
 /**
  * <p>
@@ -74,7 +76,7 @@ public class DeliveryController {
     public  Result listDeliveryByFactory(@RequestParam String factory,
                                          @RequestParam Integer page,
                                          @RequestParam Integer count){
-        return deliveryStencil.listDeliveryByFactory(factory, page, count, "/listDeliveryByFactory");
+        return deliveryStencil.listDeliveryByFactory(factory, page, count, "/code/delivery/listDeliveryByFactory");
     }
 
     /**
@@ -85,5 +87,16 @@ public class DeliveryController {
     @GetMapping("/getOneDeliveryByID")
     public Result getOneDeliveryByID(@RequestParam String id){
         return deliveryStencil.getOneDeliveryByID(id,"/code/delivery/getOneDeliveryByID");
+    }
+
+    @PostMapping("/updateDeliveryInfo")
+    public Result updateDeliveryInfo(@RequestParam String id,
+                                     @RequestParam String username,
+                                     @RequestParam MultipartFile headPicture,
+                                     @RequestParam MultipartFile drivingLicence,
+                                     @RequestParam MultipartFile carLicence,
+                                     @RequestParam MultipartFile carCode) throws IOException {
+        return deliveryStencil.updateDeliveryInfo(id, username, headPicture, drivingLicence, carLicence,carCode,
+                "/code/delivery/updateDeliveryInfo");
     }
 }

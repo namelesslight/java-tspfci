@@ -19,7 +19,7 @@ CREATE TABLE `tb_store`(
                            `st_introduce` VARCHAR(200) NOT NULL DEFAULT '' COMMENT '店面介绍',
                            `st_picture` VARCHAR(200) NOT NULL DEFAULT '' COMMENT '店面图片',
                            `st_location` VARCHAR(100) NOT NULL DEFAULT '' COMMENT '店面地址',
-                           `st_lences_id` VARCHAR(32) NOT NULL DEFAULT '' COMMENT '经营许可证编号',
+                           `st_licence` VARCHAR(200) NOT NULL DEFAULT '' COMMENT '经营许可证',
                            `is_delete` TINYINT(1) NOT NULL DEFAULT 0 COMMENT '逻辑删除',
                            `create_time` DATETIME NOT NULL DEFAULT NOW() COMMENT '创建时间',
                            PRIMARY KEY(`st_id`)
@@ -33,7 +33,7 @@ CREATE TABLE `tb_factory`(
                              `fac_store_introduce` VARCHAR(200) NOT NULL DEFAULT '' COMMENT '厂家介绍',
                              `fac_picture` VARCHAR(200) NOT NULL DEFAULT '' COMMENT '厂家图片',
                              `fac_location` VARCHAR(100) NOT NULL DEFAULT '' COMMENT '厂家地址',
-                             `fac_lences_id` VARCHAR(32) NOT NULL DEFAULT '' COMMENT '经营许可证编号',
+                             `fac_licence` VARCHAR(200) NOT NULL DEFAULT '' COMMENT '经营许可证',
                              `fac_delete` TINYINT(1) NOT NULL DEFAULT 0 COMMENT '逻辑删除',
                              `create_time` DATETIME NOT NULL DEFAULT NOW() COMMENT '创建时间',
                              PRIMARY KEY(`fac_id`)

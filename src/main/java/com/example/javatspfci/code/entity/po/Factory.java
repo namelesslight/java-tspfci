@@ -57,8 +57,8 @@ public class Factory implements Serializable {
     private String facLocation;
 
     @ApiModelProperty("经营许可证编号")
-    @TableField("fac_lences_id")
-    private String facLencesId;
+    @TableField("fac_licence")
+    private String facLicence;
 
     @ApiModelProperty("逻辑删除")
     @TableField("fac_delete")

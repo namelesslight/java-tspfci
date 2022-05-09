@@ -264,6 +264,10 @@ public class PasswordStencilImpl implements PasswordStencil {
             data.put("rw_password","两次密码不一致");
             updatePasswordCode = 0;
         }
+        if (updatePasswordCode == 1){
+            String secretNewPassword = SecretUtil.secretString(newPassword);
+            allPasswordService.updatePassword(id, secretNewPassword);
+        }
         Map<String,Object> message = new HashMap<>();
         message.put("data", data);
         message.put("update_password_code", updatePasswordCode);

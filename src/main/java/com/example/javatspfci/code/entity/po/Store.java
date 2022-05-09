@@ -59,8 +59,8 @@ public class Store implements Serializable {
     private String stLocation;
 
     @ApiModelProperty("经营许可证编号")
-    @TableField("st_lences_id")
-    private String stLencesId;
+    @TableField("st_licence")
+    private String stLicence;
 
     @ApiModelProperty("逻辑删除")
     @TableField("is_delete")

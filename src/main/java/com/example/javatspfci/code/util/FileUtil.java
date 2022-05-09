@@ -20,16 +20,15 @@ public class FileUtil {
      * @return 返回路径，用于前端删除图片
      * @throws IOException 抛出io流异常
      */
-    public static String addImg(MultipartFile imgFile,String path,String username) throws IOException {
+    public static String addImg(MultipartFile imgFile,String path) throws IOException {
         File imgFolder=new File(path);
         if (!imgFolder.exists()) {
             imgFolder.mkdir();
         }
         InputStream fis= null;
         String filePath = null;
-
         fis = imgFile.getInputStream();
-        filePath = path + "/" + username + "_head.jpg";
+        filePath = path + "/" + imgFile.getName() + ".jpg";
         File img = new File(filePath);
         FileOutputStream fos = new FileOutputStream(img);
         byte[] bytes=new byte[1024*8];
@@ -43,7 +42,7 @@ public class FileUtil {
     }
 
     /**
-     * 删除活动图片
+     * 删除图片
      * @param imgPath 要删除的图片的路径
      * @return 返回删除后剩余图片的路径
      */

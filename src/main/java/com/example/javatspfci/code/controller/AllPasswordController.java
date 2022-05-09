@@ -86,7 +86,7 @@ public class AllPasswordController {
                 updatePasswordDto.getId(),
                 updatePasswordDto.getOldPassword(),
                 updatePasswordDto.getNewPassword(),
-                updatePasswordDto.getRwPassword(), "/updatePassword");
+                updatePasswordDto.getRwPassword(), "/base/updatePassword");
     }
 
 }
