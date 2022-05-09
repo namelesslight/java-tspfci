@@ -7,6 +7,7 @@ import com.example.javatspfci.code.result.Result;
 import com.example.javatspfci.code.service.FactoryService;
 import com.example.javatspfci.code.stencil.FactoryStencil;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.HashMap;
@@ -26,6 +27,7 @@ public class FactoryStencilImpl implements FactoryStencil {
      * @param path url路径
      * @return
      */
+    @Transactional(rollbackFor = Exception.class)
     @Override
     public Result getAllFactoryByPage(Integer page, Integer count, String path) {
         Integer totalCount = factoryService.queryAllFactoryCount();

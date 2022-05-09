@@ -21,4 +21,19 @@ public interface AllPasswordService extends IService<AllPassword> {
      */
     public Boolean addUser(String id, String password);
 
+    /**
+     * 修改密码
+     * @param id 用户id
+     * @param newPassword 新密码
+     * @return
+     */
+    public Boolean updatePassword(String id, String newPassword);
+
+    /**
+     * 查看是否存在该用户
+     * @param id 用户id
+     * @param password 密码
+     * @return
+     */
+    public Boolean findCountByPassword(String id, String password);
 }

@@ -47,6 +47,7 @@ public class DeliveryStencilImpl implements DeliveryStencil {
      * @param path url路径
      * @return
      */
+    @Transactional(rollbackFor = Exception.class)
     @Override
     public Result listDeliveryByFactory(String factoryId, Integer page, Integer count, String path) {
         Integer totalCount = deliveryService.queryDeliveryCountByFactoryId(factoryId);

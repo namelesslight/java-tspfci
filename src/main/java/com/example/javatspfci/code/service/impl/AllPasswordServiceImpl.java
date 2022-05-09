@@ -32,4 +32,26 @@ public class AllPasswordServiceImpl extends ServiceImpl<AllPasswordMapper, AllPa
     public Boolean addUser(String id, String password) {
         return allPasswordMapper.addUser(id, password) == 1;
     }
+
+    /**
+     * 修改密码
+     * @param id 用户id
+     * @param newPassword 新密码
+     * @return
+     */
+    @Override
+    public Boolean updatePassword(String id, String newPassword) {
+        return allPasswordMapper.updatePassword(id, newPassword) == 1;
+    }
+
+    /**
+     * 查看是否存在该用户
+     * @param id 用户id
+     * @param password 密码
+     * @return
+     */
+    @Override
+    public Boolean findCountByPassword(String id, String password) {
+        return allPasswordMapper.findCountByPassword(id, password) == 1;
+    }
 }

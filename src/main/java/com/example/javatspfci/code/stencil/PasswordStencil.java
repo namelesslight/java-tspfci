@@ -7,7 +7,7 @@ import java.io.IOException;
 /**
  * 通用Service接口
  */
-public interface RegisterStencil {
+public interface PasswordStencil {
 
     /**
      * 用户注册
@@ -46,5 +46,16 @@ public interface RegisterStencil {
      * @return
      */
     public Result adminRegister(String adminName, String password, String rwPassword, String role, String logStatus, String path) throws IOException;
+
+    /**
+     * 修改密码
+     * @param id 用户id
+     * @param oldPassword 旧密码
+     * @param newPassword 新密码
+     * @param rwPassword 确认密码
+     * @param path url路径
+     * @return
+     */
+    public Result updatePassword(String id,String oldPassword, String newPassword, String rwPassword, String path);
 
 }
