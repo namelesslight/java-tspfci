@@ -74,8 +74,10 @@ public class FactoryStencilImpl implements FactoryStencil {
                                 MultipartFile headPicture, String location, MultipartFile factoryLicence, String path) throws IOException {
         int updateCode = 1;
         Map<String, Object> data = null;
-        //设置图片路径
-        String imagePath = "C:/Users/Lenovo/Desktop/image/" + id;
+        //本地设置图片路径
+        //String imagePath = "C:/Users/Lenovo/Desktop/image/" + id;
+        //服务器路径
+        String imagePath = "/usr/local/src/spring-boot/image/" + id;
         String headPicturePath = FileUtil.addImg(headPicture,imagePath);
         String factoryLicencePath = FileUtil.addImg(factoryLicence,imagePath);
         Boolean updateJude = factoryService.updateFactory(id, username, factoryName, introduce,

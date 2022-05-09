@@ -28,7 +28,9 @@ public class FileUtil {
         InputStream fis= null;
         String filePath = null;
         fis = imgFile.getInputStream();
-        filePath = path + "/" + imgFile.getName() + ".jpg";
+        String imageName = imgFile.getName() + ".jpg";
+        filePath = path + "/" + imageName;
+        //服务器上使用
         File img = new File(filePath);
         FileOutputStream fos = new FileOutputStream(img);
         byte[] bytes=new byte[1024*8];
@@ -38,7 +40,10 @@ public class FileUtil {
         }
         fis.close();
         fos.close();
-        return filePath;
+        //本地测试使用
+        //return filePath;
+        //服务器上使用
+        return "/images/" + imageName;
     }
 
     /**

@@ -95,8 +95,10 @@ public class DeliveryStencilImpl implements DeliveryStencil {
                                      MultipartFile carLicence, MultipartFile carCode, String path) throws IOException {
         int updateCode = 1;
         Map<String, Object> data = null;
-        //设置图片路径
-        String imagePath = "C:/Users/Lenovo/Desktop/image/" + delID;
+        //本地设置图片路径
+        //String imagePath = "C:/Users/Lenovo/Desktop/image/" + delID;
+        //服务器路径
+        String imagePath = "/usr/local/src/spring-boot/image/" + delID;
         String headPicturePath = FileUtil.addImg(headPicture,imagePath);
         String drivingLicencePath = FileUtil.addImg(drivingLicence,imagePath);
         String carLicencePath = FileUtil.addImg(carLicence,imagePath);
