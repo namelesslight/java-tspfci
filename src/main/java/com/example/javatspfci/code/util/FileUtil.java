@@ -43,7 +43,8 @@ public class FileUtil {
         //本地测试使用
         //return filePath;
         //服务器上使用
-        return "/images/" + imageName;
+        String id = path.replace("/usr/local/src/spring-boot/image/","");
+        return "/images/" + id + "/" + imageName;
     }
 
     /**
