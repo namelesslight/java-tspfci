@@ -104,4 +104,14 @@
             LIMIT #{start},#{count}
     </select>
 
+    <update id="updateDelivery">
+        UPDATE `tb_delivery`
+        SET
+            `de_user_name` = #{username},
+            `de_picture` = #{headPicture},
+            `de_driving_license` = #{drivingLicence},
+            `de_car_license` = #{carLicence},
+            `de_car` = #{carCode}
+        WHERE `de_id` = #{delID}
+    </update>
 </mapper>

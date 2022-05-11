@@ -7,6 +7,7 @@ import com.example.javatspfci.code.mapper.DeliveryMapper;
 import com.example.javatspfci.code.service.DeliveryService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -101,12 +102,28 @@ public class DeliveryServiceImpl extends ServiceImpl<DeliveryMapper, Delivery> i
     /**
      * 通过工厂ID获取配送员
      * @param factoryId 工厂ID
-     * @param page 页数
+     * @param start 页数
      * @param count 查询数据数量
      * @return
      */
     @Override
     public List<Delivery> listDeliveryByFactoryId(String factoryId, Integer start, Integer count) {
         return deliveryMapper.listDeliveryByFactoryId(factoryId, start, count);
+    }
+
+    /**
+     * 更新配送员信息
+     * @param delID 配送员ID
+     * @param username 用户名
+     * @param headPicture 头像图片
+     * @param drivingLicence 车辆行驶证图片
+     * @param carLicence 驾驶证图片
+     * @param carCode 车牌号图片
+     * @return
+     */
+    @Override
+    public Boolean updateDelivery(String delID, String username, String headPicture,String drivingLicence,
+                                  String carLicence, String carCode) {
+        return deliveryMapper.updateDelivery(delID, username, headPicture, drivingLicence, carLicence, carCode) == 1;
     }
 }

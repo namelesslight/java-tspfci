@@ -24,4 +24,9 @@ class JavaTspfciApplicationTests {
 //        }
         System.out.println(storeService.queryAllStoreCount());
     }
+
+    @Test
+    void downloadFile(){
+
+    }
 }

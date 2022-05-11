@@ -11,8 +11,10 @@ import com.example.javatspfci.code.util.SecretUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
+import java.io.IOException;
 
 /**
  * <p>
@@ -74,6 +76,29 @@ public class FactoryController {
     @GetMapping("/getOneFactoryByID")
     public Result getOneFactoryByID(@RequestParam String id){
         return factoryStencil.getOneFactoryByID(id,"/code/factory/getOneFactoryByID");
+    }
+
+    /**
+     * 修改厂家
+     * @param id 厂家id
+     * @param username 用户名
+     * @param factoryName 厂家名
+     * @param introduce 厂家介绍
+     * @param headPicture 厂家图片
+     * @param location 厂家地址
+     * @param factoryLicence 经营许可证
+     * @return
+     */
+    @PostMapping("/updateFactory")
+    public Result updateFactory(@RequestParam String id,
+                                @RequestParam String username,
+                                @RequestParam String factoryName,
+                                @RequestParam String introduce,
+                                @RequestParam MultipartFile headPicture,
+                                @RequestParam String location,
+                                    @RequestParam MultipartFile factoryLicence) throws IOException {
+        return factoryStencil.updateFactory(id, username, factoryName, introduce,
+                headPicture, location, factoryLicence,"/code/factory/updateFactory");
     }
 
 }

@@ -20,16 +20,17 @@ public class FileUtil {
      * @return 返回路径，用于前端删除图片
      * @throws IOException 抛出io流异常
      */
-    public static String addImg(MultipartFile imgFile,String path,String username) throws IOException {
+    public static String addImg(MultipartFile imgFile,String path) throws IOException {
         File imgFolder=new File(path);
         if (!imgFolder.exists()) {
             imgFolder.mkdir();
         }
         InputStream fis= null;
         String filePath = null;
-
         fis = imgFile.getInputStream();
-        filePath = path + "/" + username + "_head.jpg";
+        String imageName = imgFile.getName() + ".jpg";
+        filePath = path + "/" + imageName;
+        //服务器上使用
         File img = new File(filePath);
         FileOutputStream fos = new FileOutputStream(img);
         byte[] bytes=new byte[1024*8];
@@ -39,11 +40,15 @@ public class FileUtil {
         }
         fis.close();
         fos.close();
-        return filePath;
+        //本地测试使用
+        //return filePath;
+        //服务器上使用
+        String id = path.replace("/usr/local/src/spring-boot/image/","");
+        return "/images/" + id + "/" + imageName;
     }
 
     /**
-     * 删除活动图片
+     * 删除图片
      * @param imgPath 要删除的图片的路径
      * @return 返回删除后剩余图片的路径
      */

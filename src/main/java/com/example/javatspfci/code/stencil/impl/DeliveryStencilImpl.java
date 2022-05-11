@@ -5,10 +5,13 @@ import com.example.javatspfci.code.entity.po.Delivery;
 import com.example.javatspfci.code.result.Result;
 import com.example.javatspfci.code.service.DeliveryService;
 import com.example.javatspfci.code.stencil.DeliveryStencil;
+import com.example.javatspfci.code.util.FileUtil;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -47,6 +50,7 @@ public class DeliveryStencilImpl implements DeliveryStencil {
      * @param path url路径
      * @return
      */
+    @Transactional(rollbackFor = Exception.class)
     @Override
     public Result listDeliveryByFactory(String factoryId, Integer page, Integer count, String path) {
         Integer totalCount = deliveryService.queryDeliveryCountByFactoryId(factoryId);
@@ -71,6 +75,48 @@ public class DeliveryStencilImpl implements DeliveryStencil {
         Delivery deliverQueryMsg = deliveryService.getOneDeliveryByID(delID);
         Map<String,Object> message = new HashMap<>();
         message.put("data",deliverQueryMsg);
+        return new Result().result200(message, path);
+    }
+
+    /**
+     * 更新配送员信息
+     * @param delID 配送员ID
+     * @param username 用户名
+     * @param headPicture 头像图片
+     * @param drivingLicence 车辆行驶证图片
+     * @param carLicence 驾驶证图片
+     * @param carCode 车牌号图片
+     * @param path url路径
+     * @return
+     */
+    @Transactional(rollbackFor = Exception.class)
+    @Override
+    public Result updateDeliveryInfo(String delID, String username, MultipartFile headPicture, MultipartFile drivingLicence,
+                                     MultipartFile carLicence, MultipartFile carCode, String path) throws IOException {
+        int updateCode = 1;
+        Map<String, Object> data = null;
+        //本地设置图片路径
+        //String imagePath = "C:/Users/Lenovo/Desktop/image/" + delID;
+        //服务器路径
+        String imagePath = "/usr/local/src/spring-boot/image/" + delID;
+        String headPicturePath = FileUtil.addImg(headPicture,imagePath);
+        String drivingLicencePath = FileUtil.addImg(drivingLicence,imagePath);
+        String carLicencePath = FileUtil.addImg(carLicence,imagePath);
+        String carCodePath = FileUtil.addImg(carCode,imagePath);
+        boolean updateJudge = deliveryService.updateDelivery(delID,username,headPicturePath,drivingLicencePath,carLicencePath,carCodePath);
+        if (updateJudge){
+            data = new HashMap<>();
+            data.put("username",username);
+            data.put("head_picture",headPicturePath);
+            data.put("driving_licence",drivingLicencePath);
+            data.put("car_licence",carLicencePath);
+            data.put("car_code",carCodePath);
+        } else {
+            updateCode = 0;
+        }
+        Map<String,Object> message = new HashMap<>();
+        message.put("data",data);
+        message.put("update_code",updateCode);
         return new Result().result200(message, path);
     }
 

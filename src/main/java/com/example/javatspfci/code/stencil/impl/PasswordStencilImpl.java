@@ -2,14 +2,13 @@ package com.example.javatspfci.code.stencil.impl;
 
 import com.example.javatspfci.code.result.Result;
 import com.example.javatspfci.code.service.*;
-import com.example.javatspfci.code.stencil.RegisterStencil;
+import com.example.javatspfci.code.stencil.PasswordStencil;
 import com.example.javatspfci.code.util.SecretUtil;
 import com.example.javatspfci.code.util.UUIDUtil;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
-import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
@@ -20,7 +19,7 @@ import java.util.regex.Pattern;
  * 通用Service接口实现类
  */
 @Service
-public class RegisterStencilImpl implements RegisterStencil {
+public class PasswordStencilImpl implements PasswordStencil {
 
     @Resource
     private AllPasswordService allPasswordService;
@@ -58,7 +57,7 @@ public class RegisterStencilImpl implements RegisterStencil {
      * @return
      */
     @Override
-    @Transactional
+    @Transactional(rollbackFor = Exception.class)
     public Result userRegister(String name, String phone, String role, String password, String rwPassword, String logStatus, String path) {
         Map<String, Object> data = new HashMap<>();
         //初始默认返回码
@@ -141,6 +140,7 @@ public class RegisterStencilImpl implements RegisterStencil {
      * @param path url路径
      * @return
      */
+    @Transactional(rollbackFor = Exception.class)
     @Override
     public Result deliveryRegister(String name, String phone, String factoryId,String role, String logStatus, String path) {
         Map<String, Object> data = new HashMap<>();
@@ -228,6 +228,49 @@ public class RegisterStencilImpl implements RegisterStencil {
         Map<String, Object> message = new HashMap<>();
         message.put("register_code", registerCode);
         message.put("data", data);
+        return new Result().result200(message, path);
+    }
+
+    /**
+     * 修改密码
+     * @param id 用户id
+     * @param oldPassword 旧密码
+     * @param newPassword 新密码
+     * @param rwPassword 确认密码
+     * @param path url路径
+     * @return
+     */
+    @Transactional(rollbackFor = Exception.class)
+    @Override
+    public Result updatePassword(String id, String oldPassword, String newPassword, String rwPassword, String path) {
+        int updatePasswordCode = 1;
+        Map<String,Object> data = new HashMap<>();
+        String secretOldPassword = SecretUtil.secretString(oldPassword);
+        if (allPasswordService.findCountByPassword(id,secretOldPassword)){
+            data.put("old_password","密码正确");
+        } else {
+            updatePasswordCode = 0;
+            data.put("old_password","密码错误");
+        }
+        if (passwordLen(newPassword)){
+            data.put("new_password","密码格式正确");
+        } else {
+            data.put("new_password","密码格式错误");
+            updatePasswordCode = 0;
+        }
+        if (newPassword.equals(rwPassword)){
+            data.put("rw_password","两次密码一致");
+        } else {
+            data.put("rw_password","两次密码不一致");
+            updatePasswordCode = 0;
+        }
+        if (updatePasswordCode == 1){
+            String secretNewPassword = SecretUtil.secretString(newPassword);
+            allPasswordService.updatePassword(id, secretNewPassword);
+        }
+        Map<String,Object> message = new HashMap<>();
+        message.put("data", data);
+        message.put("update_password_code", updatePasswordCode);
         return new Result().result200(message, path);
     }
 
