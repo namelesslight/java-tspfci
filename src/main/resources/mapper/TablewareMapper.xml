@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.javatspfci.code.mapper.TablewareMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.example.javatspfci.code.entity.po.Tableware">
+        <id column="tab_id" property="tabId" />
+        <result column="tab_factory" property="tabFactory" />
+        <result column="tab_name" property="tabName" />
+        <result column="tab_describe" property="tabDescribe" />
+        <result column="tab_type" property="tabType" />
+        <result column="tab_picture" property="tabPicture" />
+        <result column="tab_value" property="tabValue" />
+        <result column="tab_size" property="tabSize" />
+        <result column="tab_price" property="tabPrice" />
+        <result column="tab_stock" property="tabStock" />
+        <result column="is_delete" property="isDelete" />
+        <result column="create_time" property="createTime" />
+    </resultMap>
+
+</mapper>
