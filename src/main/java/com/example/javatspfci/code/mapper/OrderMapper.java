@@ -2,9 +2,12 @@ package com.example.javatspfci.code.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.example.javatspfci.code.entity.po.Order;
+import com.example.javatspfci.code.entity.vo.OrderQueryMsg;
 import org.apache.ibatis.annotations.Mapper;
+import org.springframework.stereotype.Repository;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 /**
  * <p>
@@ -15,6 +18,7 @@ import java.math.BigDecimal;
  * @since 2022-05-11
  */
 @Mapper
+@Repository
 public interface OrderMapper extends BaseMapper<Order> {
 
     /**
@@ -30,5 +34,57 @@ public interface OrderMapper extends BaseMapper<Order> {
      * @return
      */
     public Integer createOrder(String orderId, String creatorId, String receiverId, String info, String remark, String type, BigDecimal price, Integer status);
+
+    /**
+     * 设置订单配送员
+     * @param orderId 订单ID
+     * @param deliveryId 配送员ID
+     * @return
+     */
+    public Integer setOrderDelivery(String orderId, String deliveryId);
+
+    /**
+     * 更订单状态
+     * @param orderId 订单ID
+     * @param statusCode 订单状态
+     * @return
+     */
+    public Integer updateOrderStatus(String orderId, Integer statusCode);
+
+    /**
+     * 取消订单
+     * @param orderId 订单ID
+     * @param reason 原因
+     * @return
+     */
+    public Integer orderCancel(String orderId,String reason);
+
+    /**
+     * 店家查询订单
+     * @param storeId 店家ID
+     * @return
+     */
+    public List<OrderQueryMsg> listOrderByStore(String storeId);
+
+    /**
+     * 厂家查询订单
+     * @param factoryId 厂家ID
+     * @return
+     */
+    public List<OrderQueryMsg> listOrderByFactory(String factoryId);
+
+    /**
+     * 配送员查询订单
+     * @param deliveryId 配送员ID
+     * @return
+     */
+    public List<OrderQueryMsg> listOrderByDelivery(String deliveryId);
+
+    /**
+     * 查询单个订单
+     * @param orderId 订单ID
+     * @return
+     */
+    public OrderQueryMsg queryOneOrder(String orderId);
 
 }

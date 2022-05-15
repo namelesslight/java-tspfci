@@ -28,6 +28,25 @@ public interface OrderStencil {
      */
     public Result setOrderDelivery(String orderId, String deliveryId,String path);
 
+
+    /**
+     * 更新订单状态
+     * @param orderId 订单ID
+     * @param statusCode 订单状态
+     * @param path url路径
+     * @return
+     */
+    public Result updateOrderStatus(String orderId, Integer statusCode, String path);
+
+    /**
+     * 取消订单
+     * @param orderId 订单ID
+     * @param reason 取消原因
+     * @param path url路径
+     * @return
+     */
+    public Result orderCancel(String orderId,String reason,String path);
+
     /**
      * 店家查看订单
      * @param storeId 店家ID
@@ -60,21 +79,4 @@ public interface OrderStencil {
      */
     public Result queryOneOrder(String orderId,String path);
 
-    /**
-     * 更新订单状态
-     * @param orderId 订单ID
-     * @param statusCode 订单状态
-     * @param path url路径
-     * @return
-     */
-    public Result updateOrderStatus(String orderId, Integer statusCode, String path);
-
-    /**
-     * 取消订单
-     * @param orderId 订单ID
-     * @param reason 取消原因
-     * @param path url路径
-     * @return
-     */
-    public Result orderCancel(String orderId,String reason,String path);
 }
