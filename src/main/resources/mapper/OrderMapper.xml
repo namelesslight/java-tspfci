@@ -17,4 +17,9 @@
         <result column="order_type" property="orderType" />
     </resultMap>
 
+    <insert id="createOrder">
+        INSERT INTO `tb_order`
+        VALUES (#{orderId}, #{creatorId}, #{receiverId}, #{price}, #{info}, '', #{status}, #{remark}, '', NOW(), #{type});
+    </insert>
+
 </mapper>
