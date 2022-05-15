@@ -32,8 +32,7 @@
         UPDATE
             `tb_order`
         SET
-            `order_status` = #{statusCode},
-            `order_status` = 1
+            `order_status` = #{statusCode}
         WHERE `order_id` = #{orderId}
     </update>
 
@@ -53,32 +52,33 @@
             `a`.`st_owner_name` AS `storeOwnerName`,
             `a`.`st_phone` AS `storePhone`,
             `a`.`st_location` AS `storeLocation`,
-            `a`.`st_picture` AS `storePiceture`,
+            `a`.`st_picture` AS `storePicture`,
             `b`.`fac_id` AS `factoryId`,
             `b`.`fac_store_name` AS `factoryName`,
             `b`.`fac_phone` AS `factoryPhone`,
             `b`.`fac_location` AS `factoryLocation`,
-            `b`.`fac_picture` AS `factoryPiceture`,
-            `c`.`de_id` AS `delveryId`,
-            `c`.`de_user_name` AS `delveryName`,
-            `c`.`de_phone` AS `delveryPhone`,
+            `b`.`fac_picture` AS `factoryPicture`,
+            `c`.`de_id` AS `deliveryId`,
+            `c`.`de_user_name` AS `deliveryName`,
+            `c`.`de_phone` AS `deliveryPhone`,
             `c`.`de_car` AS `deliveryCarCode`,
-            `c`.`de_picture` AS `delveryPiceture`,
+            `c`.`de_picture` AS `deliveryPicture`,
+            `d`.`order_id` AS `orderId`,
             `d`.`order_price` AS `price`,
             `d`.`order_info` AS `info`,
             `d`.`order_status` AS `status`,
-            `d`.`order_orderErrorReason` AS `orderErrorReason`,
+            `d`.`order_error_reason` AS `orderErrorReason`,
             `d`.`order_type` AS `orderType`,
             `d`.`order_create_time` AS `createTime`
         FROM
-             `tb_order` AS `a`,
-             `tb_delivery` AS `b`,
-             `tb_factory` AS `c`,
-             `tb_store` AS `d`
-        WHERE `tb_order`.`order_creator` = `tb_store`.`st_id`,
-        AND `tb_order`.`order_receiver` = `tb_factory`.`fac_id`,
-        AND `tb_order`.`order_delivery` = `tb_delivery`.`de_id`,
-        AND `tb_order`.`order_creator` = #{storeId}
+            `tb_store` AS `a`,
+            `tb_factory` AS `b`,
+            `tb_delivery` AS `c`,
+            `tb_order` AS `d`
+        WHERE `d`.`order_creator` = `a`.`st_id`
+          AND `d`.`order_receiver` = `b`.`fac_id`
+          AND `d`.`order_delivery` = `c`.`de_id`
+        AND `d`.`order_creator` = #{storeId}
     </select>
 
     <select id="listOrderByFactory" resultType="com.example.javatspfci.code.entity.vo.OrderQueryMsg">
@@ -88,33 +88,33 @@
             `a`.`st_owner_name` AS `storeOwnerName`,
             `a`.`st_phone` AS `storePhone`,
             `a`.`st_location` AS `storeLocation`,
-            `a`.`st_picture` AS `storePiceture`,
+            `a`.`st_picture` AS `storePicture`,
             `b`.`fac_id` AS `factoryId`,
             `b`.`fac_store_name` AS `factoryName`,
             `b`.`fac_phone` AS `factoryPhone`,
             `b`.`fac_location` AS `factoryLocation`,
-            `b`.`fac_picture` AS `factoryPiceture`,
-            `c`.`de_id` AS `delveryId`,
-            `c`.`de_user_name` AS `delveryName`,
-            `c`.`de_phone` AS `delveryPhone`,
+            `b`.`fac_picture` AS `factoryPicture`,
+            `c`.`de_id` AS `deliveryId`,
+            `c`.`de_user_name` AS `deliveryName`,
+            `c`.`de_phone` AS `deliveryPhone`,
             `c`.`de_car` AS `deliveryCarCode`,
-            `c`.`de_picture` AS `delveryPiceture`,
+            `c`.`de_picture` AS `deliveryPicture`,
             `d`.`order_id` AS `orderId`,
             `d`.`order_price` AS `price`,
             `d`.`order_info` AS `info`,
             `d`.`order_status` AS `status`,
-            `d`.`order_orderErrorReason` AS `orderErrorReason`,
+            `d`.`order_error_reason` AS `orderErrorReason`,
             `d`.`order_type` AS `orderType`,
             `d`.`order_create_time` AS `createTime`
         FROM
-            `tb_order` AS `a`,
-            `tb_delivery` AS `b`,
-            `tb_factory` AS `c`,
-            `tb_store` AS `d`
-        WHERE `tb_order`.`order_creator` = `tb_store`.`st_id`,
-        AND `tb_order`.`order_receiver` = `tb_factory`.`fac_id`,
-        AND `tb_order`.`order_delivery` = `tb_delivery`.`de_id`,
-        AND `tb_order`.`order_receiver` = #{factoryId}
+            `tb_store` AS `a`,
+            `tb_factory` AS `b`,
+            `tb_delivery` AS `c`,
+            `tb_order` AS `d`
+        WHERE `d`.`order_creator` = `a`.`st_id`
+          AND `d`.`order_receiver` = `b`.`fac_id`
+          AND `d`.`order_delivery` = `c`.`de_id`
+        AND `d`.`order_receiver` = #{factoryId}
     </select>
 
     <select id="listOrderByDelivery" resultType="com.example.javatspfci.code.entity.vo.OrderQueryMsg">
@@ -124,33 +124,33 @@
             `a`.`st_owner_name` AS `storeOwnerName`,
             `a`.`st_phone` AS `storePhone`,
             `a`.`st_location` AS `storeLocation`,
-            `a`.`st_picture` AS `storePiceture`,
+            `a`.`st_picture` AS `storePicture`,
             `b`.`fac_id` AS `factoryId`,
             `b`.`fac_store_name` AS `factoryName`,
             `b`.`fac_phone` AS `factoryPhone`,
             `b`.`fac_location` AS `factoryLocation`,
-            `b`.`fac_picture` AS `factoryPiceture`,
-            `c`.`de_id` AS `delveryId`,
-            `c`.`de_user_name` AS `delveryName`,
-            `c`.`de_phone` AS `delveryPhone`,
+            `b`.`fac_picture` AS `factoryPicture`,
+            `c`.`de_id` AS `deliveryId`,
+            `c`.`de_user_name` AS `deliveryName`,
+            `c`.`de_phone` AS `deliveryPhone`,
             `c`.`de_car` AS `deliveryCarCode`,
-            `c`.`de_picture` AS `delveryPiceture`,
+            `c`.`de_picture` AS `deliveryPicture`,
             `d`.`order_id` AS `orderId`,
             `d`.`order_price` AS `price`,
             `d`.`order_info` AS `info`,
             `d`.`order_status` AS `status`,
-            `d`.`order_orderErrorReason` AS `orderErrorReason`,
+            `d`.`order_error_reason` AS `orderErrorReason`,
             `d`.`order_type` AS `orderType`,
             `d`.`order_create_time` AS `createTime`
         FROM
-            `tb_order` AS `a`,
-            `tb_delivery` AS `b`,
-            `tb_factory` AS `c`,
-            `tb_store` AS `d`
-        WHERE `tb_order`.`order_creator` = `tb_store`.`st_id`,
-        AND `tb_order`.`order_receiver` = `tb_factory`.`fac_id`,
-        AND `tb_order`.`order_delivery` = `tb_delivery`.`de_id`,
-        AND `tb_order`.`order_delivery` = #{deliveryId}
+            `tb_store` AS `a`,
+            `tb_factory` AS `b`,
+            `tb_delivery` AS `c`,
+            `tb_order` AS `d`
+        WHERE `d`.`order_creator` = `a`.`st_id`
+          AND `d`.`order_receiver` = `b`.`fac_id`
+          AND `d`.`order_delivery` = `c`.`de_id`
+        AND `d`.`order_delivery` = #{deliveryId}
     </select>
 
     <select id="queryOneOrder" resultType="com.example.javatspfci.code.entity.vo.OrderQueryMsg">
@@ -160,32 +160,32 @@
             `a`.`st_owner_name` AS `storeOwnerName`,
             `a`.`st_phone` AS `storePhone`,
             `a`.`st_location` AS `storeLocation`,
-            `a`.`st_picture` AS `storePiceture`,
+            `a`.`st_picture` AS `storePicture`,
             `b`.`fac_id` AS `factoryId`,
             `b`.`fac_store_name` AS `factoryName`,
             `b`.`fac_phone` AS `factoryPhone`,
             `b`.`fac_location` AS `factoryLocation`,
-            `b`.`fac_picture` AS `factoryPiceture`,
-            `c`.`de_id` AS `delveryId`,
-            `c`.`de_user_name` AS `delveryName`,
-            `c`.`de_phone` AS `delveryPhone`,
+            `b`.`fac_picture` AS `factoryPicture`,
+            `c`.`de_id` AS `deliveryId`,
+            `c`.`de_user_name` AS `deliveryName`,
+            `c`.`de_phone` AS `deliveryPhone`,
             `c`.`de_car` AS `deliveryCarCode`,
-            `c`.`de_picture` AS `delveryPiceture`,
+            `c`.`de_picture` AS `deliveryPicture`,
             `d`.`order_id` AS `orderId`,
             `d`.`order_price` AS `price`,
             `d`.`order_info` AS `info`,
             `d`.`order_status` AS `status`,
-            `d`.`order_orderErrorReason` AS `orderErrorReason`,
+            `d`.`order_error_reason` AS `orderErrorReason`,
             `d`.`order_type` AS `orderType`,
             `d`.`order_create_time` AS `createTime`
         FROM
-            `tb_order` AS `a`,
-            `tb_delivery` AS `b`,
-            `tb_factory` AS `c`,
-            `tb_store` AS `d`
-        WHERE `tb_order`.`order_creator` = `tb_store`.`st_id`,
-        AND `tb_order`.`order_receiver` = `tb_factory`.`fac_id`,
-        AND `tb_order`.`order_delivery` = `tb_delivery`.`de_id`,
-        AND `tb_order`.`order_id` = #{orderId}
+            `tb_store` AS `a`,
+            `tb_factory` AS `b`,
+            `tb_delivery` AS `c`,
+            `tb_order` AS `d`
+        WHERE `d`.`order_creator` = `a`.`st_id`
+          AND `d`.`order_receiver` = `b`.`fac_id`
+          AND `d`.`order_delivery` = `c`.`de_id`
+        AND `d`.`order_id` = #{orderId}
     </select>
 </mapper>

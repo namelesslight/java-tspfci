@@ -35,7 +35,7 @@ public class OrderController {
     public Result createOrder(@RequestBody CreateOrderDto createOrderDto){
         return orderStencil.createOrder(
                 createOrderDto.getCreatorId(),
-                createOrderDto.getCreatorId(),
+                createOrderDto.getReceiverId(),
                 createOrderDto.getValue(),
                 createOrderDto.getInfo(),
                 createOrderDto.getRemark(),
