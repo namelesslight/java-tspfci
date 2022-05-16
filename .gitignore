@@ -1,9 +1,11 @@
 HELP.md
 target/
 !.mvn/wrapper/maven-wrapper.jar
-!**/src/main/**/target/
-!**/src/test/**/target/
-!**/src/main/resources/application.yml
+**/target/
+**/src/main/resources/application.yml
+**/src/main/resources/application.yaml
+**/src/test/
+
 ### STS ###
 .apt_generated
 .classpath
@@ -15,9 +17,11 @@ target/
 
 ### IntelliJ IDEA ###
 .idea
+.gitignore
 *.iws
 *.iml
 *.ipr
+*.class
 
 ### NetBeans ###
 /nbproject/private/
