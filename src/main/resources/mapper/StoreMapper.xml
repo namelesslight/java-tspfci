@@ -35,7 +35,7 @@
                `tb_store`.`st_introduce`,
                `tb_store`.`st_picture`,
                `tb_store`.`st_location`,
-               `tb_store`.`st_lences_id`,
+               `tb_store`.`st_licence`,
                `tb_all_password`.`all_password`,
                `tb_user_role`.`u_role`
         FROM `tb_store`,`tb_all_password`,`tb_user_role`
@@ -53,7 +53,7 @@
                `tb_store`.`st_introduce`,
                `tb_store`.`st_picture`,
                `tb_store`.`st_location`,
-               `tb_store`.`st_lences_id`,
+               `tb_store`.`st_licence`,
                `tb_all_password`.`all_password`,
                `tb_user_role`.`u_role`
         FROM `tb_store`,`tb_all_password`,`tb_user_role`
@@ -71,7 +71,7 @@
                `tb_store`.`st_introduce`,
                `tb_store`.`st_picture`,
                `tb_store`.`st_location`,
-               `tb_store`.`st_lences_id`
+               `tb_store`.`st_licence`
         FROM `tb_store`
         WHERE `tb_store`.`is_delete` = 0
         LIMIT #{start},#{count}

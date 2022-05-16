@@ -18,16 +18,16 @@ public class SwaggerConfig {
     public Docket controllerApi(){
         ApiInfoBuilder apiInfoBuilder = new ApiInfoBuilder();
         ApiInfo apiInfo = apiInfoBuilder
-                .title("Android news api文档")
-                .description("一个仅用于浏览及评论的app")
-                .contact(new Contact("zcl","https://github.com/namelesslight","1826992499@qq.com"))
+                .title("")
+                .description("")
+                .contact(new Contact("","https://github.com/namelesslight",""))
                 .version("1.0.0")
                 .build();
         Docket docket = new Docket(DocumentationType.SWAGGER_2);
         docket.apiInfo(apiInfo);
         docket.select()
                 .apis(RequestHandlerSelectors
-                .basePackage("com.example.androidnews"))
+                .basePackage("com.example.javatspfci.code"))
                 .paths(PathSelectors.any());
         return docket;
     }

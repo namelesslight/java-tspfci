@@ -80,7 +80,7 @@ public class AllPasswordController {
      * @param updatePasswordDto 前端传入json接收类
      * @return
      */
-        @PostMapping("/updatePassword")
+    @PostMapping("/updatePassword")
     public Result updatePassword(@RequestBody UpdatePasswordDto updatePasswordDto){
         return passwordStencil.updatePassword(
                 updatePasswordDto.getId(),
