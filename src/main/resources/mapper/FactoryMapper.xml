@@ -53,7 +53,7 @@
             `fac_store_introduce`,
             `fac_picture`,
             `fac_location`,
-            `fac_lences_id`,
+            `fac_licence`,
             `fac_delete`,
             `create_time`
         FROM `tb_factory`
