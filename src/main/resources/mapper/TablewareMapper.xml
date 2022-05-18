@@ -18,7 +18,75 @@
         <result column="create_time" property="createTime" />
     </resultMap>
     <insert id="addTableware">
-
+    INSERT INTO `tb_tableware`(`tab_factory`,`tab_name`,`tab_describe`,`tab_type`,`tab_picture`,`tab_value`,`tab_size`,`tab_price`,`tab_stock`,`is_delete`,`create_time`)
+    VALUE(#{factoryId}, #{name}, #{describe}, #{type}, #{picture}, #{value}, #{size}, #{price}, #{stock}, 0, NOW());
     </insert>
+
+    <update id="updateTableware">
+    UPDATE `tb_tableware`SET `tab_factory`=#{factoryId},
+                             `tab_name`=#{name},
+                             `tab_describe`=#{describe},
+                             `tab_picture`=#{picture},
+                             `tab_size`=#{size},
+                             `tab_price`=#{price},
+                             `tab_stock`=#{stock}
+    WHERE `tab_id`=#{id}
+    </update>
+    <select id="selectTablewareById" resultType="com.example.javatspfci.code.entity.po.Tableware">
+        SELECT `tb_tableware`.`tab_id`,
+               `tb_tableware`.`tab_factory`,
+               `tb_tableware`.`tab_name`,
+               `tb_tableware`.`tab_describe`,
+               `tb_tableware`.`tab_type`,
+               `tb_tableware`.`tab_picture`,
+               `tb_tableware`.`tab_size`,
+               `tb_tableware`.`tab_price`,
+               `tb_tableware`.`tab_stock`
+        FROM `tb_tableware`
+        WHERE `tb_tableware`.`is_delete` = 0
+        AND  `tb_tableware`.`tab_id` = #{id}
+    </select>
+    <select id="listAllTablewareByPage" resultType="com.example.javatspfci.code.entity.po.Tableware">
+        SELECT `tb_tableware`.`tab_id`,
+               `tb_tableware`.`tab_factory`,
+               `tb_tableware`.`tab_name`,
+               `tb_tableware`.`tab_describe`,
+               `tb_tableware`.`tab_type`,
+               `tb_tableware`.`tab_picture`,
+               `tb_tableware`.`tab_value`,
+               `tb_tableware`.`tab_size`,
+               `tb_tableware`.`tab_price`,
+               `tb_tableware`.`tab_stock`
+        FROM `tb_tableware`
+        WHERE `tb_tableware`.`is_delete` = 0
+        LIMIT #{start},#{count}
+    </select>
+    <select id="countTableware" resultType="java.lang.Integer">
+        SELECT COUNT(*)
+        FROM `tb_tableware`
+        WHERE `tb_tableware`.`is_delete` = 0
+    </select>
+    <select id="listTablewareByFactory" resultType="com.example.javatspfci.code.entity.po.Tableware">
+        SELECT `tb_tableware`.`tab_id`,
+               `tb_tableware`.`tab_factory`,
+               `tb_tableware`.`tab_name`,
+               `tb_tableware`.`tab_describe`,
+               `tb_tableware`.`tab_type`,
+               `tb_tableware`.`tab_picture`,
+               `tb_tableware`.`tab_value`,
+               `tb_tableware`.`tab_size`,
+               `tb_tableware`.`tab_price`,
+               `tb_tableware`.`tab_stock`
+        FROM `tb_tableware`
+        WHERE `tb_tableware`.`is_delete` = 0
+        AND `tb_tableware`.`tab_factory`= #{factoryId}
+        LIMIT #{start},#{count}
+    </select>
+    <select id="countTablewareByFactoryId" resultType="java.lang.Integer">
+        SELECT COUNT(*)
+        FROM `tb_tableware`
+        WHERE `tb_tableware`.`is_delete` = 0
+        AND `tb_tableware`.`tab_factory`= #{factoryId}
+    </select>
 
 </mapper>

@@ -9,6 +9,7 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -20,8 +21,7 @@ import lombok.Setter;
  * @author ZCL
  * @since 2022-05-11
  */
-@Getter
-@Setter
+@Data
 @TableName("tb_tableware")
 @ApiModel(value = "Tableware对象", description = "")
 public class Tableware implements Serializable {

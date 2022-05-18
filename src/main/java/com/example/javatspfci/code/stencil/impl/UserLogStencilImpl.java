@@ -28,7 +28,6 @@ public class UserLogStencilImpl implements UserLogStencil {
      * @param path url路径
      * @return
      */
-    @Transactional(rollbackFor = Exception.class)
     @Override
     public Result queryUserLogByPage(String role,Integer page, Integer count,String path) {
         Integer totalCount = logService.queryTotalCountByRole(role);

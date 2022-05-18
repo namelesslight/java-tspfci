@@ -15,4 +15,70 @@
         <result column="create_time" property="createTime" />
     </resultMap>
 
+    <insert id="addCombo">
+        INSERT INTO `tb_default`(`def_factory`,`def_picture`,`def_price`,`def_name`,`def_info`,`def_stock`,`is_delete`,`create_time`)
+        VALUE (#{factoryId}, #{picture}, #{price}, #{name}, #{info}, #{stock}, 0, NOW())
+    </insert>
+
+    <update id="updateCombo">
+    UPDATE `tb_default` SET `def_factory`=#{factoryId},
+                            `def_picture`=#{picture},
+                            `def_price`=#{price},
+                            `def_name`=#{name},
+                            `def_info`=#{info},
+                            `def_stock`=#{stock}
+    WHERE `def_id`=#{id}
+    </update>
+
+    <select id="selectComboById" resultType="com.example.javatspfci.code.entity.po.Default">
+        SELECT `tb_default`.`def_id`,
+               `tb_default`.`def_factory`,
+               `tb_default`.`def_picture`,
+               `tb_default`.`def_price`,
+               `tb_default`.`def_name`,
+               `tb_default`.`def_info`,
+               `tb_default`.`def_stock`
+        FROM `tb_default`
+        WHERE `tb_default`.`is_delete` = 0
+        AND  `tb_default`.`def_id` = #{id}
+    </select>
+
+    <select id="listAllComboByPage" resultType="com.example.javatspfci.code.entity.po.Default">
+        SELECT `tb_default`.`def_id`,
+               `tb_default`.`def_factory`,
+               `tb_default`.`def_picture`,
+               `tb_default`.`def_price`,
+               `tb_default`.`def_name`,
+               `tb_default`.`def_info`,
+               `tb_default`.`def_stock`
+        FROM `tb_default`
+        WHERE `tb_default`.`is_delete` = 0
+        LIMIT #{start},#{count}
+    </select>
+
+    <select id="countCombo" resultType="java.lang.Integer">
+        SELECT COUNT(*)
+        FROM `tb_default`
+        WHERE `tb_default`.`is_delete` = 0
+    </select>
+    <select id="listComboByFactory" resultType="com.example.javatspfci.code.entity.po.Default">
+        SELECT `tb_default`.`def_id`,
+               `tb_default`.`def_factory`,
+               `tb_default`.`def_picture`,
+               `tb_default`.`def_price`,
+               `tb_default`.`def_name`,
+               `tb_default`.`def_info`,
+               `tb_default`.`def_stock`
+        FROM `tb_default`
+        WHERE `tb_default`.`is_delete` = 0
+        AND `tb_default`.`def_factory` = #{factoryId}
+        LIMIT #{start},#{count}
+    </select>
+    <select id="countComboByFactoryId" resultType="java.lang.Integer">
+        SELECT COUNT(*)
+        FROM `tb_default`
+        WHERE `tb_default`.`is_delete` = 0
+        AND `tb_default`.`def_factory` = #{factoryId}
+    </select>
+
 </mapper>

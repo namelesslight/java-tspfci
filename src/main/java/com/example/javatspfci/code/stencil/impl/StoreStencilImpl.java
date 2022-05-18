@@ -44,7 +44,6 @@ public class StoreStencilImpl implements StoreStencil {
     }
 
     @Override
-    @Transactional(rollbackFor = Exception.class)
     public Result getAllStoreByPage(Integer page, Integer count, String path) {
         Map<String,Object> message = new HashMap<>();
         if (page < 1 || count <= 0) {
