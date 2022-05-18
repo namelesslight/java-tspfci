@@ -7,6 +7,7 @@ import com.example.javatspfci.code.service.OrderService;
 import com.example.javatspfci.code.stencil.OrderStencil;
 import com.example.javatspfci.code.util.UUIDUtil;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.math.BigDecimal;
@@ -33,6 +34,7 @@ public class OrderStencilImpl implements OrderStencil {
      * @return
      */
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public Result createOrder(String creatorId, String receiverId, Integer value, OrderInfoDto info, String remark, String type, Double price, String path) {
         Map<String, Object> message = new HashMap<>();
         int createCode = 1;
@@ -59,6 +61,7 @@ public class OrderStencilImpl implements OrderStencil {
      * @return
      */
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public Result setOrderDelivery(String orderId, String deliveryId, String path) {
         Map<String, Object> message = new HashMap<>();
         int updateCode = 1;
@@ -78,6 +81,7 @@ public class OrderStencilImpl implements OrderStencil {
      * @return
      */
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public Result updateOrderStatus(String orderId, Integer statusCode, String path) {
         Map<String, Object> message = new HashMap<>();
         int updateCode = 1;
@@ -97,6 +101,7 @@ public class OrderStencilImpl implements OrderStencil {
      * @return
      */
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public Result orderCancel(String orderId, String reason, String path) {
         Map<String, Object> message = new HashMap<>();
         int updateCode = 1;

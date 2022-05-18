@@ -30,7 +30,6 @@ public class FactoryStencilImpl implements FactoryStencil {
      * @param path url路径
      * @return
      */
-    @Transactional(rollbackFor = Exception.class)
     @Override
     public Result getAllFactoryByPage(Integer page, Integer count, String path) {
         Integer totalCount = factoryService.queryAllFactoryCount();
@@ -70,6 +69,7 @@ public class FactoryStencilImpl implements FactoryStencil {
      * @return
      */
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public Result updateFactory(String id, String username, String factoryName, String introduce,
                                 MultipartFile headPicture, String location, MultipartFile factoryLicence, String path) throws IOException {
         int updateCode = 1;
