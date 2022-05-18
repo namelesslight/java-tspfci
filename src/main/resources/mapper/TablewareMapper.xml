@@ -17,5 +17,8 @@
         <result column="is_delete" property="isDelete" />
         <result column="create_time" property="createTime" />
     </resultMap>
+    <insert id="addTableware">
+
+    </insert>
 
 </mapper>
