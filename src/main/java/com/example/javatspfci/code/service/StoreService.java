@@ -32,6 +32,13 @@ public interface StoreService extends IService<Store> {
     public Boolean queryCountByPhone(String phone);
 
     /**
+     * 查询是否存在用户名相同
+     * @param name 用户名
+     * @return
+     */
+    public Boolean queryCountByName(String name);
+
+    /**
      * 店家登录
      * @param stUsername 店家用户名
      * @param password 密码

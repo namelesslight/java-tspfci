@@ -26,6 +26,13 @@
         WHERE `st_phone` = #{phone}
           AND `is_delete` = 0
     </select>
+
+    <select id="queryCountByName" resultType="java.lang.Integer">
+        SELECT COUNT(*)
+        FROM `tb_store`
+        WHERE `st_user_name` = #{name}
+    </select>
+
     <select id="selectStoreByUsername" resultType="com.example.javatspfci.code.entity.vo.StoreLoginMsg">
         SELECT `tb_store`.`st_id`,
                `tb_store`.`st_user_name`,
@@ -44,6 +51,7 @@
           AND `st_user_name`=#{stUsername}
           AND `all_password`=#{password}
     </select>
+
     <select id="selectStoreUserById" resultType="com.example.javatspfci.code.entity.vo.StoreLoginMsg">
         SELECT `tb_store`.`st_id`,
                `tb_store`.`st_user_name`,

@@ -47,6 +47,16 @@ public class StoreServiceImpl extends ServiceImpl<StoreMapper, Store> implements
     }
 
     /**
+     * 查询是否存在用户名相同
+     * @param name 用户名
+     * @return
+     */
+    @Override
+    public Boolean queryCountByName(String name) {
+        return storeMapper.queryCountByName(name) >= 1;
+    }
+
+    /**
      *
      * @param stUsername 店家用户名
      * @param password 密码

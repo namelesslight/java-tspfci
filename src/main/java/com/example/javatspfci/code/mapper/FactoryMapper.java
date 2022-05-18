@@ -39,6 +39,13 @@ public interface FactoryMapper extends BaseMapper<Factory> {
     public Integer queryCountByPhone(String phone);
 
     /**
+     * 查询是否存在用户名相同
+     * @param name 用户名
+     * @return
+     */
+    public Integer queryCountByName(String name);
+
+    /**
      *
      * @param facUserName 厂家用户名
      * @param password 密码

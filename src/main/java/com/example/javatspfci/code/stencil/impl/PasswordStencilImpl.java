@@ -62,6 +62,8 @@ public class PasswordStencilImpl implements PasswordStencil {
         Map<String, Object> data = new HashMap<>();
         //初始默认返回码
         Integer registerCode = 1;
+        //判断用户名是否重复
+
         //判断手机号码是否符合格式
         Boolean phoneJudge = Pattern.matches(PHONE_PATTERN, phone);
         if (phoneJudge) {
@@ -99,20 +101,20 @@ public class PasswordStencilImpl implements PasswordStencil {
             String secretPassword = SecretUtil.secretString(password);
             switch (role) {
                 case "user":
-                    if (!storeService.queryCountByPhone(phone)) {
+                    if (!storeService.queryCountByName(name)) {
                         allPasswordService.addUser(userId, secretPassword);
                         storeService.addStore(userId, name, phone);
                     } else {
-                        data.put("phone", "手机号码已注册");
+                        data.put("name", "用户名不可用");
                         registerCode = 0;
                     }
                     break;
                 case "userAdmin":
-                    if (!factoryService.queryCountByPhone(phone)) {
+                    if (!factoryService.queryCountByName(name)) {
                         allPasswordService.addUser(userId, secretPassword);
                         factoryService.addFactory(userId, name, phone);
                     } else {
-                        data.put("phone", "手机号码已注册");
+                        data.put("name", "用户名不可用");
                         registerCode = 0;
                     }
                     break;
@@ -157,10 +159,16 @@ public class PasswordStencilImpl implements PasswordStencil {
         String delID = UUIDUtil.getUUID();
         String password = createRandomPassword();
         if (registerCode == 1){
-            String secretPassword = SecretUtil.secretString(password);
-            allPasswordService.addUser(delID, secretPassword);
-            userRoleService.addRole(delID, role);
-            deliveryService.addDelivery(delID, name, phone, factoryId);
+            if (!deliveryService.queryCountByName(name)){
+                String secretPassword = SecretUtil.secretString(password);
+                allPasswordService.addUser(delID, secretPassword);
+                userRoleService.addRole(delID, role);
+                deliveryService.addDelivery(delID, name, phone, factoryId);
+            } else {
+                data.put("name", "用户名不可用");
+                registerCode = 0;
+            }
+
         }
         Map<String, Object> message = new HashMap<>();
         message.put("register_code",registerCode);
