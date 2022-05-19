@@ -86,4 +86,11 @@ public interface TablewareMapper extends BaseMapper<Tableware> {
      * @return
      */
     public List<Tableware> listTablewareByFactory(String factoryId, Integer start, Integer count);
+
+    /**
+     * 餐具逻辑删除
+     * @param id 餐具id
+     * @return
+     */
+    public Integer deleteTableware(Integer id);
 }

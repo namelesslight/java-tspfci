@@ -32,6 +32,10 @@
                              `tab_stock`=#{stock}
     WHERE `tab_id`=#{id}
     </update>
+    <update id="deleteTableware">
+        UPDATE `tb_tableware` SET `is_delete` = 1
+        WHERE `tab_id`=#{id}
+    </update>
     <select id="selectTablewareById" resultType="com.example.javatspfci.code.entity.po.Tableware">
         SELECT `tb_tableware`.`tab_id`,
                `tb_tableware`.`tab_factory`,

@@ -57,4 +57,11 @@ public class DefaultServiceImpl extends ServiceImpl<DefaultMapper, Default> impl
     public List<Default> listComboByFactory(String facName, Integer start, Integer count) {
         return defaultMapper.listComboByFactory(facName, start, count);
     }
+
+    @Override
+    public Integer deleteCombo(Integer id) {
+        return defaultMapper.deleteCombo(id);
+    }
+
+
 }

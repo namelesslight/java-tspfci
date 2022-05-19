@@ -102,4 +102,15 @@ public class TablewareController {
                 tablewareStencil.listTablewareByFactory(factoryId, page, count, "/code/tableware/getTablewareByFactory");
         return result;
     }
+
+    /**
+     * 餐具逻辑删除
+     * @param id 餐具id
+     * @return
+     */
+    @PostMapping("/deleteTableware")
+    public Result deleteTableware(@RequestBody Integer id) {
+        Result result = tablewareStencil.deleteTableware(id, "/code/tableware/deleteTableware");
+        return result;
+    }
 }

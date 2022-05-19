@@ -44,6 +44,8 @@ class JavaTspfciApplicationTests {
 //        System.out.println(def.toString());
 
 //        System.out.println(comboMapper.countCombo());
+        Integer integer = tablewareMapper.deleteTableware(4);
+        System.out.println(integer);
     }
 
     @Test

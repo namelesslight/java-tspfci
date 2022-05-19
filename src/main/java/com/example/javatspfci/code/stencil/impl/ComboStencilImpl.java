@@ -155,4 +155,17 @@ public class ComboStencilImpl implements ComboStencil {
             return new Result().result200(message, path);
         }
     }
+
+    @Override
+    public Result deleteCombo(Integer id, String path) {
+        Map<String, Object> message = new HashMap<>();
+        try {
+            ComboService.deleteCombo(id);
+            message.put("data", "删除成功");
+        } catch (Exception e) {
+            e.printStackTrace();
+            message.put("data", "删除失败");
+        }
+        return new Result().result200(message, path);
+    }
 }

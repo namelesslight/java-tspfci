@@ -198,4 +198,17 @@ public class TablewareStencilImpl implements TablewareStencil {
             return new Result().result200(message, path);
         }
     }
+
+    @Override
+    public Result deleteTableware(Integer id, String path) {
+        Map<String, Object> message = new HashMap<>();
+        try {
+            tablewareService.deleteTableware(id);
+            message.put("data", "删除成功");
+        } catch (Exception e) {
+            e.printStackTrace();
+            message.put("data", "删除失败");
+        }
+        return new Result().result200(message, path);
+    }
 }

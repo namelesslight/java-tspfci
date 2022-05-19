@@ -76,4 +76,12 @@ public interface TablewareStencil {
      * @return
      */
     public Result listTablewareByFactory(String factoryId, Integer page, Integer count, String path);
+
+    /**
+     * 餐具逻辑删除
+     * @param id 餐具id
+     * @param path url
+     * @return
+     */
+    public Result deleteTableware(Integer id, String path);
 }

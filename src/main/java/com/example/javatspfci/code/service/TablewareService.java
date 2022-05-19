@@ -83,4 +83,11 @@ public interface TablewareService extends IService<Tableware> {
      * @return
      */
     public List<Tableware> listTablewareByFactory(String facName, Integer start, Integer count);
+
+    /**
+     * 餐具逻辑删除
+     * @param id 餐具id
+     * @return
+     */
+    public Integer deleteTableware(Integer id);
 }

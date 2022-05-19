@@ -59,4 +59,9 @@ public class TablewareServiceImpl extends ServiceImpl<TablewareMapper, Tableware
     public List<Tableware> listTablewareByFactory(String facName, Integer start, Integer count) {
         return tablewareMapper.listTablewareByFactory(facName, start, count);
     }
+
+    @Override
+    public Integer deleteTableware(Integer id) {
+        return tablewareMapper.deleteTableware(id);
+    }
 }

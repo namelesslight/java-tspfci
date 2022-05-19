@@ -82,4 +82,12 @@ public interface ComboStencil {
      * @return
      */
     public Result listComboByFactory(String factoryId, Integer page, Integer count, String path);
+
+    /**
+     * 套餐逻辑删除
+     * @param id 套餐id
+     * @param path url
+     * @return
+     */
+    public Result deleteCombo(Integer id, String path);
 }

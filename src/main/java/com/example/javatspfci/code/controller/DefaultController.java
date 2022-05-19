@@ -103,4 +103,15 @@ public class DefaultController {
         Result result = comboStencil.listComboByFactory(factoryId, page, count, "/code/default/getComboByFactory");
         return result;
     }
+
+    /**
+     * 逻辑删除套餐
+     * @param id 套餐id
+     * @return
+     */
+    @PostMapping("/deleteCombo")
+    public Result deleteCombo(@RequestParam Integer id) {
+        Result result = comboStencil.deleteCombo(id, "/code/default/deleteCombo");
+        return result;
+    }
 }
