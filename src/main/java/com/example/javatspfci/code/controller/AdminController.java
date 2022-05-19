@@ -10,6 +10,9 @@ import com.example.javatspfci.code.stencil.LoginStencil;
 import com.example.javatspfci.code.util.SecretUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
 
 /**
  * <p>
@@ -59,6 +62,10 @@ public class AdminController {
         return result;
     }
 
-
-
+    @PostMapping("/updateAdminInfo")
+    public Result updateAdminInfo(@RequestParam String id,
+                                  @RequestParam String username,
+                                  @RequestParam MultipartFile headPicture) throws IOException {
+        return adminStencil.updateAdminInfo(id, username, headPicture, "code/admin/updateAdminInfo");
+    }
 }

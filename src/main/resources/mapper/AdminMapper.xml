@@ -21,6 +21,7 @@
         FROM `tb_admin`
         WHERE `ad_user_name` = #{username}
     </select>
+
     <select id="selectAdminUserByUsername" resultType="com.example.javatspfci.code.entity.vo.AdminLoginMsg">
         SELECT `tb_admin`.`ad_id`,
                `tb_admin`.`ad_user_name`,
@@ -33,6 +34,7 @@
           AND `ad_user_name`= #{username}
           AND `all_password`= #{password}
     </select>
+
     <select id="selectAdminUserById" resultType="com.example.javatspfci.code.entity.vo.AdminLoginMsg">
         SELECT `tb_admin`.`ad_id`,
                `tb_admin`.`ad_user_name`,
@@ -46,4 +48,13 @@
           AND `tb_admin`.`is_delete`= 0
     </select>
 
+    <update id="updateAdminInfo">
+        UPDATE
+            `tb_admin`
+        SET
+            `ad_user_name` = #{username},
+            `ad_user_picture` = #{headPicture}
+        WHERE
+            `ad_id` = #{id}
+    </update>
 </mapper>

@@ -21,7 +21,7 @@ public class OrderInfoDto {
     public String toString(){
         StringBuffer sb = new StringBuffer(set.toString() + ",\r\n");
         for (OrderOtherDto otherDto : other) {
-            sb.append(otherDto.getName() + " X " + otherDto.getCount() + " : " + otherDto.getPrice() + ",\r\n");
+            sb.append(otherDto.getName() + " X " + otherDto.getCount() + " : " + otherDto.getPrice() + "元,\r\n");
         }
         return sb.toString();
     }

@@ -10,6 +10,9 @@ import com.example.javatspfci.code.stencil.StoreStencil;
 import com.example.javatspfci.code.util.SecretUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
 
 /**
  * <p>
@@ -70,5 +73,29 @@ public class StoreController {
     public Result getAllStoreByPage(@RequestParam Integer page,
                                     @RequestParam Integer count){
         return storeStencil.getAllStoreByPage(page,count,"/code/store/getAllStoreByPage");
+    }
+
+    /**
+     * 更新店家信息
+     * @param id 店家ID
+     * @param ownerName 店主姓名
+     * @param storeName 店名
+     * @param introduce 店家介绍
+     * @param headPicture 店面图片
+     * @param location 店家地址
+     * @param licence 经营许可证图片
+     * @return
+     * @throws IOException
+     */
+    @PostMapping("/updateStoreInfo")
+    public Result updateStoreInfo(@RequestParam String id,
+                                  @RequestParam String username,
+                                  @RequestParam String ownerName,
+                                  @RequestParam String storeName,
+                                  @RequestParam String introduce,
+                                  @RequestParam MultipartFile headPicture,
+                                  @RequestParam String location,
+                                  @RequestParam MultipartFile licence) throws IOException {
+        return storeStencil.updateStoreInfo(id, username, ownerName, storeName, introduce, headPicture, location, licence,"/code/store/updateStoreInfo");
     }
 }

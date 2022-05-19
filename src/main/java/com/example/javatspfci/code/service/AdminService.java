@@ -4,6 +4,7 @@ import com.example.javatspfci.code.entity.po.Admin;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.example.javatspfci.code.entity.vo.AdminLoginMsg;
 
+
 /**
  * <p>
  *  服务类
@@ -43,4 +44,13 @@ public interface AdminService extends IService<Admin> {
      * @return
      */
     public AdminLoginMsg queryAdminById(String id);
+
+    /**
+     * 修改管理员信息
+     * @param id 管理员ID
+     * @param username 用户名
+     * @param headPicture 用户头像图片
+     * @return
+     */
+    public Boolean updateAdminInfo(String id, String username, String headPicture);
 }

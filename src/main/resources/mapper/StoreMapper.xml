@@ -90,4 +90,17 @@
         WHERE `tb_store`.`is_delete` = 0
     </select>
 
+    <update id="updateStoreInfo">
+        UPDATE `tb_store`
+        SET
+            `st_user_name` = #{username},
+            `st_owner_name` = #{onwerName},
+            `st_store_name` = #{storeName},
+            `st_store_introduce` = #{introduce},
+            `st_picture` = #{headPicture},
+            `st_location` = #{location},
+            `st_licence` = #{location}
+        WHERE `st_id` = #{id}
+    </update>
+
 </mapper>

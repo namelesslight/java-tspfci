@@ -73,4 +73,19 @@ public interface StoreMapper extends BaseMapper<Store> {
      */
     public Integer queryAllStoreCount();
 
+    /**
+     * 更新店家信息
+     * @param id 店家ID
+     * @param username
+     * @param ownerName 店主姓名
+     * @param storeName 店名
+     * @param introduce 店家介绍
+     * @param headPicture 店面图片
+     * @param location 店家地址
+     * @param licence 经营许可证图片
+     * @return
+     */
+    public Integer updateStoreInfo(String id, String username, String ownerName, String storeName,
+                                   String introduce, String headPicture, String location, String licence);
+
 }

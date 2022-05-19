@@ -4,9 +4,12 @@ import com.example.javatspfci.code.entity.vo.AdminLoginMsg;
 import com.example.javatspfci.code.result.Result;
 import com.example.javatspfci.code.service.AdminService;
 import com.example.javatspfci.code.stencil.AdminStencil;
+import com.example.javatspfci.code.util.FileUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -36,6 +39,41 @@ public class AdminStencilImpl implements AdminStencil {
         } else {
             message.put("data", adminMsg);
         }
+        return new Result().result200(message, path);
+    }
+
+    /**
+     * 修改管理员信息
+     * @param id 管理员ID
+     * @param username 用户名
+     * @param headPicture 用户头像图片
+     * @param path url路径
+     * @return
+     */
+    @Override
+    public Result updateAdminInfo(String id, String username, MultipartFile headPicture, String path) throws IOException {
+        int updateCode = 1;
+        Map<String, Object> data = null;
+        //本地设置图片路径
+        //String imagePath = "C:/Users/Lenovo/Desktop/image/" + id;
+        //服务器路径
+        String imagePath = "/usr/local/src/spring-boot/image/" + id;
+        String headPicturePath = FileUtil.addImg(headPicture, username);
+        Boolean updateJudge = false;
+        if (!adminService.queryAdminCountByUsername(username)){
+            updateJudge = adminService.updateAdminInfo(id, headPicturePath, path);
+        } else {
+            data = new HashMap<>();
+            data.put("username","用户名已使用");
+        }
+        if (updateJudge){
+            data = new HashMap<>();
+            data.put("username",username);
+            data.put("headPicture",headPicture);
+        }
+        Map<String, Object> message = new HashMap<>();
+        message.put("update_code",updateCode);
+        message.put("data",data);
         return new Result().result200(message, path);
     }
 }
