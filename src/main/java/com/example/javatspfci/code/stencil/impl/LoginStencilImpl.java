@@ -89,7 +89,6 @@ public class LoginStencilImpl implements LoginStencil {
 
     /**
      * 厂家登录
-     *
      * @param factoryMsg 厂家用户名
      * @param logStatus  操作状态
      * @param path       请求路径
