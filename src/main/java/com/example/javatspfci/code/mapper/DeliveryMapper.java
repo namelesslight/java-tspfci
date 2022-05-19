@@ -43,7 +43,7 @@ public interface DeliveryMapper extends BaseMapper<Delivery> {
      * @param name 用户名
      * @return
      */
-    public Integer queryCountByName(String name);
+    public String queryCountByName(String name);
 
     /**
      *
