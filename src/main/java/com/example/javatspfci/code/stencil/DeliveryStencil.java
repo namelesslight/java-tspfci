@@ -48,4 +48,11 @@ public interface DeliveryStencil {
     public Result updateDeliveryInfo(String delID, String username, MultipartFile headPicture, MultipartFile drivingLicence,
                                      MultipartFile carLicence, MultipartFile carCode, String path) throws IOException;
 
+    /**
+     * 根据用户名模糊查询用户
+     * @param username 用户名
+     * @param path url路径
+     * @return
+     */
+    public Result queryFindDelivery(String username,String path);
 }

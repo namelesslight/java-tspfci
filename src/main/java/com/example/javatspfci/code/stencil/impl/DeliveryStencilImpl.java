@@ -6,6 +6,7 @@ import com.example.javatspfci.code.result.Result;
 import com.example.javatspfci.code.service.DeliveryService;
 import com.example.javatspfci.code.stencil.DeliveryStencil;
 import com.example.javatspfci.code.util.FileUtil;
+import org.apache.logging.log4j.message.Message;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
@@ -117,6 +118,20 @@ public class DeliveryStencilImpl implements DeliveryStencil {
         Map<String,Object> message = new HashMap<>();
         message.put("data",data);
         message.put("update_code",updateCode);
+        return new Result().result200(message, path);
+    }
+
+    /**
+     * 根据用户名模糊查询用户
+     * @param username 用户名
+     * @param path url路径
+     * @return
+     */
+    @Override
+    public Result queryFindDelivery(String username, String path) {
+        Map<String,Object> message = new HashMap<>();
+        List<Delivery> data = deliveryService.queryFindDelivery(username);
+        message.put("data",data);
         return new Result().result200(message, path);
     }
 

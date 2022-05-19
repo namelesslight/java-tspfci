@@ -99,4 +99,9 @@ public class DeliveryController {
         return deliveryStencil.updateDeliveryInfo(id, username, headPicture, drivingLicence, carLicence,carCode,
                 "/code/delivery/updateDeliveryInfo");
     }
+
+    @GetMapping("/queryFindDelivery")
+    public Result queryFindDelivery(@RequestParam String username){
+        return deliveryStencil.queryFindDelivery(username, "/code/delivery/queryFindDelivery");
+    }
 }

@@ -136,4 +136,15 @@ public class DeliveryServiceImpl extends ServiceImpl<DeliveryMapper, Delivery> i
                                   String carLicence, String carCode) {
         return deliveryMapper.updateDelivery(delID, username, headPicture, drivingLicence, carLicence, carCode) == 1;
     }
+
+    /**
+     * 根据用户名模糊查询用户
+     * @param username 用户名
+     * @return
+     */
+    @Override
+    public List<Delivery> queryFindDelivery(String username) {
+        return deliveryMapper.queryFindDelivery(username);
+    }
+
 }

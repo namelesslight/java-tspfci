@@ -98,4 +98,11 @@ public interface DeliveryService extends IService<Delivery> {
      */
     public Boolean updateDelivery(String delID, String username, String headPicture, String drivingLicence,
                                   String carLicence, String carCode);
+
+    /**
+     * 根据用户名模糊查询用户
+     * @param username 用户名
+     * @return
+     */
+    public List<Delivery> queryFindDelivery(String username);
 }
