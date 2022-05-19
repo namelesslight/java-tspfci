@@ -1,4 +1,4 @@
-package com.example.javatspfci.code.entity.dto;
+package com.example.javatspfci.code.entity.dto.tableware;
 
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;

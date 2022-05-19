@@ -66,17 +66,32 @@ public interface TablewareMapper extends BaseMapper<Tableware> {
     public List<Tableware> listAllTablewareByPage(Integer start, Integer count);
 
     /**
-     * 查询所有餐具种类数
+     * 查询所有餐具总数
      * @return
      */
     public Integer countTableware();
 
     /**
-     * 查询指定厂家id餐具种类数
+     * 查询指定厂家id餐具总数
      * @param factoryId 厂家id
      * @return
      */
     public Integer countTablewareByFactoryId(String factoryId);
+
+    /**
+     * 查询指定类型的餐具
+     * @param type 餐具类型
+     * @return
+     */
+    public Integer countTablewareByType(String type);
+
+    /**
+     * 根据厂家id和指定类型的查询餐具
+     * @param factoryId 厂家id
+     * @param type 餐具类型
+     * @return
+     */
+    public Integer countTablewareByCondition(String factoryId, String type);
 
     /**
      * 根据厂家分页查询餐具信息
@@ -93,4 +108,24 @@ public interface TablewareMapper extends BaseMapper<Tableware> {
      * @return
      */
     public Integer deleteTableware(Integer id);
+
+    /**
+     * 根据分类查询餐具
+     * @param type 餐具类别
+     * @param start 开始位置
+     * @param count 查多少个
+     * @return
+     */
+    public List<Tableware> listTablewareByType(String type, Integer start, Integer count);
+
+
+    /**
+     * 根据厂家和餐具类别分页查询餐具信息
+     * @param factoryId 厂家id
+     * @param type 餐具类别
+     * @param start 开始位置
+     * @param count 查多少个
+     * @return
+     */
+    public List<Tableware> listTablewareByCondition(String factoryId, String type, Integer start, Integer count);
 }

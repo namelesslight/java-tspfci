@@ -56,6 +56,11 @@ public class TablewareServiceImpl extends ServiceImpl<TablewareMapper, Tableware
     }
 
     @Override
+    public Integer countTablewareByType(String type) {
+        return tablewareMapper.countTablewareByType(type);
+    }
+
+    @Override
     public List<Tableware> listTablewareByFactory(String facName, Integer start, Integer count) {
         return tablewareMapper.listTablewareByFactory(facName, start, count);
     }
@@ -63,5 +68,20 @@ public class TablewareServiceImpl extends ServiceImpl<TablewareMapper, Tableware
     @Override
     public Integer deleteTableware(Integer id) {
         return tablewareMapper.deleteTableware(id);
+    }
+
+    @Override
+    public List<Tableware> listTablewareByType(String type, Integer start, Integer count) {
+        return tablewareMapper.listTablewareByType(type, start, count);
+    }
+
+    @Override
+    public Integer countTablewareByCondition(String factoryId, String type) {
+        return tablewareMapper.countTablewareByCondition(factoryId, type);
+    }
+
+    @Override
+    public List<Tableware> listTablewareByCondition(String factoryId, String type, Integer start, Integer count) {
+        return tablewareMapper.listTablewareByCondition(factoryId, type, start, count);
     }
 }
