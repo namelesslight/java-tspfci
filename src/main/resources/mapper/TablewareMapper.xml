@@ -32,6 +32,10 @@
                              `tab_stock`=#{stock}
     WHERE `tab_id`=#{id}
     </update>
+    <update id="deleteTableware">
+        UPDATE `tb_tableware` SET `is_delete` = 1
+        WHERE `tab_id`=#{id}
+    </update>
     <select id="selectTablewareById" resultType="com.example.javatspfci.code.entity.po.Tableware">
         SELECT `tb_tableware`.`tab_id`,
                `tb_tableware`.`tab_factory`,
@@ -87,6 +91,52 @@
         FROM `tb_tableware`
         WHERE `tb_tableware`.`is_delete` = 0
         AND `tb_tableware`.`tab_factory`= #{factoryId}
+    </select>
+    <select id="listTablewareByType" resultType="com.example.javatspfci.code.entity.po.Tableware">
+        SELECT `tb_tableware`.`tab_id`,
+               `tb_tableware`.`tab_factory`,
+               `tb_tableware`.`tab_name`,
+               `tb_tableware`.`tab_describe`,
+               `tb_tableware`.`tab_type`,
+               `tb_tableware`.`tab_picture`,
+               `tb_tableware`.`tab_value`,
+               `tb_tableware`.`tab_size`,
+               `tb_tableware`.`tab_price`,
+               `tb_tableware`.`tab_stock`
+        FROM `tb_tableware`
+        WHERE `tb_tableware`.`is_delete` = 0
+        AND `tb_tableware`.`tab_type`= #{type}
+        LIMIT #{start},#{count}
+    </select>
+    <select id="countTablewareByType" resultType="java.lang.Integer">
+        SELECT COUNT(*)
+        FROM `tb_tableware`
+        WHERE `tb_tableware`.`is_delete` = 0
+        AND `tb_tableware`.`tab_type`= #{type}
+    </select>
+    <select id="countTablewareByCondition" resultType="java.lang.Integer">
+        SELECT COUNT(*)
+        FROM `tb_tableware`
+        WHERE `tb_tableware`.`is_delete` = 0
+        AND `tb_tableware`.`tab_type`= #{type}
+        AND `tb_tableware`.`tab_factory`= #{factoryId}
+    </select>
+    <select id="listTablewareByCondition" resultType="com.example.javatspfci.code.entity.po.Tableware">
+        SELECT `tb_tableware`.`tab_id`,
+               `tb_tableware`.`tab_factory`,
+               `tb_tableware`.`tab_name`,
+               `tb_tableware`.`tab_describe`,
+               `tb_tableware`.`tab_type`,
+               `tb_tableware`.`tab_picture`,
+               `tb_tableware`.`tab_value`,
+               `tb_tableware`.`tab_size`,
+               `tb_tableware`.`tab_price`,
+               `tb_tableware`.`tab_stock`
+        FROM `tb_tableware`
+        WHERE `tb_tableware`.`is_delete` = 0
+        AND `tb_tableware`.`tab_factory`= #{factoryId}
+        AND `tb_tableware`.`tab_type`= #{type}
+        LIMIT #{start},#{count}
     </select>
 
 </mapper>

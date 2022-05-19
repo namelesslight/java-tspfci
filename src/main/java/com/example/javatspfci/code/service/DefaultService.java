@@ -78,4 +78,11 @@ public interface DefaultService extends IService<Default> {
      */
     public List<Default> listComboByFactory(String facName, Integer start, Integer count);
 
+    /**
+     * 套餐逻辑删除
+     * @param id 套餐id
+     * @return
+     */
+    public Integer deleteCombo(Integer id);
+
 }

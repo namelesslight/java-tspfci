@@ -78,4 +78,11 @@ public interface DefaultMapper extends BaseMapper<Default> {
      * @return
      */
     public List<Default> listComboByFactory(String factoryId, Integer start, Integer count);
+
+    /**
+     * 套餐逻辑删除
+     * @param id 套餐id
+     * @return
+     */
+    public Integer deleteCombo(Integer id);
 }

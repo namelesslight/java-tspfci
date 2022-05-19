@@ -56,13 +56,13 @@ public interface TablewareStencil {
     public Result listAllTablewareByPage(Integer page, Integer count, String path);
 
     /**
-     * 查询餐具种类数
+     * 查询餐具总数
      * @return
      */
     public Result countTableware(String path);
 
     /**
-     * 查询指定厂家id餐具种类数
+     * 查询指定厂家id餐具总数
      * @param factoryId 厂家id
      * @return
      */
@@ -73,7 +73,38 @@ public interface TablewareStencil {
      * @param factoryId 厂家id
      * @param page 开始位置
      * @param count 查多少个
+     * @param path url
      * @return
      */
     public Result listTablewareByFactory(String factoryId, Integer page, Integer count, String path);
+
+    /**
+     * 餐具逻辑删除
+     * @param id 餐具id
+     * @param path url
+     * @return
+     */
+    public Result deleteTableware(Integer id, String path);
+
+    /**
+     * 根据分类查询餐具
+     * @param type 餐具类别
+     * @param page 开始位置
+     * @param count 查多少个
+     * @param path url
+     * @return
+     */
+    public Result listTablewareByType(String type, Integer page, Integer count, String path);
+
+
+    /**
+     * 根据厂家和餐具类别分页查询餐具信息
+     * @param factoryId 厂家id
+     * @param type 餐具类别
+     * @param page 开始位置
+     * @param count 查多少个
+     * @param path url
+     * @return
+     */
+    public Result listTablewareByCondition(String factoryId, String type, Integer page, Integer count, String path);
 }

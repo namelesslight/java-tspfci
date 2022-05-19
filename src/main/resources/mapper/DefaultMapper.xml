@@ -29,6 +29,10 @@
                             `def_stock`=#{stock}
     WHERE `def_id`=#{id}
     </update>
+    <update id="deleteCombo">
+        UPDATE `tb_default` SET `is_delete` = 1
+        WHERE `def_id`=#{id}
+    </update>
 
     <select id="selectComboById" resultType="com.example.javatspfci.code.entity.po.Default">
         SELECT `tb_default`.`def_id`,
