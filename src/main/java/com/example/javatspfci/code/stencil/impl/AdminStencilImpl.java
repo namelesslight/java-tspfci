@@ -61,7 +61,7 @@ public class AdminStencilImpl implements AdminStencil {
         String headPicturePath = FileUtil.addImg(headPicture, imagePath);
         Boolean updateJudge = false;
         String queryId = adminService.queryAdminCountByUsername(username);
-        if (queryId.equals(id)){
+        if (id.equals(queryId)){
             updateJudge = adminService.updateAdminInfo(id, username, headPicturePath);
         } else {
             data = new HashMap<>();
