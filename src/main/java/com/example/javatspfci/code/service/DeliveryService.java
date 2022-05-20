@@ -35,6 +35,13 @@ public interface DeliveryService extends IService<Delivery> {
     public Boolean queryCountByPhone(String phone);
 
     /**
+     * 查询是否存在用户名相同
+     * @param name 用户名
+     * @return
+     */
+    public Boolean queryCountByName(String name);
+
+    /**
      *
      * @param deUserName 配送员账号
      * @param password 密码
@@ -91,4 +98,11 @@ public interface DeliveryService extends IService<Delivery> {
      */
     public Boolean updateDelivery(String delID, String username, String headPicture, String drivingLicence,
                                   String carLicence, String carCode);
+
+    /**
+     * 根据用户名模糊查询用户
+     * @param username 用户名
+     * @return
+     */
+    public List<Delivery> queryFindDelivery(String username);
 }

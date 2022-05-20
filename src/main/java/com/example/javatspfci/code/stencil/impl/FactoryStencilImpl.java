@@ -7,6 +7,7 @@ import com.example.javatspfci.code.result.Result;
 import com.example.javatspfci.code.service.FactoryService;
 import com.example.javatspfci.code.stencil.FactoryStencil;
 import com.example.javatspfci.code.util.FileUtil;
+import lombok.Data;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
@@ -73,17 +74,22 @@ public class FactoryStencilImpl implements FactoryStencil {
     public Result updateFactory(String id, String username, String factoryName, String introduce,
                                 MultipartFile headPicture, String location, MultipartFile factoryLicence, String path) throws IOException {
         int updateCode = 1;
-        Map<String, Object> data = null;
+        Map<String, Object> data = new HashMap<>();
         //本地设置图片路径
         //String imagePath = "C:/Users/Lenovo/Desktop/image/" + id;
         //服务器路径
         String imagePath = "/usr/local/src/spring-boot/image/" + id;
         String headPicturePath = FileUtil.addImg(headPicture,imagePath);
         String factoryLicencePath = FileUtil.addImg(factoryLicence,imagePath);
-        Boolean updateJude = factoryService.updateFactory(id, username, factoryName, introduce,
+        Boolean updateJude = false;
+        if (!factoryService.queryCountByName(username)){
+         updateJude = factoryService.updateFactory(id, username, factoryName, introduce,
                 headPicturePath, location, factoryLicencePath);
+        } else {
+            updateCode = 0;
+            data.put("username","用户名已用");
+        }
         if (updateJude){
-            data = new HashMap<>();
             data.put("username",username);
             data.put("factory_name",factoryName);
             data.put("introduce",introduce);

@@ -26,6 +26,12 @@
         WHERE `fac_phone` = #{phone}
     </select>
 
+    <select id="queryCountByName" resultType="java.lang.Integer">
+        SELECT COUNT(*)
+        FROM `tb_factory`
+        WHERE `fac_user_name` = #{name}
+    </select>
+
     <select id="selectFacUserName" resultType="com.example.javatspfci.code.entity.vo.FactoryLoginMsg">
         SELECT `tb_factory`.`fac_id`,
                `tb_factory`.`fac_user_name`,
@@ -53,7 +59,7 @@
             `fac_store_introduce`,
             `fac_picture`,
             `fac_location`,
-            `fac_lences_id`,
+            `fac_licence`,
             `fac_delete`,
             `create_time`
         FROM `tb_factory`

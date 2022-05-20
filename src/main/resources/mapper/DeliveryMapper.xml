@@ -23,6 +23,12 @@
         WHERE `de_phone` = #{phone}
     </select>
 
+    <select id="queryCountByName" resultType="java.lang.Integer">
+        SELECT COUNT(*)
+        FROM `tb_delivery`
+        WHERE `de_user_name` = #{name}
+    </select>
+
     <select id="selectDeByUsername" resultType="com.example.javatspfci.code.entity.vo.DeliveryLoginMsg">
         SELECT `tb_delivery`.`de_id`,
                `tb_delivery`.`de_user_name`,
@@ -114,4 +120,22 @@
             `de_car` = #{carCode}
         WHERE `de_id` = #{delID}
     </update>
+
+    <select id="queryFindDelivery" resultType="com.example.javatspfci.code.entity.po.Delivery">
+        SELECT
+            `de_id`,
+            `de_user_name`,
+            `de_phone`,
+            `de_picture`,
+            `de_factory_id`,
+            `de_driving_license`,
+            `de_car_license`,
+            `de_car`,
+            `de_delete`,
+            `create_time`
+        FROM `tb_delivery`
+        WHERE `de_delete` = 0
+        AND `de_user_name` LIKE CONCAT('%',#{username},'%')
+
+    </select>
 </mapper>

@@ -49,6 +49,16 @@ public class DeliveryServiceImpl extends ServiceImpl<DeliveryMapper, Delivery> i
     }
 
     /**
+     * 查询是否存在用户名相同
+     * @param name 用户名
+     * @return
+     */
+    @Override
+    public Boolean queryCountByName(String name) {
+        return deliveryMapper.queryCountByName(name) >= 1;
+    }
+
+    /**
      *
      * @param deUserName 配送员账号
      * @param password 密码
@@ -126,4 +136,15 @@ public class DeliveryServiceImpl extends ServiceImpl<DeliveryMapper, Delivery> i
                                   String carLicence, String carCode) {
         return deliveryMapper.updateDelivery(delID, username, headPicture, drivingLicence, carLicence, carCode) == 1;
     }
+
+    /**
+     * 根据用户名模糊查询用户
+     * @param username 用户名
+     * @return
+     */
+    @Override
+    public List<Delivery> queryFindDelivery(String username) {
+        return deliveryMapper.queryFindDelivery(username);
+    }
+
 }

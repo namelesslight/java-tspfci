@@ -64,4 +64,16 @@ public class AdminServiceImpl extends ServiceImpl<AdminMapper, Admin> implements
     public AdminLoginMsg queryAdminById(String id) {
         return adminMapper.selectAdminUserById(id);
     }
+
+    /**
+     * 修改管理员信息
+     * @param id 管理员ID
+     * @param username 用户名
+     * @param headPicture 用户头像图片
+     * @return
+     */
+    @Override
+    public Boolean updateAdminInfo(String id, String username, String headPicture) {
+        return adminMapper.updateAdminInfo(id, username, headPicture) == 1;
+    }
 }

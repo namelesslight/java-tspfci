@@ -38,6 +38,13 @@ public interface StoreMapper extends BaseMapper<Store> {
     public Integer queryCountByPhone(String phone);
 
     /**
+     * 查询是否存在用户名相同
+     * @param name 用户名
+     * @return
+     */
+    public Integer queryCountByName(String name);
+
+    /**
      * 店家登录
      * @param stUsername 店家用户名
      * @param password 密码
@@ -65,5 +72,20 @@ public interface StoreMapper extends BaseMapper<Store> {
      * @return
      */
     public Integer queryAllStoreCount();
+
+    /**
+     * 更新店家信息
+     * @param id 店家ID
+     * @param username
+     * @param ownerName 店主姓名
+     * @param storeName 店名
+     * @param introduce 店家介绍
+     * @param headPicture 店面图片
+     * @param location 店家地址
+     * @param licence 经营许可证图片
+     * @return
+     */
+    public Integer updateStoreInfo(String id, String username, String ownerName, String storeName,
+                                   String introduce, String headPicture, String location, String licence);
 
 }

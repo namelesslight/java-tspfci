@@ -48,4 +48,13 @@ public interface AdminMapper extends BaseMapper<Admin> {
      */
     public AdminLoginMsg selectAdminUserById(String id);
 
+    /**
+     * 修改管理员信息
+     * @param id 管理员ID
+     * @param username 用户名
+     * @param headPicture 用户头像图片
+     * @return
+     */
+    public Integer updateAdminInfo(String id, String username, String headPicture);
+
 }

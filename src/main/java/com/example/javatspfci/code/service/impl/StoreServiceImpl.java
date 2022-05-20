@@ -6,6 +6,7 @@ import com.example.javatspfci.code.mapper.StoreMapper;
 import com.example.javatspfci.code.service.StoreService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -47,6 +48,16 @@ public class StoreServiceImpl extends ServiceImpl<StoreMapper, Store> implements
     }
 
     /**
+     * 查询是否存在用户名相同
+     * @param name 用户名
+     * @return
+     */
+    @Override
+    public Boolean queryCountByName(String name) {
+        return storeMapper.queryCountByName(name) >= 1;
+    }
+
+    /**
      *
      * @param stUsername 店家用户名
      * @param password 密码
@@ -85,6 +96,24 @@ public class StoreServiceImpl extends ServiceImpl<StoreMapper, Store> implements
     @Override
     public Integer queryAllStoreCount() {
         return storeMapper.queryAllStoreCount();
+    }
+
+    /**
+     * 更新店家信息
+     * @param id 店家ID
+     * @param username
+     * @param ownerName 店主姓名
+     * @param storeName 店名
+     * @param introduce 店家介绍
+     * @param headPicture 店面图片
+     * @param location 店家地址
+     * @param licence 经营许可证图片
+     * @return
+     */
+    @Override
+    public Boolean updateStoreInfo(String id, String username, String ownerName, String storeName,
+                                   String introduce, String headPicture, String location, String licence) {
+        return storeMapper.updateStoreInfo(id, username, ownerName, storeName, introduce, headPicture, location, licence) == 1;
     }
 
 }

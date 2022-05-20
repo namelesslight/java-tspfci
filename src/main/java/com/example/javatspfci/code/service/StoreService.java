@@ -3,6 +3,7 @@ package com.example.javatspfci.code.service;
 import com.example.javatspfci.code.entity.po.Store;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.example.javatspfci.code.entity.vo.StoreLoginMsg;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -32,6 +33,13 @@ public interface StoreService extends IService<Store> {
     public Boolean queryCountByPhone(String phone);
 
     /**
+     * 查询是否存在用户名相同
+     * @param name 用户名
+     * @return
+     */
+    public Boolean queryCountByName(String name);
+
+    /**
      * 店家登录
      * @param stUsername 店家用户名
      * @param password 密码
@@ -59,4 +67,18 @@ public interface StoreService extends IService<Store> {
      * @return
      */
     public Integer queryAllStoreCount();
+
+    /**
+     * 更新店家信息
+     * @param id 店家ID
+     * @param ownerName 店主姓名
+     * @param storeName 店名
+     * @param introduce 店家介绍
+     * @param headPicture 店面图片
+     * @param location 店家地址
+     * @param licence 经营许可证图片
+     * @return
+     */
+    public Boolean updateStoreInfo(String id, String username, String ownerName, String storeName,
+                                   String introduce, String headPicture, String location, String licence);
 }
