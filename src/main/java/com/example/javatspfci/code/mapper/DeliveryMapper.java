@@ -12,10 +12,10 @@ import java.util.List;
 
 /**
  * <p>
- *  Mapper 接口
+ * Mapper 接口
  * </p>
  *
- * @author 
+ * @author
  * @since 2022-04-29
  */
 @Mapper
@@ -24,15 +24,17 @@ public interface DeliveryMapper extends BaseMapper<Delivery> {
 
     /**
      * 添加配送员
-     * @param id 配送员用户id
+     *
+     * @param id       配送员用户id
      * @param username 用户名
-     * @param phone 电话号码
+     * @param phone    电话号码
      * @return
      */
-    public Integer addDelivery(String id, String username, String phone,String factoryId);
+    public Integer addDelivery(String id, String username, String phone, String factoryId);
 
     /**
      * 查询手机是否重复
+     *
      * @param phone 手机号码
      * @return
      */
@@ -40,21 +42,24 @@ public interface DeliveryMapper extends BaseMapper<Delivery> {
 
     /**
      * 查询是否存在用户名相同
+     *
      * @param name 用户名
      * @return
      */
     public Integer queryCountByName(String name);
 
     /**
+     * 按用户名密码查询配送员
      *
-     * @param deUserName 配送员用户名
-     * @param password 密码
+     * @param dePhone 配送员用户名
+     * @param password   密码
      * @return
      */
-    public DeliveryLoginMsg selectDeByUsername(String deUserName, String password);
+    public DeliveryLoginMsg selectDeByPhone(String dePhone, String password);
 
     /**
      * 分页查询配送员
+     *
      * @param start 开始位置
      * @param count 查询人数
      * @return
@@ -63,12 +68,14 @@ public interface DeliveryMapper extends BaseMapper<Delivery> {
 
     /**
      * 查询配送员人数
+     *
      * @return
      */
     public Integer queryAllDeliverCount();
 
     /**
      * 通过ID查询配送员
+     *
      * @param delID 配送员ID
      * @return
      */
@@ -76,6 +83,7 @@ public interface DeliveryMapper extends BaseMapper<Delivery> {
 
     /**
      * 通过厂家ID获取配送员数量
+     *
      * @param factoryId 工厂ID
      * @return
      */
@@ -83,21 +91,23 @@ public interface DeliveryMapper extends BaseMapper<Delivery> {
 
     /**
      * 通过工厂ID获取配送员
+     *
      * @param factoryId 工厂ID
-     * @param start 页数
-     * @param count 查询数据数量
+     * @param start     页数
+     * @param count     查询数据数量
      * @return
      */
     public List<Delivery> listDeliveryByFactoryId(String factoryId, Integer start, Integer count);
 
     /**
      * 更新配送员信息
-     * @param delID 配送员ID
-     * @param username 用户名
-     * @param headPicture 头像图片
+     *
+     * @param delID          配送员ID
+     * @param username       用户名
+     * @param headPicture    头像图片
      * @param drivingLicence 车辆行驶证图片
-     * @param carLicence 驾驶证图片
-     * @param carCode 车牌号图片
+     * @param carLicence     驾驶证图片
+     * @param carCode        车牌号图片
      * @return
      */
     public Integer updateDelivery(String delID, String username, String headPicture, String drivingLicence,
@@ -105,6 +115,7 @@ public interface DeliveryMapper extends BaseMapper<Delivery> {
 
     /**
      * 根据用户名模糊查询用户
+     *
      * @param username 用户名
      * @return
      */

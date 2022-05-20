@@ -12,9 +12,9 @@ import lombok.Data;
 @Data
 public class StoreLoginDto {
     /**
-     * 店家用户名
+     * 店家电话
      */
-    private String stUserName;
+    private String stPhone;
 
     /**
      * 店家密码

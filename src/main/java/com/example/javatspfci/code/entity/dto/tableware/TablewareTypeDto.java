@@ -13,4 +13,12 @@ public class TablewareTypeDto {
      * 餐具类型
      */
     private String tabType;
+    /**
+     * 开始页数
+     */
+    private Integer page;
+    /**
+     * 查多少个
+     */
+    private Integer count;
 }

@@ -47,11 +47,11 @@ public interface FactoryMapper extends BaseMapper<Factory> {
 
     /**
      *
-     * @param facUserName 厂家用户名
+     * @param facPhone 厂家电话
      * @param password 密码
      * @return
      */
-    public FactoryLoginMsg selectFacUserName(String facUserName, String password);
+    public FactoryLoginMsg selectFacPhone(String facPhone, String password);
 
     /**
      * 分页查询厂家

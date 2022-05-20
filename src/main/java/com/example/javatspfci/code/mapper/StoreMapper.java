@@ -46,11 +46,11 @@ public interface StoreMapper extends BaseMapper<Store> {
 
     /**
      * 店家登录
-     * @param stUsername 店家用户名
+     * @param stPhone 店家手机号
      * @param password 密码
      * @return
      */
-    public StoreLoginMsg selectStoreByUsername(String stUsername, String password);
+    public StoreLoginMsg selectStoreByPhone(String stPhone, String password);
 
     /**
      * 通过id查询店家

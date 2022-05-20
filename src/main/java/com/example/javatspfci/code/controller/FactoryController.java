@@ -45,7 +45,7 @@ public class FactoryController {
         //查询用户是否存在
         FactoryLoginMsg factoryMsg = null;
         try {
-            factoryMsg = factoryService.factoryLogin(facLoginDto.getFacUserName(), md5Password);
+            factoryMsg = factoryService.factoryLogin(facLoginDto.getFacPhone(), md5Password);
         } catch (Exception e) {
             e.printStackTrace();
         }

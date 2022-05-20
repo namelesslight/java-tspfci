@@ -14,10 +14,10 @@ import lombok.Data;
 @ApiModel(value = "Admin对象", description = "")
 public class DeLoginDto {
     /**
-     * 配送员用户名
+     * 配送员电话
      */
-    @ApiModelProperty("配送员姓名")
-    private String deUserName;
+    @ApiModelProperty("配送员电话")
+    private String dePhone;
 
     /**
      * 密码
