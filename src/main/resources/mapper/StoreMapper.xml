@@ -17,7 +17,7 @@
     </resultMap>
     
     <insert id="addStore">
-        INSERT INTO `tb_store` VALUES(#{id}, #{username}, #{phone}, '', '', '', '', '', '', 0, NOW());
+        INSERT INTO `tb_store` VALUES(#{id}, #{username},'', #{phone}, '', '', '', '', '', '', 0, NOW());
     </insert>
 
     <select id="queryCountByPhone" resultType="java.lang.Integer">
