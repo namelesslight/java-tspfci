@@ -32,7 +32,7 @@
         WHERE `fac_user_name` = #{name}
     </select>
 
-    <select id="selectFacUserName" resultType="com.example.javatspfci.code.entity.vo.FactoryLoginMsg">
+    <select id="selectFacPhone" resultType="com.example.javatspfci.code.entity.vo.FactoryLoginMsg">
         SELECT `tb_factory`.`fac_id`,
                `tb_factory`.`fac_user_name`,
                `tb_factory`.`fac_store_name`,
@@ -40,13 +40,13 @@
                `tb_factory`.`fac_phone`,
                `tb_factory`.`fac_picture`,
                `tb_factory`.`fac_location`,
-               `tb_factory`.`fac_licence`,
+               `tb_factory`.`fac_lences_id`,
                `tb_all_password`.`all_password`,
                `tb_user_role`.`u_role`
         FROM `tb_factory`,`tb_all_password`,`tb_user_role`
         WHERE `tb_factory`.`fac_id` = `tb_all_password`.`all_id`
           AND `tb_all_password`.`all_id` = `tb_user_role`.`u_id`
-          AND `fac_user_name`=#{facUserName}
+          AND `fac_phone`=#{facPhone}
           AND `all_password`=#{password}
     </select>
 

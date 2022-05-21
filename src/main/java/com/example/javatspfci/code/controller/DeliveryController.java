@@ -43,7 +43,7 @@ public class DeliveryController {
         //查询用户是否存在
         DeliveryLoginMsg deliveryMsg = null;
         try {
-            deliveryMsg = deliveryService.deliveryLogin(deLoginDto.getDeUserName(), md5Password);
+            deliveryMsg = deliveryService.deliveryLogin(deLoginDto.getDePhone(), md5Password);
         } catch (Exception e) {
             e.printStackTrace();
         }

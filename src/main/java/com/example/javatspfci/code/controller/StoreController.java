@@ -41,7 +41,7 @@ public class StoreController {
         //查询用户是否存在
         StoreLoginMsg storeMsg = null;
         try {
-            storeMsg = storeService.storeLogin(storeLoginDto.getStUserName(), md5Password);
+            storeMsg = storeService.storeLogin(storeLoginDto.getStPhone(), md5Password);
         } catch (Exception e) {
             e.printStackTrace();
         }

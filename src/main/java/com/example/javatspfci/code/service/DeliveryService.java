@@ -43,11 +43,11 @@ public interface DeliveryService extends IService<Delivery> {
 
     /**
      *
-     * @param deUserName 配送员账号
+     * @param dePhone 配送员账号
      * @param password 密码
      * @return
      */
-    public DeliveryLoginMsg deliveryLogin(String deUserName, String password);
+    public DeliveryLoginMsg deliveryLogin(String dePhone, String password);
 
     /**
      * 分页查询配送员

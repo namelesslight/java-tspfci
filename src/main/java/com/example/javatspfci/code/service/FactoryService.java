@@ -43,11 +43,11 @@ public interface FactoryService extends IService<Factory> {
 
     /**
      *
-     * @param facUserName 厂家用户名
+     * @param facPhone 厂家电话
      * @param password 密码
      * @return
      */
-    public FactoryLoginMsg factoryLogin(String facUserName, String password);
+    public FactoryLoginMsg factoryLogin(String facPhone, String password);
 
     /**
      * 分页查询厂家

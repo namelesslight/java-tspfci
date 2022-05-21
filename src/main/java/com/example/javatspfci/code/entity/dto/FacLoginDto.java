@@ -11,10 +11,10 @@ import lombok.Data;
 @Data
 public class FacLoginDto {
     /**
-     * 厂家用户名
+     * 厂家电话
      */
 
-    private String facUserName;
+    private String facPhone;
 
     /**
      * 密码
