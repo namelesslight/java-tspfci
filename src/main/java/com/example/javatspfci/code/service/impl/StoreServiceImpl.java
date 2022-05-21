@@ -59,13 +59,13 @@ public class StoreServiceImpl extends ServiceImpl<StoreMapper, Store> implements
 
     /**
      *
-     * @param stUsername 店家用户名
+     * @param stPhone 店家用手机号
      * @param password 密码
      * @return
      */
     @Override
-    public StoreLoginMsg storeLogin(String stUsername, String password) {
-        return storeMapper.selectStoreByUsername(stUsername, password);
+    public StoreLoginMsg storeLogin(String stPhone, String password) {
+        return storeMapper.selectStoreByPhone(stPhone, password);
     }
 
     /**

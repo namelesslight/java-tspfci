@@ -17,4 +17,12 @@ public class TablewareConditionDto {
      * 工厂id
      */
     private String tabFactoryId;
+    /**
+     * 开始页数
+     */
+    private Integer page;
+    /**
+     * 查多少个
+     */
+    private Integer count;
 }

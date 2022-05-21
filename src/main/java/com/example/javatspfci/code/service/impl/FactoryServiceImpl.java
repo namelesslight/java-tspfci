@@ -55,13 +55,13 @@ public class FactoryServiceImpl extends ServiceImpl<FactoryMapper, Factory> impl
 
     /**
      * 厂家登录
-     * @param facUserName 厂家用户名
+     * @param facPhone 厂家电话
      * @param password 密码
      * @return
      */
     @Override
-    public FactoryLoginMsg factoryLogin(String facUserName, String password) {
-        return factoryMapper.selectFacUserName(facUserName, password);
+    public FactoryLoginMsg factoryLogin(String facPhone, String password) {
+        return factoryMapper.selectFacPhone(facPhone, password);
     }
 
     /**

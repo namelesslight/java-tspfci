@@ -41,11 +41,11 @@ public interface StoreService extends IService<Store> {
 
     /**
      * 店家登录
-     * @param stUsername 店家用户名
+     * @param stPhone 店家手机号
      * @param password 密码
      * @return
      */
-    public StoreLoginMsg storeLogin(String stUsername, String password);
+    public StoreLoginMsg storeLogin(String stPhone, String password);
 
     /**
      * 根据id查询店家信息

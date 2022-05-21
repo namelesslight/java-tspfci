@@ -33,7 +33,7 @@
         WHERE `st_user_name` = #{name}
     </select>
 
-    <select id="selectStoreByUsername" resultType="com.example.javatspfci.code.entity.vo.StoreLoginMsg">
+    <select id="selectStoreByPhone" resultType="com.example.javatspfci.code.entity.vo.StoreLoginMsg">
         SELECT `tb_store`.`st_id`,
                `tb_store`.`st_user_name`,
                `tb_store`.`st_phone`,
@@ -42,13 +42,13 @@
                `tb_store`.`st_introduce`,
                `tb_store`.`st_picture`,
                `tb_store`.`st_location`,
-               `tb_store`.`st_licence`,
+               `tb_store`.`st_lences_id`,
                `tb_all_password`.`all_password`,
                `tb_user_role`.`u_role`
         FROM `tb_store`,`tb_all_password`,`tb_user_role`
         WHERE `tb_store`.`st_id` = `tb_all_password`.`all_id`
           AND `tb_all_password`.`all_id` = `tb_user_role`.`u_id`
-          AND `st_user_name`=#{stUsername}
+          AND `st_phone`=#{stPhone}
           AND `all_password`=#{password}
     </select>
 

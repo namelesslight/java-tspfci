@@ -126,16 +126,16 @@ public class TablewareController {
      * 根据类型分页查询餐具
      *
      * @param tablewareDto 餐具接收类
-     * @param page         开始页数
-     * @param count        查几个数
      * @return
      */
-    @GetMapping("/getTablewareByType")
-    public Result getTablewareByType(@RequestBody TablewareTypeDto tablewareDto,
-                                     @RequestParam Integer page,
-                                     @RequestParam Integer count) {
+    @PostMapping("/getTablewareByType")
+    public Result getTablewareByType(@RequestBody TablewareTypeDto tablewareDto) {
         Result result =
-                tablewareStencil.listTablewareByType(tablewareDto.getTabType(), page, count, "/code/tableware/getTablewareByType");
+                tablewareStencil.listTablewareByType(
+                        tablewareDto.getTabType(),
+                        tablewareDto.getPage(),
+                        tablewareDto.getCount(),
+                        "/code/tableware/getTablewareByType");
         return result;
     }
 
@@ -143,20 +143,16 @@ public class TablewareController {
      * 根据类型和工厂id分页查询餐具
      *
      * @param tablewareDto 餐具接收类
-     * @param page         开始页数
-     * @param count        查几个数
      * @return
      */
-    @GetMapping("/getTablewareByCondition")
-    public Result getTablewareByCondition(@RequestBody TablewareConditionDto tablewareDto,
-                                          @RequestParam Integer page,
-                                          @RequestParam Integer count) {
+    @PostMapping("/getTablewareByCondition")
+    public Result getTablewareByCondition(@RequestBody TablewareConditionDto tablewareDto) {
         Result result =
                 tablewareStencil.listTablewareByCondition(
                         tablewareDto.getTabFactoryId(),
                         tablewareDto.getTabType(),
-                        page,
-                        count,
+                        tablewareDto.getPage(),
+                        tablewareDto.getCount(),
                         "/code/tableware/getTablewareByCondition");
         return result;
     }
