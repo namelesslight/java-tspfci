@@ -189,7 +189,7 @@
         AND `d`.`order_id` = #{orderId}
     </select>
 
-    <select id="queryAllOrderCount">
+    <select id="queryAllOrderCount" resultType="java.lang.Integer">
         SELECT
                COUNT(*)
         FROM `tb_order`
