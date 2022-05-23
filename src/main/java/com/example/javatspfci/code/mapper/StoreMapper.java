@@ -102,4 +102,12 @@ public interface StoreMapper extends BaseMapper<Store> {
      * @return
      */
     public List<Store> listStoreByFactoryId(String factoryId);
+
+    /**
+     * 取消合作
+     * @param factoryId 厂家Id
+     * @param storeId 店家Id
+     * @return
+     */
+    public Integer deleteCooperation(String factoryId, String storeId);
 }

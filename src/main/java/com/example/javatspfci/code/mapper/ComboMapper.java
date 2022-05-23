@@ -1,6 +1,7 @@
 package com.example.javatspfci.code.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.example.javatspfci.code.entity.po.Combo;
 import org.apache.ibatis.annotations.Mapper;
 
 /**

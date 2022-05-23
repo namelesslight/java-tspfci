@@ -60,4 +60,13 @@ public interface  StoreStencil {
      * @return
      */
     public Result listStoreByFactoryId(String factoryId, String path);
+
+    /**
+     * 取消合作
+     * @param factoryId 厂家ID
+     * @param storeId 店家
+     * @param path url路径
+     * @return
+     */
+    public Result removeCooperation(String factoryId, String storeId,String path);
 }

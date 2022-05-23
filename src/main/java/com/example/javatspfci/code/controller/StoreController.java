@@ -1,6 +1,7 @@
 package com.example.javatspfci.code.controller;
 
 
+import com.example.javatspfci.code.entity.dto.CancelCooperationDto;
 import com.example.javatspfci.code.entity.dto.StoreAddCooperationDto;
 import com.example.javatspfci.code.entity.dto.StoreLoginDto;
 import com.example.javatspfci.code.entity.vo.StoreLoginMsg;
@@ -100,14 +101,36 @@ public class StoreController {
         return storeStencil.updateStoreInfo(id, username, ownerName, storeName, introduce, headPicture, location, licence,"/code/store/updateStoreInfo");
     }
 
+    /**
+     * 添加合作
+     * @param storeAddCooperationDto
+     * @return
+     */
     @PostMapping("/addCooperation")
     public Result addCooperation(@RequestBody StoreAddCooperationDto storeAddCooperationDto){
         return storeStencil.addCooperation(storeAddCooperationDto.getStoreId(),
                 storeAddCooperationDto.getFactoryId(),"/code/store/addCooperation");
     }
 
+    /**
+     * 根据厂家获取合作店家接口
+     * @param factoryId
+     * @return
+     */
     @GetMapping("/listStoreByFactoryId")
     public Result listStoreByFactoryId(@RequestParam String factoryId){
         return storeStencil.listStoreByFactoryId(factoryId, "/code/store/listStoreByFactoryId");
+    }
+
+    /**
+     * 取消合作接口
+     * @param cancelCooperationDto
+     * @return
+     */
+    @PostMapping("/removeCooperation")
+    public Result removeCooperation(@RequestBody CancelCooperationDto cancelCooperationDto){
+        return storeStencil.removeCooperation(
+                cancelCooperationDto.getFactoryId(),
+                cancelCooperationDto.getStoreId(), "/code/store/removeCooperation");
     }
 }

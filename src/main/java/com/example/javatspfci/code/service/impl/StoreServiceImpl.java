@@ -137,4 +137,15 @@ public class StoreServiceImpl extends ServiceImpl<StoreMapper, Store> implements
         return storeMapper.listStoreByFactoryId(factoryId);
     }
 
+    /**
+     * 取消合作
+     * @param factoryId 厂家Id
+     * @param storeId 店家Id
+     * @return
+     */
+    @Override
+    public Boolean deleteCooperation(String factoryId, String storeId) {
+        return storeMapper.deleteCooperation(factoryId, storeId) == 1;
+    }
+
 }

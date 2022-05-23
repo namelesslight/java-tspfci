@@ -152,4 +152,23 @@ public class StoreStencilImpl implements StoreStencil {
         message.put("data",storeList);
         return new Result().result200(message, path);
     }
+
+    /**
+     *
+     * @param factoryId 厂家ID
+     * @param storeId 店家
+     * @param path url路径
+     * @return
+     */
+    @Override
+    public Result removeCooperation(String factoryId, String storeId, String path) {
+        int updateCode = 1;
+        Boolean cancelJudge = storeService.deleteCooperation(factoryId, storeId);
+        if (!cancelJudge){
+            updateCode = 0;
+        }
+        Map<String, Object> message =new HashMap<>();
+        message.put("update_code", updateCode);
+        return new Result().result200(message, path);
+    }
 }

@@ -96,4 +96,12 @@ public interface StoreService extends IService<Store> {
      * @return
      */
     public List<Store> listStoreByFactoryId(String factoryId);
+
+    /**
+     * 取消合作
+     * @param factoryId 厂家Id
+     * @param storeId 店家Id
+     * @return
+     */
+    public Boolean deleteCooperation(String factoryId, String storeId);
 }

@@ -123,6 +123,7 @@
             `st_location` = #{location},
             `st_licence` = #{licence}
         WHERE `st_id` = #{id}
+        AND `is_delete` = 0
     </update>
 
     <update id="addCooperation">
@@ -133,4 +134,11 @@
             `st_id` = #{storeId}
     </update>
 
+    <update id="deleteCooperation">
+        UPDATE `tb_store`
+        SET `st_factory` = ''
+        WHERE
+            `st_factory` = #{factoryId}
+        AND `st_id` = #{storeId}
+    </update>
 </mapper>
