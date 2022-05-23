@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.javatspfci.code.mapper.ComboMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.example.javatspfci.code.entity.po.Combo">
+        <id column="com_id" property="comId" />
+        <result column="com_factory" property="comFactory" />
+        <result column="com_store" property="comStore" />
+        <result column="com_price" property="comPrice" />
+        <result column="com_name" property="comName" />
+        <result column="com_info" property="comInfo" />
+        <result column="is_delete" property="isDelete" />
+        <result column="create_time" property="createTime" />
+    </resultMap>
+
+</mapper>

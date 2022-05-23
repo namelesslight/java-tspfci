@@ -4,7 +4,7 @@ import com.example.javatspfci.code.entity.bean.PageBean;
 import com.example.javatspfci.code.entity.po.Default;
 import com.example.javatspfci.code.result.Result;
 import com.example.javatspfci.code.service.DefaultService;
-import com.example.javatspfci.code.stencil.ComboStencil;
+import com.example.javatspfci.code.stencil.DefaultStencil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,7 +21,7 @@ import java.util.Map;
  */
 
 @Service
-public class ComboStencilImpl implements ComboStencil {
+public class ComboStencilImpl implements DefaultStencil {
     @Autowired
     private DefaultService ComboService;
 
