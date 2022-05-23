@@ -1,6 +1,7 @@
 package com.example.javatspfci.code.controller;
 
 
+import com.example.javatspfci.code.entity.dto.StoreAddCooperationDto;
 import com.example.javatspfci.code.entity.dto.StoreLoginDto;
 import com.example.javatspfci.code.entity.vo.StoreLoginMsg;
 import com.example.javatspfci.code.result.Result;
@@ -97,5 +98,16 @@ public class StoreController {
                                   @RequestParam String location,
                                   @RequestParam MultipartFile licence) throws IOException {
         return storeStencil.updateStoreInfo(id, username, ownerName, storeName, introduce, headPicture, location, licence,"/code/store/updateStoreInfo");
+    }
+
+    @PostMapping("/addCooperation")
+    public Result addCooperation(@RequestBody StoreAddCooperationDto storeAddCooperationDto){
+        return storeStencil.addCooperation(storeAddCooperationDto.getStoreId(),
+                storeAddCooperationDto.getFactoryId(),"/code/store/addCooperation");
+    }
+
+    @GetMapping("/listStoreByFactoryId")
+    public Result listStoreByFactoryId(@RequestParam String factoryId){
+        return storeStencil.listStoreByFactoryId(factoryId, "/code/store/listStoreByFactoryId");
     }
 }

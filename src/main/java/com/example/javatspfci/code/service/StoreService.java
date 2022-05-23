@@ -81,4 +81,19 @@ public interface StoreService extends IService<Store> {
      */
     public Boolean updateStoreInfo(String id, String username, String ownerName, String storeName,
                                    String introduce, String headPicture, String location, String licence);
+
+    /**
+     * 商家添加合作厂家
+     * @param storeId 商家ID
+     * @param factoryId 厂家ID
+     * @return
+     */
+    public Boolean addCooperation(String storeId,String factoryId);
+
+    /**
+     * 根据厂家Id添加用户信息
+     * @param factoryId 厂家Id
+     * @return
+     */
+    public List<Store> listStoreByFactoryId(String factoryId);
 }

@@ -44,4 +44,20 @@ public interface  StoreStencil {
     public Result updateStoreInfo(String id, String username, String ownerName, String storeName,
                                   String introduce, MultipartFile headPicture, String location, MultipartFile licence, String path) throws IOException;
 
+    /**
+     * 商家添加合作厂家
+     * @param storeId 商家ID
+     * @param factoryId 厂家ID
+     * @param path url路径
+     * @return
+     */
+    public Result addCooperation(String storeId,String factoryId, String path);
+
+    /**
+     * 根据厂家Id添加用户信息
+     * @param factoryId 厂家Id
+     * @param path url路径
+     * @return
+     */
+    public Result listStoreByFactoryId(String factoryId, String path);
 }

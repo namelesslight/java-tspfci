@@ -116,4 +116,25 @@ public class StoreServiceImpl extends ServiceImpl<StoreMapper, Store> implements
         return storeMapper.updateStoreInfo(id, username, ownerName, storeName, introduce, headPicture, location, licence) == 1;
     }
 
+    /**
+     * 商家添加合作厂家
+     * @param storeId 商家ID
+     * @param factoryId 厂家ID
+     * @return
+     */
+    @Override
+    public Boolean addCooperation(String storeId, String factoryId) {
+        return storeMapper.addCooperation(storeId,factoryId) == 1;
+    }
+
+    /**
+     * 根据厂家Id获取用户信息
+     * @param factoryId 厂家Id
+     * @return
+     */
+    @Override
+    public List<Store> listStoreByFactoryId(String factoryId) {
+        return storeMapper.listStoreByFactoryId(factoryId);
+    }
+
 }

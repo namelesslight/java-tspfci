@@ -88,4 +88,18 @@ public interface StoreMapper extends BaseMapper<Store> {
     public Integer updateStoreInfo(String id, String username, String ownerName, String storeName,
                                    String introduce, String headPicture, String location, String licence);
 
+    /**
+     * 添加合作
+     * @param storeId 店家Id
+     * @param factoryId 厂家Id
+     * @return
+     */
+    public Integer addCooperation(String storeId, String factoryId);
+
+    /**
+     * 根据厂家Id获取用户信息
+     * @param factoryId 厂家Id
+     * @return
+     */
+    public List<Store> listStoreByFactoryId(String factoryId);
 }

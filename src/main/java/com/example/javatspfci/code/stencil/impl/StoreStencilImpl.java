@@ -25,8 +25,10 @@ import java.util.Map;
  */
 @Service
 public class StoreStencilImpl implements StoreStencil {
+
     @Autowired
     private StoreService storeService;
+
     @Override
     public Result getOneStoreById(String id, String path) {
         StoreLoginMsg storeMsg = null;
@@ -116,6 +118,38 @@ public class StoreStencilImpl implements StoreStencil {
         Map<String, Object> message = new HashMap<>();
         message.put("update_code",updateCode);
         message.put("data",data);
+        return new Result().result200(message, path);
+    }
+
+    /**
+     * 商家添加合作厂家
+     * @param storeId 商家ID
+     * @param factoryId 厂家ID
+     * @return
+     */
+    @Override
+    public Result addCooperation(String storeId, String factoryId, String path) {
+        int updateCode = 1;
+        Boolean updateJudge = storeService.addCooperation(storeId, factoryId);
+        if (!updateJudge){
+            updateCode = 0;
+        }
+        Map<String, Object> message = new HashMap<>();
+        message.put("update_code",updateCode);
+        return new Result().result200(message, path);
+    }
+
+    /**
+     * 根据厂家Id获取用户信息
+     * @param factoryId 厂家Id
+     * @param path url路径
+     * @return
+     */
+    @Override
+    public Result listStoreByFactoryId(String factoryId, String path) {
+        List<Store> storeList = storeService.listStoreByFactoryId(factoryId);
+        Map<String, Object> message = new HashMap<>();
+        message.put("data",storeList);
         return new Result().result200(message, path);
     }
 }
