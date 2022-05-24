@@ -3,7 +3,7 @@ package com.example.javatspfci.code.controller;
 
 import com.example.javatspfci.code.entity.dto.DefaultDto;
 import com.example.javatspfci.code.result.Result;
-import com.example.javatspfci.code.stencil.DefaultStencil;
+import com.example.javatspfci.code.stencil.ComboStencil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/code/default")
 public class DefaultController {
     @Autowired
-    private DefaultStencil comboStencil;
+    private ComboStencil comboStencil;
 
     /**
      * 添加套餐

@@ -146,5 +146,4 @@ public class DeliveryServiceImpl extends ServiceImpl<DeliveryMapper, Delivery> i
     public List<Delivery> queryFindDelivery(String username) {
         return deliveryMapper.queryFindDelivery(username);
     }
-
 }

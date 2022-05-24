@@ -14,4 +14,31 @@
         <result column="create_time" property="createTime" />
     </resultMap>
 
+    <insert id="addStoreCombo">
+        INSERT INTO `tb_combo` VALUES(NULL, #{factoryId}, #{storeId}, #{price}, #{name}, #{info}, 0, NOW());
+    </insert>
+
+    <select id="listComboByStore" resultType="com.example.javatspfci.code.entity.po.Combo">
+        SELECT
+               `com_id`,
+               `com_factory`,
+               `com_store`,
+               `com_price`,
+               `com_name`,
+               `com_info`,
+               `is_delete`,
+               `create_time`
+        FROM `tb_combo`
+        WHERE `com_store` = #{storeId}
+        AND `com_factory` = #{factoryId}
+        AND `is_delete` = 0
+    </select>
+
+    <update id="deleteStoreCombo">
+        UPDATE
+            `tb_combo`
+        SET
+        `is_delete` = 1
+        WHERE `com_id` = #{comboId}
+    </update>
 </mapper>

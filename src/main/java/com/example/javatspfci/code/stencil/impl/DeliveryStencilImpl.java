@@ -23,6 +23,7 @@ public class DeliveryStencilImpl implements DeliveryStencil {
     @Resource
     private DeliveryService deliveryService;
 
+    private String CAR_CODE_MATCH = "^[京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵粤青藏川宁琼使领A-Z]{1}[A-Z]{1}[警京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵粤青藏川宁琼]{0,1}[A-Z0-9]{4}[A-Z0-9挂学警港澳]{1}$";
     /**
      * 查询
      * @param page 页数
@@ -91,7 +92,7 @@ public class DeliveryStencilImpl implements DeliveryStencil {
     @Transactional(rollbackFor = Exception.class)
     @Override
     public Result updateDeliveryInfo(String delID, String username, MultipartFile headPicture, MultipartFile drivingLicence,
-                                     MultipartFile carLicence, MultipartFile carCode, String path) throws IOException {
+                                     MultipartFile carLicence, String carCode, String path) throws IOException {
         int updateCode = 1;
         Map<String, Object> data = null;
         //本地设置图片路径
@@ -101,16 +102,21 @@ public class DeliveryStencilImpl implements DeliveryStencil {
         String headPicturePath = FileUtil.addImg(headPicture,imagePath);
         String drivingLicencePath = FileUtil.addImg(drivingLicence,imagePath);
         String carLicencePath = FileUtil.addImg(carLicence,imagePath);
-        String carCodePath = FileUtil.addImg(carCode,imagePath);
         boolean updateJudge = false;
-        updateJudge = deliveryService.updateDelivery(delID,username,headPicturePath,drivingLicencePath,carLicencePath,carCodePath);
+        if (!carCode.matches(CAR_CODE_MATCH)){
+            updateCode = 0;
+            data.put("car_code", "车牌号有误");
+        }
+        if (updateCode == 1){
+            updateJudge = deliveryService.updateDelivery(delID,username,headPicturePath,drivingLicencePath,carLicencePath,carCode);
+        }
         if (updateJudge){
             data = new HashMap<>();
-            data.put("username",username);
+            data.put("user_name",username);
             data.put("head_picture",headPicturePath);
             data.put("driving_licence",drivingLicencePath);
             data.put("car_licence",carLicencePath);
-            data.put("car_code",carCodePath);
+            data.put("car_code",carCode);
         } else {
             updateCode = 0;
         }

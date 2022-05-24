@@ -1,12 +1,11 @@
 package com.example.javatspfci.code.entity.dto;
 
-import com.example.javatspfci.code.entity.po.Tableware;
 import lombok.Data;
 
 import java.util.List;
 
 @Data
-public class AddComboDto {
+public class AddStoreComboDto {
 
     /**
      * 厂家Id
@@ -19,18 +18,18 @@ public class AddComboDto {
     private String storeId;
 
     /**
+     * 套餐名
+     */
+        private String name;
+
+    /**
      * 价格
      */
     private Double price;
 
     /**
-     * 姓名
-     */
-    private String name;
-
-    /**
      * 配套信息
      */
-    private List<Tableware> info;
+    private List<SimpTableInfoDto> info;
 
 }
