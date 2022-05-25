@@ -120,4 +120,14 @@ public class DeliveryController {
     public Result queryFindDelivery(@RequestParam String username){
         return deliveryStencil.queryFindDelivery(username, "/code/delivery/queryFindDelivery");
     }
+
+    /**
+     * 删除配送员
+     * @param deliveryId 配送员Id
+     * @return
+     */
+    @PostMapping("/deleteDelivery")
+    public Result deleteDelivery(@RequestParam String deliveryId){
+        return deliveryStencil.deleteDelivery(deliveryId, "/code/delivery/deleteDelivery");
+    }
 }

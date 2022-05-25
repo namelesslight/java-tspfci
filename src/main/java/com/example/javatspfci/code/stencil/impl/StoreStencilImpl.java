@@ -5,6 +5,7 @@ import com.example.javatspfci.code.entity.po.Delivery;
 import com.example.javatspfci.code.entity.po.Store;
 import com.example.javatspfci.code.entity.vo.StoreLoginMsg;
 import com.example.javatspfci.code.result.Result;
+import com.example.javatspfci.code.service.OrderService;
 import com.example.javatspfci.code.service.StoreService;
 import com.example.javatspfci.code.stencil.StoreStencil;
 import com.example.javatspfci.code.util.FileUtil;
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.annotation.Resource;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
@@ -28,6 +30,9 @@ public class StoreStencilImpl implements StoreStencil {
 
     @Autowired
     private StoreService storeService;
+
+    @Resource
+    private OrderService orderService;
 
     @Override
     public Result getOneStoreById(String id, String path) {
@@ -49,7 +54,7 @@ public class StoreStencilImpl implements StoreStencil {
     }
 
     @Override
-    public Result getAllStoreByPage(Integer page, Integer count, String path) {
+    public Result getAllStoreByPage(String factoryId, Integer page, Integer count, String path) {
         Map<String,Object> message = new HashMap<>();
         if (page < 1 || count <= 0) {
             message.put("data", "参数错误");
@@ -69,7 +74,7 @@ public class StoreStencilImpl implements StoreStencil {
             //获取数据
             List<Store> data = null;
             try {
-                data = storeService.listAllStoreByPage(start, count);
+                data = storeService.listAllStoreByPage(factoryId, start, count);
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -161,10 +166,12 @@ public class StoreStencilImpl implements StoreStencil {
      * @return
      */
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public Result removeCooperation(String factoryId, String storeId, String path) {
         int updateCode = 1;
         Boolean cancelJudge = storeService.deleteCooperation(factoryId, storeId);
-        if (!cancelJudge){
+        Boolean cancelOrderJudge = orderService.orderCancelByFactoryAndStore(factoryId, storeId);
+        if (!(cancelJudge && cancelOrderJudge)){
             updateCode = 0;
         }
         Map<String, Object> message =new HashMap<>();

@@ -60,7 +60,7 @@ public interface StoreService extends IService<Store> {
      * @param count 查询个数
      * @return
      */
-    public List<Store> listAllStoreByPage(Integer start,Integer count);
+    public List<Store> listAllStoreByPage(String factoryId, Integer start,Integer count);
 
     /**
      * 查询店家数

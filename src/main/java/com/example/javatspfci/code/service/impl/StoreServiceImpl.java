@@ -85,8 +85,8 @@ public class StoreServiceImpl extends ServiceImpl<StoreMapper, Store> implements
      * @return
      */
     @Override
-    public List<Store> listAllStoreByPage(Integer start, Integer count) {
-        return storeMapper.listAllStoreByPage(start, count);
+    public List<Store> listAllStoreByPage(String factoryId, Integer start, Integer count) {
+        return storeMapper.listAllStoreByPage(factoryId, start, count);
     }
 
     /**

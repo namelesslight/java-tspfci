@@ -65,7 +65,7 @@ public interface StoreMapper extends BaseMapper<Store> {
      * @param count 查多少个
      * @return
      */
-    public List<Store> listAllStoreByPage(Integer start, Integer count);
+    public List<Store> listAllStoreByPage(String factoryId, Integer start, Integer count);
 
     /**
      * 查询店家数

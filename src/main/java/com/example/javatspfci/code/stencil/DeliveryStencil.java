@@ -55,4 +55,12 @@ public interface DeliveryStencil {
      * @return
      */
     public Result queryFindDelivery(String username,String path);
+
+    /**
+     * 删除配送员
+     * @param deliveryId 配送员Id
+     * @param path url路径
+     * @return
+     */
+    public Result deleteDelivery(String deliveryId, String path);
 }

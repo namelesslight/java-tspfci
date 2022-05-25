@@ -27,7 +27,7 @@ public interface  StoreStencil {
      * @param path url路径
      * @return
      */
-    public Result getAllStoreByPage(Integer page, Integer count, String path);
+    public Result getAllStoreByPage(String factoryId, Integer page, Integer count, String path);
 
     /**
      * 更新店家信息

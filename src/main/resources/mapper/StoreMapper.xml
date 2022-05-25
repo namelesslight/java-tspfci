@@ -86,6 +86,7 @@
                `tb_store`.`st_licence`
         FROM `tb_store`
         WHERE `tb_store`.`is_delete` = 0
+        AND `tb_store`.`st_factory` = #{factoryId}
         LIMIT #{start},#{count}
     </select>
 

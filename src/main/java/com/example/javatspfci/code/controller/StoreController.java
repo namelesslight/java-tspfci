@@ -72,9 +72,10 @@ public class StoreController {
      * @return
      */
     @GetMapping("/getAllStoreByPage")
-    public Result getAllStoreByPage(@RequestParam Integer page,
+    public Result getAllStoreByPage(@RequestParam String factoryId,
+                                    @RequestParam Integer page,
                                     @RequestParam Integer count){
-        return storeStencil.getAllStoreByPage(page,count,"/code/store/getAllStoreByPage");
+        return storeStencil.getAllStoreByPage(factoryId, page,count,"/code/store/getAllStoreByPage");
     }
 
     /**

@@ -4,6 +4,7 @@ import com.example.javatspfci.code.entity.bean.PageBean;
 import com.example.javatspfci.code.entity.po.Delivery;
 import com.example.javatspfci.code.result.Result;
 import com.example.javatspfci.code.service.DeliveryService;
+import com.example.javatspfci.code.service.OrderService;
 import com.example.javatspfci.code.stencil.DeliveryStencil;
 import com.example.javatspfci.code.util.FileUtil;
 import org.apache.logging.log4j.message.Message;
@@ -22,6 +23,9 @@ public class DeliveryStencilImpl implements DeliveryStencil {
 
     @Resource
     private DeliveryService deliveryService;
+
+    @Resource
+    private OrderService orderService;
 
     private String CAR_CODE_MATCH = "^[京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵粤青藏川宁琼使领A-Z]{1}[A-Z]{1}[警京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵粤青藏川宁琼]{0,1}[A-Z0-9]{4}[A-Z0-9挂学警港澳]{1}$";
     /**
@@ -137,6 +141,28 @@ public class DeliveryStencilImpl implements DeliveryStencil {
         Map<String,Object> message = new HashMap<>();
         List<Delivery> data = deliveryService.queryFindDelivery(username);
         message.put("data",data);
+        return new Result().result200(message, path);
+    }
+
+    /**
+     * 删除配送员
+     * @param deliveryId 配送员Id
+     * @param path url路径
+     * @return
+     */
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public Result deleteDelivery(String deliveryId, String path) {
+        int deleteCode = 1;
+        Boolean deleteJudge = false;
+        Boolean cancelJudge = false;
+        deleteJudge = deliveryService.deleteDelivery(deliveryId);
+        cancelJudge = orderService.orderCancelByDelivery(deliveryId);
+        if (!(deleteJudge && cancelJudge)){
+            deleteCode = 0;
+        }
+        Map<String,Object> message = new HashMap<>();
+        message.put("delete_code",deleteCode);
         return new Result().result200(message, path);
     }
 

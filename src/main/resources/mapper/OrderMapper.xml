@@ -45,6 +45,25 @@
         WHERE `order_id` = #{orderId}
     </update>
 
+    <update id="orderCancelByFactoryAndStore">
+        UPDATE
+            `tb_order`
+        SET
+            `order_status` = -1,
+            `order_error_reason` = '店家厂家取消合作'
+        WHERE `order_creator` = #{storeId}
+        AND `order_receiver` = #{factoryId}
+    </update>
+
+    <update id="orderCancelByDelivery">
+        UPDATE
+            `tb_order`
+        SET
+            `order_status` = -1,
+            `order_error_reason` = '配送员删除'
+        WHERE `order_delivery` = #{deliveryId}
+    </update>
+
     <select id="listOrderByStore" resultType="com.example.javatspfci.code.entity.vo.OrderQueryMsg">
         SELECT
             `a`.`st_id` AS `storeId`,

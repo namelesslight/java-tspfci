@@ -56,6 +56,21 @@ public interface OrderService extends IService<Order> {
     public Boolean orderCancel(String orderId,String reason);
 
     /**
+     * 根据店家ID和厂家ID取消订单
+     * @param factoryId 厂家Id
+     * @param storeId 店家Id
+     * @return
+     */
+    public Boolean orderCancelByFactoryAndStore(String factoryId, String storeId);
+
+    /**
+     * 根据配送员Id取消订单
+     * @param deliveryId 配送员Id
+     * @return
+     */
+    public Boolean orderCancelByDelivery(String deliveryId);
+
+    /**
      * 店家查询订单
      * @param storeId 店家ID
      * @return
