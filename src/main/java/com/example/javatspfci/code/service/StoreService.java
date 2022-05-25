@@ -3,7 +3,6 @@ package com.example.javatspfci.code.service;
 import com.example.javatspfci.code.entity.po.Store;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.example.javatspfci.code.entity.vo.StoreLoginMsg;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -104,4 +103,11 @@ public interface StoreService extends IService<Store> {
      * @return
      */
     public Boolean deleteCooperation(String factoryId, String storeId);
+
+    /**
+     * 根据厂家Id获取用户
+     * @param factoryId 厂家Id
+     * @return
+     */
+    public Integer queryStoreCountByFactoryId(String factoryId);
 }

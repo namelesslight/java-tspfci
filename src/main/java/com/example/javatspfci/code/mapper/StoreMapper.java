@@ -110,4 +110,11 @@ public interface StoreMapper extends BaseMapper<Store> {
      * @return
      */
     public Integer deleteCooperation(String factoryId, String storeId);
+
+    /**
+     * 根据厂家Id获取用户
+     * @param factoryId 厂家Id
+     * @return
+     */
+    public Integer queryStoreCountByFactoryId(String factoryId);
 }

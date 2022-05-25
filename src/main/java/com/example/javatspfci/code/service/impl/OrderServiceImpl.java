@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -84,7 +85,7 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order> implements
      */
     @Override
     public Boolean orderCancelByFactoryAndStore(String factoryId, String storeId) {
-        return orderMapper.orderCancelByFactoryAndStore(factoryId, storeId) == 1;
+        return orderMapper.orderCancelByFactoryAndStore(factoryId, storeId) >= 1;
     }
 
     /**
@@ -94,7 +95,7 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order> implements
      */
     @Override
     public Boolean orderCancelByDelivery(String deliveryId) {
-        return orderMapper.orderCancelByDelivery(deliveryId) == 1;
+        return orderMapper.orderCancelByDelivery(deliveryId) >= 1;
     }
 
     /**
@@ -140,5 +141,27 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order> implements
     @Override
     public Integer queryAllOrderCount() {
         return orderMapper.queryAllOrderCount();
+    }
+
+    /**
+     * 查询月交易额
+     * @param firstMonthDay 月初时间
+     * @param lastMonthDay 月末时间
+     * @return
+     */
+    @Override
+    public BigDecimal queryMonthPay(String factoryId, LocalDateTime firstMonthDay, LocalDateTime lastMonthDay) {
+        return orderMapper.queryMonthPay(factoryId, firstMonthDay, lastMonthDay);
+    }
+
+    /**
+     * 查询月订单
+     * @param firstMonthDay 月初时间
+     * @param lastMonthDay 月末时间
+     * @return
+     */
+    @Override
+    public Integer queryMonthOrder(String factoryId, LocalDateTime firstMonthDay, LocalDateTime lastMonthDay) {
+        return orderMapper.queryMonthOrder(factoryId, firstMonthDay, lastMonthDay);
     }
 }

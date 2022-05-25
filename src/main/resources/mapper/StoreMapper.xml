@@ -141,5 +141,15 @@
         WHERE
             `st_factory` = #{factoryId}
         AND `st_id` = #{storeId}
+        AND `is_delete` = 0
     </update>
+
+    <select id="queryStoreCountByFactoryId" resultType="java.lang.Integer">
+        SELECT
+               COUNT(*)
+        FROM `tb_store`
+        WHERE
+            `st_factory` = #{factoryId}
+        AND `is_delete` = 0
+    </select>
 </mapper>

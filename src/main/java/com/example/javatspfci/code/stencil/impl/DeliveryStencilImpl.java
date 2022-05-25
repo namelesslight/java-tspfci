@@ -155,10 +155,9 @@ public class DeliveryStencilImpl implements DeliveryStencil {
     public Result deleteDelivery(String deliveryId, String path) {
         int deleteCode = 1;
         Boolean deleteJudge = false;
-        Boolean cancelJudge = false;
         deleteJudge = deliveryService.deleteDelivery(deliveryId);
-        cancelJudge = orderService.orderCancelByDelivery(deliveryId);
-        if (!(deleteJudge && cancelJudge)){
+        orderService.orderCancelByDelivery(deliveryId);
+        if (!deleteJudge){
             deleteCode = 0;
         }
         Map<String,Object> message = new HashMap<>();

@@ -170,8 +170,8 @@ public class StoreStencilImpl implements StoreStencil {
     public Result removeCooperation(String factoryId, String storeId, String path) {
         int updateCode = 1;
         Boolean cancelJudge = storeService.deleteCooperation(factoryId, storeId);
-        Boolean cancelOrderJudge = orderService.orderCancelByFactoryAndStore(factoryId, storeId);
-        if (!(cancelJudge && cancelOrderJudge)){
+        orderService.orderCancelByFactoryAndStore(factoryId, storeId);
+        if (!cancelJudge){
             updateCode = 0;
         }
         Map<String, Object> message =new HashMap<>();

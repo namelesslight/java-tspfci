@@ -53,6 +53,7 @@
             `order_error_reason` = '店家厂家取消合作'
         WHERE `order_creator` = #{storeId}
         AND `order_receiver` = #{factoryId}
+        AND  `order_status` != 5
     </update>
 
     <update id="orderCancelByDelivery">
@@ -62,6 +63,7 @@
             `order_status` = -1,
             `order_error_reason` = '配送员删除'
         WHERE `order_delivery` = #{deliveryId}
+        AND  `order_status` != 5
     </update>
 
     <select id="listOrderByStore" resultType="com.example.javatspfci.code.entity.vo.OrderQueryMsg">
@@ -212,5 +214,23 @@
         SELECT
                COUNT(*)
         FROM `tb_order`
+    </select>
+
+    <select id="queryMonthPay" resultType="java.math.BigDecimal">
+        SELECT
+            SUM(`order_price`)
+        FROM `tb_order`
+        WHERE `order_receiver` = #{factoryId}
+        AND `order_status` = 5
+        AND Date(`order_create_time`) BETWEEN #{firstMonthDay} AND #{lastMonthDay}
+    </select>
+
+    <select id="queryMonthOrder" resultType="java.lang.Integer">
+        SELECT
+            COUNT(*)
+        FROM `tb_order`
+        WHERE `order_receiver` = #{factoryId}
+        AND `order_status` = 5
+        AND Date(`order_create_time`) BETWEEN #{firstMonthDay} AND #{lastMonthDay}
     </select>
 </mapper>

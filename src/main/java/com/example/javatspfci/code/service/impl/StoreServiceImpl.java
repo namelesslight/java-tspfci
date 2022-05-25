@@ -148,4 +148,14 @@ public class StoreServiceImpl extends ServiceImpl<StoreMapper, Store> implements
         return storeMapper.deleteCooperation(factoryId, storeId) == 1;
     }
 
+    /**
+     * 根据厂家Id获取用户
+     * @param factoryId 厂家Id
+     * @return
+     */
+    @Override
+    public Integer queryStoreCountByFactoryId(String factoryId) {
+        return storeMapper.queryStoreCountByFactoryId(factoryId);
+    }
+
 }
