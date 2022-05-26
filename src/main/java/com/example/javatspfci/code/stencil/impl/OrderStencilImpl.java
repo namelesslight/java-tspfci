@@ -46,7 +46,7 @@ public class OrderStencilImpl implements OrderStencil {
      */
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public Result createOrder(String creatorId, String receiverId, Integer value, OrderInfoDto info, String remark, String type, Double price, String path) {
+    public Result createOrder(String creatorId, String receiverId, Integer value, String info, String remark, String type, Double price, String path) {
         Map<String, Object> message = new HashMap<>();
         int createCode = 1;
         //生成UUID
@@ -55,7 +55,7 @@ public class OrderStencilImpl implements OrderStencil {
         Integer orderStatus = 0;
         //转化数据类型
         BigDecimal bigPrice = new BigDecimal(price);
-        boolean createJudge = orderService.createOrder(id, creatorId, receiverId, info.toString(), remark, type, bigPrice, orderStatus);
+        boolean createJudge = orderService.createOrder(id, creatorId, receiverId, info, remark, type, bigPrice, orderStatus);
         //判断是否添加成功
         if (!createJudge){
             createCode = 0;
