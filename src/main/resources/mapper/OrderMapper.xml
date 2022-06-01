@@ -24,7 +24,8 @@
 
     <update id="setOrderDelivery">
         UPDATE `tb_order`
-        SET `order_delivery` = #{deliveryId}
+        SET `order_delivery` = #{deliveryId},
+            `order_status` = 4
         WHERE `order_id` = #{orderId}
     </update>
 

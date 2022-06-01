@@ -31,6 +31,7 @@
         SELECT `st_id`
         FROM `tb_store`
         WHERE `st_user_name` = #{name}
+          AND `is_delete` = 0
     </select>
 
     <select id="selectStoreByPhone" resultType="com.example.javatspfci.code.entity.vo.StoreLoginMsg">
@@ -51,6 +52,7 @@
           AND `tb_all_password`.`all_id` = `tb_user_role`.`u_id`
           AND `st_phone`=#{stPhone}
           AND `all_password`=#{password}
+          AND `is_delete` = 0
     </select>
 
     <select id="selectStoreUserById" resultType="com.example.javatspfci.code.entity.vo.StoreLoginMsg">
