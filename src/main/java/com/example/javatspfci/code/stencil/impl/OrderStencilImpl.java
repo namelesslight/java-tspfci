@@ -4,6 +4,7 @@ import com.example.javatspfci.code.entity.dto.order.OrderInfoDto;
 import com.example.javatspfci.code.entity.vo.CountMsg;
 import com.example.javatspfci.code.entity.vo.OrderQueryMsg;
 import com.example.javatspfci.code.result.Result;
+import com.example.javatspfci.code.service.CacheService;
 import com.example.javatspfci.code.service.DeliveryService;
 import com.example.javatspfci.code.service.OrderService;
 import com.example.javatspfci.code.service.StoreService;
@@ -32,6 +33,9 @@ public class OrderStencilImpl implements OrderStencil {
     @Resource
     private DeliveryService deliveryService;
 
+    @Resource
+    private CacheService cacheService;
+
     /**
      * 创建订单
      * @param creatorId 店家ID
@@ -56,6 +60,7 @@ public class OrderStencilImpl implements OrderStencil {
         //转化数据类型
         BigDecimal bigPrice = new BigDecimal(price);
         boolean createJudge = orderService.createOrder(id, creatorId, receiverId, info, remark, type, bigPrice, orderStatus);
+        cacheService.deleteAll(creatorId);
         //判断是否添加成功
         if (!createJudge){
             createCode = 0;
